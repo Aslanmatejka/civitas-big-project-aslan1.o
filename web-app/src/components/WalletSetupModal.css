@@ -1,0 +1,350 @@
+/* ── Overlay ─────────────────────────────────────────────────────────────── */
+.wsm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+/* ── Modal ───────────────────────────────────────────────────────────────── */
+.wsm-modal {
+  background: #13131a;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(167, 139, 250, 0.1);
+  animation: wsmSlideIn 0.25s ease;
+}
+
+@keyframes wsmSlideIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+/* ── Close / Back ────────────────────────────────────────────────────────── */
+.wsm-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: #888;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wsm-close:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+.wsm-back {
+  background: none;
+  border: none;
+  color: #a78bfa;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+.wsm-back:hover { color: #c4b5fd; }
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.wsm-header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+.wsm-logo, .wsm-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.wsm-header h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.4rem;
+}
+.wsm-sub {
+  color: #888;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Option cards ────────────────────────────────────────────────────────── */
+.wsm-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.wsm-option-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.18s ease;
+  width: 100%;
+}
+.wsm-option-card:hover {
+  border-color: rgba(167,139,250,0.5);
+  background: rgba(167,139,250,0.08);
+  transform: translateY(-1px);
+}
+
+.wsm-option-create:hover { border-color: rgba(167,139,250,0.5); }
+.wsm-option-import:hover { border-color: rgba(52,211,153,0.5); background: rgba(52,211,153,0.06); }
+.wsm-option-metamask:hover { border-color: rgba(255,165,0,0.5); background: rgba(255,165,0,0.06); }
+
+.wsm-option-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  width: 48px;
+  text-align: center;
+}
+.wsm-option-text h3 {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.2rem;
+}
+.wsm-option-text p {
+  color: #888;
+  font-size: 0.82rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ── Mnemonic grid ───────────────────────────────────────────────────────── */
+.wsm-mnemonic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin: 1rem 0;
+  transition: filter 0.3s ease;
+}
+.wsm-mnemonic-grid.blurred {
+  filter: blur(8px);
+  user-select: none;
+  pointer-events: none;
+}
+.wsm-mnemonic-grid.visible {
+  filter: none;
+}
+
+.wsm-word {
+  background: rgba(167,139,250,0.1);
+  border: 1px solid rgba(167,139,250,0.2);
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.wsm-word-num {
+  color: #6b7280;
+  font-size: 0.7rem;
+  min-width: 14px;
+}
+.wsm-word-text {
+  color: #e9d5ff;
+  font-size: 0.88rem;
+  font-weight: 500;
+  font-family: monospace;
+}
+
+/* ── Checkbox ────────────────────────────────────────────────────────────── */
+.wsm-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  color: #ccc;
+  font-size: 0.88rem;
+  cursor: pointer;
+  margin: 0.75rem 0 1rem;
+  line-height: 1.4;
+}
+.wsm-checkbox input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  accent-color: #a78bfa;
+  margin-top: 2px;
+}
+
+/* ── Form fields ─────────────────────────────────────────────────────────── */
+.wsm-field {
+  margin-bottom: 1rem;
+}
+.wsm-field label {
+  display: block;
+  color: #9ca3af;
+  font-size: 0.82rem;
+  margin-bottom: 0.4rem;
+}
+.wsm-field input,
+.wsm-textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  color: #fff;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.9rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+  font-family: inherit;
+  resize: vertical;
+}
+.wsm-field input:focus,
+.wsm-textarea:focus {
+  border-color: rgba(167,139,250,0.6);
+}
+.wsm-textarea {
+  font-family: monospace;
+  font-size: 0.88rem;
+}
+
+.wsm-input-group {
+  display: flex;
+  gap: 0;
+}
+.wsm-input-group input {
+  border-radius: 10px 0 0 10px;
+}
+.wsm-eye {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+  color: #888;
+  padding: 0 0.75rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.wsm-eye:hover { background: rgba(255,255,255,0.1); }
+
+/* ── Tabs ────────────────────────────────────────────────────────────────── */
+.wsm-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  padding: 4px;
+}
+.wsm-tabs button {
+  flex: 1;
+  background: none;
+  border: none;
+  color: #888;
+  padding: 0.5rem;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  transition: all 0.15s;
+}
+.wsm-tabs button.active {
+  background: rgba(167,139,250,0.2);
+  color: #c4b5fd;
+  font-weight: 600;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.wsm-btn {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.18s ease;
+  margin-top: 0.25rem;
+}
+.wsm-btn-primary {
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  color: #fff;
+}
+.wsm-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(124,58,237,0.4);
+}
+.wsm-btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.wsm-btn-ghost {
+  background: rgba(255,255,255,0.06);
+  color: #a78bfa;
+  border: 1px solid rgba(167,139,250,0.3);
+}
+.wsm-btn-ghost:hover {
+  background: rgba(167,139,250,0.12);
+}
+
+/* ── Error / notice ──────────────────────────────────────────────────────── */
+.wsm-error {
+  color: #f87171;
+  font-size: 0.85rem;
+  background: rgba(248,113,113,0.1);
+  border: 1px solid rgba(248,113,113,0.2);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  margin: 0.5rem 0;
+}
+.wsm-notice {
+  color: #6b7280;
+  font-size: 0.78rem;
+  text-align: center;
+  margin: 0.75rem 0 0;
+}
+
+/* ── Loading spinner ─────────────────────────────────────────────────────── */
+.wsm-loading-modal {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+.wsm-spinner {
+  width: 52px;
+  height: 52px;
+  border: 4px solid rgba(167,139,250,0.15);
+  border-top-color: #a78bfa;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  animation: wsmSpin 0.85s linear infinite;
+}
+@keyframes wsmSpin {
+  to { transform: rotate(360deg); }
+}
+.wsm-loading-modal h3 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+.wsm-loading-sub {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin: 0;
+}

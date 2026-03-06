@@ -1,0 +1,20 @@
+[
+  {"type":"event","name":"EscrowCreated","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true},{"name":"buyer","type":"address","indexed":true},{"name":"seller","type":"address","indexed":true},{"name":"amount","type":"uint256","indexed":false},{"name":"paymentType","type":"uint8","indexed":false}]},
+  {"type":"event","name":"EscrowDelivered","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true},{"name":"seller","type":"address","indexed":true}]},
+  {"type":"event","name":"EscrowReleased","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true},{"name":"buyer","type":"address","indexed":true}]},
+  {"type":"event","name":"EscrowDisputed","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true},{"name":"initiator","type":"address","indexed":true}]},
+  {"type":"event","name":"EscrowResolved","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true},{"name":"buyerWins","type":"bool","indexed":false},{"name":"arbitrator","type":"address","indexed":false}]},
+  {"type":"event","name":"EscrowRefunded","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true}]},
+  {"type":"event","name":"EscrowCancelled","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true}]},
+  {"type":"event","name":"ArbitratorRegistered","anonymous":false,"inputs":[{"name":"arbitrator","type":"address","indexed":true},{"name":"stake","type":"uint256","indexed":false}]},
+  {"type":"event","name":"ArbitratorRemoved","anonymous":false,"inputs":[{"name":"arbitrator","type":"address","indexed":true}]},
+  {"type":"function","name":"registerArbitrator","inputs":[],"outputs":[],"stateMutability":"payable"},
+  {"type":"function","name":"createEscrowETH","inputs":[{"name":"seller","type":"address"},{"name":"description","type":"string"},{"name":"autoRefundDelay","type":"uint256"}],"outputs":[{"name":"","type":"uint256"}],"stateMutability":"payable"},
+  {"type":"function","name":"createEscrowCIV","inputs":[{"name":"seller","type":"address"},{"name":"amount","type":"uint256"},{"name":"description","type":"string"},{"name":"autoRefundDelay","type":"uint256"}],"outputs":[{"name":"","type":"uint256"}],"stateMutability":"nonpayable"},
+  {"type":"function","name":"markDelivered","inputs":[{"name":"id","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"confirmReceipt","inputs":[{"name":"id","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"claimAutoRefund","inputs":[{"name":"id","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"openDispute","inputs":[{"name":"id","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"resolveDispute","inputs":[{"name":"id","type":"uint256"},{"name":"buyerWins","type":"bool"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"cancelEscrow","inputs":[{"name":"id","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"}
+]

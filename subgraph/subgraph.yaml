@@ -1,0 +1,330 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+
+description: CIVITAS decentralized identity, reputation, and governance subgraph
+repository: https://github.com/civitas/civitas
+
+dataSources:
+  # ── DIDRegistry ──────────────────────────────────────────────────────────────
+  - kind: ethereum
+    name: DIDRegistry
+    network: mainnet # change to 'localhost' for Hardhat, 'sepolia' for testnet
+    source:
+      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+      abi: DIDRegistry
+      startBlock: 1 # set to the block the contract was deployed at
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DIDIdentity
+        - IssuedCredential
+        - ReputationEvent
+        - CivitasStats
+      abis:
+        - name: DIDRegistry
+          file: ./abis/DIDRegistry.json
+      eventHandlers:
+        - event: DIDCreated(indexed bytes32,indexed address)
+          handler: handleDIDCreated
+        - event: DIDUpdated(indexed bytes32,string)
+          handler: handleDIDUpdated
+        - event: DIDDeactivated(indexed bytes32)
+          handler: handleDIDDeactivated
+        - event: ProfileUpdated(indexed bytes32,string)
+          handler: handleProfileUpdated
+        - event: CredentialIssued(indexed bytes32,indexed bytes32,indexed address)
+          handler: handleCredentialIssued
+        - event: CredentialRevoked(indexed bytes32,indexed bytes32)
+          handler: handleCredentialRevoked
+        - event: ReputationUpdated(indexed bytes32,uint256)
+          handler: handleReputationUpdated
+      file: ./src/mapping.ts
+
+  # ── CIVITASGovernance ─────────────────────────────────────────────────────────
+  - kind: ethereum
+    name: CIVITASGovernance
+    network: mainnet
+    source:
+      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
+      abi: CIVITASGovernance
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Proposal
+        - VoteRecord
+        - CivitasStats
+      abis:
+        - name: CIVITASGovernance
+          file: ./abis/CIVITASGovernance.json
+      eventHandlers:
+        - event: ProposalCreated(indexed uint256,indexed address,string,uint256)
+          handler: handleProposalCreated
+        - event: VoteCast(indexed address,indexed uint256,uint8,uint256,uint256,uint256)
+          handler: handleVoteCast
+        - event: ProposalExecuted(indexed uint256)
+          handler: handleProposalExecuted
+        - event: ProposalCanceled(indexed uint256)
+          handler: handleProposalCanceled
+      file: ./src/mapping.ts
+
+  # ── SmartEscrow ───────────────────────────────────────────────────────────────
+  - kind: ethereum
+    name: SmartEscrow
+    network: mainnet
+    source:
+      address: "0xCfEB869F69431e42cdB54A4F4f105C19C080A601"
+      abi: SmartEscrow
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - EscrowDeal
+        - CivitasStats
+      abis:
+        - name: SmartEscrow
+          file: ./abis/SmartEscrow.json
+      eventHandlers:
+        - event: EscrowCreated(indexed uint256,indexed address,indexed address,uint256,uint256)
+          handler: handleEscrowCreated
+        - event: EscrowReleased(indexed uint256,uint256,uint256)
+          handler: handleEscrowReleased
+        - event: EscrowRefunded(indexed uint256)
+          handler: handleEscrowRefunded
+        - event: DisputeOpened(indexed uint256,indexed address)
+          handler: handleDisputeOpened
+      file: ./src/mapping.ts
+
+  # ── NodeRegistry ─────────────────────────────────────────────────────────────
+  - kind: ethereum
+    name: NodeRegistry
+    network: mainnet
+    source:
+      address: "0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B"
+      abi: NodeRegistry
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - RegisteredNode
+        - CivitasStats
+      abis:
+        - name: NodeRegistry
+          file: ./abis/NodeRegistry.json
+      eventHandlers:
+        - event: NodeRegistered(indexed address,uint8,uint256)
+          handler: handleNodeRegistered
+        - event: NodeDeregistered(indexed address)
+          handler: handleNodeDeregistered
+        - event: UptimeRecorded(indexed address,uint256,uint256)
+          handler: handleUptimeRecorded
+      file: ./src/mapping.ts
+
+  # ── StakingPool ───────────────────────────────────────────────────────────────
+  - kind: ethereum
+    name: StakingPool
+    network: mainnet
+    source:
+      address: "0xC89Ce4735882C9F0f0FE26686c53074E09B0D550"
+      abi: StakingPool
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - StakePosition
+        - StakeEvent
+        - CivitasStats
+      abis:
+        - name: StakingPool
+          file: ./abis/StakingPool.json
+      eventHandlers:
+        - event: Staked(indexed address,uint256)
+          handler: handleStaked
+        - event: Unstaked(indexed address,uint256)
+          handler: handleUnstaked
+        - event: RewardClaimed(indexed address,uint256)
+          handler: handleRewardClaimed
+      file: ./src/mapping.ts
+
+  # ── AutomationEngine ──────────────────────────────────────────────────────────
+  - kind: ethereum
+    name: AutomationEngine
+    network: mainnet
+    source:
+      address: "0xD833215cBcc3f914bD1C9ece3EE7BF8B14f841f"
+      abi: AutomationEngine
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AutomationTask
+        - TaskExecution
+        - CivitasStats
+      abis:
+        - name: AutomationEngine
+          file: ./abis/AutomationEngine.json
+      eventHandlers:
+        - event: TaskCreated(indexed uint256,indexed address,uint8,uint8)
+          handler: handleTaskCreated
+        - event: TaskExecuted(indexed uint256,indexed address,bool)
+          handler: handleTaskExecuted
+        - event: TaskDeactivated(indexed uint256)
+          handler: handleTaskDeactivated
+      file: ./src/mapping.ts
+
+  # ── CIVToken ──────────────────────────────────────────────────────────────────
+  - kind: ethereum
+    name: CIVToken
+    network: mainnet
+    source:
+      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+      abi: CIVToken
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TokenBurnEvent
+        - CivitasStats
+      abis:
+        - name: CIVToken
+          file: ./abis/CIVToken.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleCIVTokenTransfer
+      file: ./src/mapping.ts
+
+  # ── CIVITASWallet ────────────────────────────────────────────────────────────
+  - kind: ethereum
+    name: CIVITASWallet
+    network: mainnet
+    source:
+      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+      abi: CIVITASWallet
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - WalletFreezeEvent
+      abis:
+        - name: CIVITASWallet
+          file: ./abis/CIVITASWallet.json
+      eventHandlers:
+        - event: AccountFrozen(indexed address,string)
+          handler: handleAccountFrozen
+        - event: AccountUnfrozen(indexed address)
+          handler: handleAccountUnfrozen
+      file: ./src/mapping.ts
+
+  # ── SocialRecovery ───────────────────────────────────────────────────────────
+  - kind: ethereum
+    name: SocialRecovery
+    network: mainnet
+    source:
+      address: "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6"
+      abi: SocialRecovery
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - RecoveryEvent
+      abis:
+        - name: SocialRecovery
+          file: ./abis/SocialRecovery.json
+      eventHandlers:
+        - event: RecoveryInitiated(indexed address,indexed address,indexed address)
+          handler: handleRecoveryInitiated
+        - event: RecoveryExecuted(indexed address,indexed address)
+          handler: handleRecoveryExecuted
+      file: ./src/mapping.ts
+
+  # ── MultiSigTreasury ─────────────────────────────────────────────────────────
+  - kind: ethereum
+    name: MultiSigTreasury
+    network: mainnet
+    source:
+      address: "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318"
+      abi: MultiSigTreasury
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TreasuryTx
+      abis:
+        - name: MultiSigTreasury
+          file: ./abis/MultiSigTreasury.json
+      eventHandlers:
+        - event: TxProposed(indexed uint256,indexed address,address,uint256,address,uint256)
+          handler: handleTxProposed
+        - event: TxConfirmed(indexed uint256,indexed address,uint256)
+          handler: handleTxConfirmed
+        - event: TxExecuted(indexed uint256,indexed address)
+          handler: handleTxExecuted
+      file: ./src/mapping.ts
+
+  # ── AirdropDistributor ───────────────────────────────────────────────────────
+  - kind: ethereum
+    name: AirdropDistributor
+    network: mainnet
+    source:
+      address: "0x610178dA211FEF7D417bC0e6FeD39F05609AD788"
+      abi: AirdropDistributor
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AirdropClaim
+        - CivitasStats
+      abis:
+        - name: AirdropDistributor
+          file: ./abis/AirdropDistributor.json
+      eventHandlers:
+        - event: Claimed(indexed uint256,indexed address,uint256,bool)
+          handler: handleAirdropClaimed
+        - event: VestingClaimed(indexed address,uint256,uint256)
+          handler: handleVestingClaimed
+      file: ./src/mapping.ts
+
+  # ── ZKVerifier ────────────────────────────────────────────────────────────────
+  - kind: ethereum
+    name: ZKVerifier
+    network: mainnet
+    source:
+      address: "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e"
+      abi: ZKVerifier
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ZKProofEvent
+      abis:
+        - name: ZKVerifier
+          file: ./abis/ZKVerifier.json
+      eventHandlers:
+        - event: ProofVerified(indexed address,indexed uint8,bool,uint256)
+          handler: handleProofVerified
+      file: ./src/mapping.ts

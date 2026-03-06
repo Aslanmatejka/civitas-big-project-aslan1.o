@@ -1,0 +1,495 @@
+.wallet-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+  padding: 80px 20px 40px;
+}
+
+.wallet-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.wallet-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.wallet-header h1 {
+  font-size: 36px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.wallet-header .subtitle {
+  color: #8b8b8b;
+  font-size: 14px;
+}
+
+.balance-card {
+  background: #1a1a2e;
+  border: 1px solid #16213e;
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 30px;
+}
+
+.balance-main {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.balance-main h3 {
+  color: #8b8b8b;
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+.balance-amount {
+  font-size: 48px;
+  color: #0f3460;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.balance-usd {
+  color: #c4c4c4;
+  font-size: 18px;
+}
+
+.balance-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.action-btn {
+  padding: 14px 28px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.action-btn.primary {
+  background: #0f3460;
+  color: #ffffff;
+}
+
+.action-btn.primary:hover {
+  background: #1a4d7d;
+}
+
+.action-btn.secondary {
+  background: transparent;
+  color: #0f3460;
+  border: 1px solid #0f3460;
+}
+
+.action-btn.secondary:hover {
+  background: rgba(15, 52, 96, 0.1);
+}
+
+.wallet-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 30px;
+  background: #1a1a2e;
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.wallet-tabs .tab {
+  flex: 1;
+  padding: 12px 20px;
+  background: transparent;
+  border: none;
+  color: #8b8b8b;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.wallet-tabs .tab.active {
+  background: #0f3460;
+  color: #ffffff;
+}
+
+.assets-section,
+.transactions-section {
+  background: #1a1a2e;
+  border: 1px solid #16213e;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.asset-item,
+.transaction-item {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #16213e;
+}
+
+.asset-item:last-child,
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.asset-icon,
+.tx-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-right: 16px;
+}
+
+.asset-icon {
+  background: #0f3460;
+}
+
+.tx-icon {
+  background: #1a1a2e;
+  border: 2px solid #0f3460;
+}
+
+.tx-icon.positive {
+  border-color: #4caf50;
+  color: #4caf50;
+}
+
+.tx-icon.negative {
+  border-color: #f44336;
+  color: #f44336;
+}
+
+.asset-info,
+.tx-info {
+  flex: 1;
+}
+
+.asset-info h4,
+.tx-info h4 {
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.asset-symbol,
+.tx-address {
+  color: #8b8b8b;
+  font-size: 12px;
+  font-family: monospace;
+}
+
+.asset-balance,
+.tx-amount {
+  text-align: right;
+}
+
+.asset-balance h4,
+.tx-amount h4 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.tx-amount.positive h4 {
+  color: #4caf50;
+}
+
+.tx-amount.negative h4 {
+  color: #f44336;
+}
+
+.asset-value,
+.tx-time {
+  color: #8b8b8b;
+  font-size: 12px;
+}
+
+.nfts-section {
+  margin-bottom: 30px;
+}
+
+.nft-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.nft-card {
+  background: #1a1a2e;
+  border: 1px solid #16213e;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.nft-card:hover {
+  transform: translateY(-4px);
+}
+
+.nft-image {
+  width: 100%;
+  height: 160px;
+  background: #0f3460;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.nft-card h4 {
+  color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.nft-card p {
+  color: #8b8b8b;
+  font-size: 12px;
+}
+
+.security-notice {
+  background: #1a1a2e;
+  border: 1px solid #16213e;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.security-notice h4 {
+  color: #0f3460;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.security-notice p {
+  color: #8b8b8b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .balance-actions {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nft-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #1a1a2e;
+  border: 2px solid #16213e;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+}
+
+.modal-content h2 {
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: #c4c4c4;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  background: #16213e;
+  border: 2px solid #0f3460;
+  border-radius: 8px;
+  padding: 0.75rem;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #ffffff;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.not-connected {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background: #1a1a2e;
+  border-radius: 16px;
+  border: 2px solid #16213e;
+}
+
+.not-connected h2 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.not-connected p {
+  color: #8b8b8b;
+  margin-bottom: 2rem;
+}
+
+/* Loading and Empty States */
+.loading-transactions {
+  text-align: center;
+  padding: 3rem;
+  color: #8b8b8b;
+}
+
+.no-transactions,
+.no-nfts {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #8b8b8b;
+}
+
+.no-transactions p,
+.no-nfts p {
+  margin-bottom: 0.5rem;
+}
+
+.no-transactions .subtitle,
+.no-nfts .subtitle {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Transaction Status */
+.tx-status {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.tx-status.pending {
+  color: #f39c12;
+}
+
+.tx-status.failed {
+  color: #e74c3c;
+}
+
+/* NFT Image Styling */
+.nft-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* ── Wallet Onboarding (not-connected) ───────────────────────────────────── */
+.nc-hero {
+  margin-bottom: 2rem;
+}
+.nc-icon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+}
+.not-connected h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+.not-connected > .nc-hero p {
+  color: #9ca3af;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.nc-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+.nc-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+}
+.nc-feature > span {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+.nc-feature strong {
+  display: block;
+  color: #e9d5ff;
+  font-size: 0.92rem;
+  margin-bottom: 0.2rem;
+}
+.nc-feature p {
+  color: #6b7280;
+  font-size: 0.82rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.nc-cta {
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.nc-metamask {
+  width: 100%;
+  padding: 0.7rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}

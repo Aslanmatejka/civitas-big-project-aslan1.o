@@ -1,0 +1,20 @@
+[
+  {"type":"event","name":"Deposit","anonymous":false,"inputs":[{"name":"sender","type":"address","indexed":true},{"name":"amount","type":"uint256","indexed":false}]},
+  {"type":"event","name":"TokenDeposit","anonymous":false,"inputs":[{"name":"token","type":"address","indexed":true},{"name":"sender","type":"address","indexed":true},{"name":"amount","type":"uint256","indexed":false}]},
+  {"type":"event","name":"TxProposed","anonymous":false,"inputs":[{"name":"txId","type":"uint256","indexed":true},{"name":"proposer","type":"address","indexed":true},{"name":"to","type":"address","indexed":false},{"name":"value","type":"uint256","indexed":false},{"name":"token","type":"address","indexed":false},{"name":"tokenAmount","type":"uint256","indexed":false}]},
+  {"type":"event","name":"TxConfirmed","anonymous":false,"inputs":[{"name":"txId","type":"uint256","indexed":true},{"name":"owner","type":"address","indexed":true},{"name":"confirmations","type":"uint256","indexed":false}]},
+  {"type":"event","name":"TxReady","anonymous":false,"inputs":[{"name":"txId","type":"uint256","indexed":true},{"name":"executableAfter","type":"uint256","indexed":false}]},
+  {"type":"event","name":"TxExecuted","anonymous":false,"inputs":[{"name":"txId","type":"uint256","indexed":true},{"name":"executor","type":"address","indexed":true}]},
+  {"type":"event","name":"TxRevoked","anonymous":false,"inputs":[{"name":"txId","type":"uint256","indexed":true},{"name":"revoker","type":"address","indexed":true}]},
+  {"type":"event","name":"ConfirmationRevoked","anonymous":false,"inputs":[{"name":"txId","type":"uint256","indexed":true},{"name":"owner","type":"address","indexed":true}]},
+  {"type":"event","name":"Paused","anonymous":false,"inputs":[{"name":"by","type":"address","indexed":true}]},
+  {"type":"event","name":"Unpaused","anonymous":false,"inputs":[]},
+  {"type":"function","name":"proposeETH","inputs":[{"name":"to","type":"address"},{"name":"value","type":"uint256"},{"name":"description","type":"string"}],"outputs":[{"name":"","type":"uint256"}],"stateMutability":"nonpayable"},
+  {"type":"function","name":"proposeToken","inputs":[{"name":"to","type":"address"},{"name":"token","type":"address"},{"name":"amount","type":"uint256"},{"name":"description","type":"string"}],"outputs":[{"name":"","type":"uint256"}],"stateMutability":"nonpayable"},
+  {"type":"function","name":"proposeCall","inputs":[{"name":"to","type":"address"},{"name":"value","type":"uint256"},{"name":"data","type":"bytes"},{"name":"description","type":"string"}],"outputs":[{"name":"","type":"uint256"}],"stateMutability":"nonpayable"},
+  {"type":"function","name":"confirm","inputs":[{"name":"txId","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"revokeConfirmation","inputs":[{"name":"txId","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"revokeTransaction","inputs":[{"name":"txId","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"execute","inputs":[{"name":"txId","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"pause","inputs":[],"outputs":[],"stateMutability":"nonpayable"}
+]

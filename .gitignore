@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+vendor/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+.nyc_output
+
+# Production
+build/
+dist/
+*.log
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Blockchain
+blockchain/data/
+blockchain/logs/
+*.keystore
+
+# Smart Contracts
+smart-contracts/artifacts/
+smart-contracts/cache/
+smart-contracts/coverage/
+
+# Mobile
+mobile-app/.expo/
+mobile-app/.bundle/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Temporary
+tmp/
+temp/
+*.tmp

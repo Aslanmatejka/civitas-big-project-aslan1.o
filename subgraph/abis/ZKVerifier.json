@@ -1,0 +1,78 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true,  "internalType": "uint8",   "name": "proofType", "type": "uint8" },
+      { "indexed": false, "internalType": "bytes32",  "name": "vkHash",    "type": "bytes32" }
+    ],
+    "name": "VerificationKeyRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true,  "internalType": "address", "name": "user",      "type": "address" },
+      { "indexed": true,  "internalType": "uint8",   "name": "proofType", "type": "uint8" },
+      { "indexed": false, "internalType": "bool",    "name": "valid",     "type": "bool" },
+      { "indexed": false, "internalType": "uint256", "name": "expiry",    "type": "uint256" }
+    ],
+    "name": "ProofVerified",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "address", "name": "user",      "type": "address" },
+      { "indexed": true, "internalType": "uint8",   "name": "proofType", "type": "uint8" }
+    ],
+    "name": "CredentialRevoked",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "user",      "type": "address" },
+      { "internalType": "uint8",   "name": "proofType", "type": "uint8" }
+    ],
+    "name": "hasValidCredential",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address",  "name": "user",       "type": "address" },
+      { "internalType": "uint8[]",  "name": "proofTypes", "type": "uint8[]" }
+    ],
+    "name": "hasCredentials",
+    "outputs": [{ "internalType": "bool[]", "name": "results", "type": "bool[]" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint8", "name": "proofType", "type": "uint8" }],
+    "name": "isKeyRegistered",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "user",      "type": "address" },
+      { "internalType": "uint8",   "name": "proofType", "type": "uint8" }
+    ],
+    "name": "adminVerify",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "user",      "type": "address" },
+      { "internalType": "uint8",   "name": "proofType", "type": "uint8" }
+    ],
+    "name": "revokeCredential",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

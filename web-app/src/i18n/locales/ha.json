@@ -1,0 +1,256 @@
+{
+  "common": {
+    "welcome": "Barka da zuwa",
+    "loading": "Ana loda...",
+    "error": "Kuskure",
+    "success": "Nasara",
+    "save": "Ajiye",
+    "cancel": "Soke",
+    "delete": "Share",
+    "edit": "Gyara",
+    "close": "Rufe",
+    "confirm": "Tabbatar",
+    "back": "Koma baya",
+    "next": "Na gaba",
+    "send": "Aika",
+    "search": "Nema",
+    "filter": "Tace",
+    "sort": "Tsara",
+    "connect": "Haɗa",
+    "disconnect": "Cire haɗi",
+    "online": "Kan yanar gizo",
+    "offline": "Ba kan yanar gizo",
+    "retry": "Sake gwadawa",
+    "refresh": "Sabunta"
+  },
+
+  "auth": {
+    "connectWallet": "Haɗa Wallet",
+    "disconnectWallet": "Cire Wallet",
+    "walletConnected": "An haɗa Wallet",
+    "walletDisconnected": "An cire Wallet",
+    "noWalletDetected": "Ba a gano wallet ba. Da fatan za a shigar da MetaMask.",
+    "switchNetwork": "Canja Network",
+    "wrongNetwork": "Network ba daidai ba ne. Da fatan za a canja zuwa {{network}}."
+  },
+
+  "navigation": {
+    "home": "Gida",
+    "dashboard": "Dashboard",
+    "wallet": "Wallet",
+    "identity": "Shaida",
+    "governance": "Mulki",
+    "marketplace": "Kasuwa",
+    "community": "Al'umma",
+    "messaging": "Saƙon",
+    "profile": "Profile",
+    "settings": "Saitunan",
+    "ai": "Mataimakin AI",
+    "automation": "Automation",
+    "node": "Node",
+    "storage": "Ajiya",
+    "queue": "Layi"
+  },
+
+  "wallet": {
+    "title": "Wallet Na",
+    "balance": "Ma'auni",
+    "tokens": "Tokens",
+    "transactions": "Ciniki",
+    "send": "Aika",
+    "receive": "Karɓa",
+    "history": "Tarihi",
+    "address": "Adireshi",
+    "copyAddress": "Kwafi Adireshi",
+    "addressCopied": "An kwafi adireshi!",
+    "amount": "Adadi",
+    "recipient": "Wanda zai karɓa",
+    "sendTokens": "Aika Tokens",
+    "transactionSuccess": "An aika ciniki cikin nasara",
+    "transactionFailed": "Ciniki ya kasa",
+    "insufficientBalance": "Ma'auni bai isa ba",
+    "invalidAddress": "Adireshi ba daidai ba ne",
+    "gasEstimate": "Kimantaccen Gas"
+  },
+
+  "identity": {
+    "title": "Shaida ta Digital",
+    "createDID": "Ƙirƙiri DID",
+    "myDID": "DID Na",
+    "verifications": "Tabbatarwa",
+    "credentials": "Takardun shaida",
+    "reputation": "Suna",
+    "trustScore": "Maki na Amana",
+    "verified": "An tabbatar",
+    "notVerified": "Ba a tabbatar ba",
+    "issueCredential": "Bayar da Takarda",
+    "addGuardian": "Ƙara Mai Kiyaye",
+    "guardians": "Masu Kiyaye",
+    "recoverIdentity": "Dawo da Shaida"
+  },
+
+  "governance": {
+    "title": "Mulki",
+    "proposals": "Shawarwari",
+    "createProposal": "Ƙirƙiri Shawara",
+    "vote": "Kada Kuri'a",
+    "voteFor": "Kada Kuri'a don",
+    "voteAgainst": "Kada Kuri'a akan",
+    "abstain": "Tsaya tsaka",
+    "active": "Mai aiki",
+    "ended": "Ya ƙare",
+    "passed": "Ya wuce",
+    "rejected": "An ƙi",
+    "quorum": "Quorum",
+    "threshold": "Iyaka",
+    "votingPower": "Ikon Kada Kuri'a",
+    "timeRemaining": "Lokacin Da Ya Rage"
+  },
+
+  "marketplace": {
+    "title": "Kasuwa",
+    "listings": "Jerin",
+    "myListings": "Jerin Na",
+    "createListing": "Ƙirƙiri Jeri",
+    "buy": "Saya",
+    "sell": "Sayar",
+    "price": "Farashi",
+    "seller": "Mai siyarwa",
+    "buyer": "Mai saye",
+    "category": "Rukuni",
+    "condition": "Yanayi",
+    "description": "Bayani",
+    "images": "Hotuna",
+    "purchase": "Saya",
+    "makeOffer": "Yi Tayi",
+    "sold": "An sayar",
+    "available": "Akwai"
+  },
+
+  "community": {
+    "title": "Al'umma",
+    "posts": "Posts",
+    "createPost": "Ƙirƙiri Post",
+    "comments": "Sharhi",
+    "likes": "Likes",
+    "shares": "Raba",
+    "follow": "Bi",
+    "unfollow": "Daina Bi",
+    "followers": "Masu bi",
+    "following": "Kana bi",
+    "trending": "Shahara",
+    "recent": "Na kwanan nan"
+  },
+
+  "messaging": {
+    "title": "Saƙon",
+    "newMessage": "Sabon Saƙo",
+    "conversations": "Tattaunawa",
+    "contacts": "Abokan hulɗa",
+    "typeMessage": "Rubuta saƙo...",
+    "sendMessage": "Aika Saƙo",
+    "attachFile": "Haɗa Fayil",
+    "voiceCall": "Kiran Murya",
+    "videoCall": "Kiran Bidiyo",
+    "messageRead": "An karanta",
+    "messageDelivered": "An isar",
+    "messageSent": "An aika"
+  },
+
+  "profile": {
+    "title": "Profile",
+    "editProfile": "Gyara Profile",
+    "name": "Suna",
+    "bio": "Bayani",
+    "avatar": "Avatar",
+    "uploadAvatar": "Loda Avatar",
+    "location": "Wurin",
+    "language": "Harshe",
+    "timezone": "Lokacin yanki",
+    "privacy": "Sirri",
+    "notifications": "Sanarwa",
+    "saveChanges": "Ajiye Canje-canje",
+    "profileUpdated": "An sabunta profile cikin nasara"
+  },
+
+  "storage": {
+    "title": "Ajiya Ba Tsakiya Ba",
+    "uploadFile": "Loda Fayil",
+    "myFiles": "Fayiloli Na",
+    "shared": "An raba",
+    "encrypted": "An ɓoye",
+    "public": "Na jama'a",
+    "fileSize": "Girman Fayil",
+    "uploadDate": "Ranar Loda",
+    "ipfsCID": "IPFS CID",
+    "download": "Sauke",
+    "share": "Raba",
+    "delete": "Share",
+    "uploadSuccess": "An loda fayil cikin nasara",
+    "uploadFailed": "Loda ya kasa"
+  },
+
+  "queue": {
+    "title": "Layin Ciniki",
+    "pendingTransactions": "Ciniki Mai Jira",
+    "processAll": "Sarrafa Duka",
+    "queueEmpty": "Layi babu kowa",
+    "status": "Matsayi",
+    "pending": "Yana jira",
+    "processing": "Ana sarrafa",
+    "confirmed": "An tabbatar",
+    "failed": "Ya kasa",
+    "retryCount": "Adadin Sake gwadawa",
+    "submitNow": "Ƙaddamar Yanzu",
+    "cancelTransaction": "Soke"
+  },
+
+  "offline": {
+    "title": "Yanayin Offline",
+    "youAreOffline": "Kuna offline",
+    "offlineMessage": "Babu haɗin intanet. Za a adana ayyukan ku kuma a daidaita su lokacin da kuka sake haɗuwa.",
+    "queuedActions": "Ayyuka a Layi",
+    "syncWhenOnline": "Za a daidaita lokacin da aka kasance online",
+    "workingOffline": "Aiki a yanayin offline",
+    "backOnline": "Kun dawo online!",
+    "syncing": "Ana daidaitawa ...",
+    "syncComplete": "An kammala daidaitawa",
+    "syncFailed": "Daidaitawa ya kasa"
+  },
+
+  "settings": {
+    "title": "Saitunan",
+    "general": "Gabaɗaya",
+    "appearance": "Kamanni",
+    "theme": "Jigo",
+    "language": "Harshe",
+    "notifications": "Sanarwa",
+    "privacy": "Sirri",
+    "security": "Tsaro",
+    "backup": "Ajiyewa",
+    "export": "Fitar da Bayanai",
+    "import": "Shigo da Bayanai",
+    "resetSettings": "Sake saita Saitunan",
+    "about": "Game da",
+    "version": "Sigar",
+    "help": "Taimako",
+    "documentation": "Takaddun"
+  },
+
+  "errors": {
+    "networkError": "Kuskuren hanyar sadarwa. Da fatan za a duba haɗin ku.",
+    "serverError": "Kuskuren sabar. Da fatan za a sake gwadawa daga baya.",
+    "unauthorized": "Ba a ba da izini ba. Da fatan za a haɗa wallet ɗinku.",
+    "notFound": "Ba a samu ba.",
+    "validationError": "Kuskuren tantancewa. Da fatan za a duba abin da kuka shigar.",
+    "unknown": "An sami kuskuren da ba a sani ba."
+  },
+
+  "success": {
+    "saved": "An ajiye cikin nasara",
+    "deleted": "An share cikin nasara",
+    "sent": "An aika cikin nasara",
+    "updated": "An sabunta cikin nasara",
+    "created": "An ƙirƙira cikin nasara"
+  }
+}

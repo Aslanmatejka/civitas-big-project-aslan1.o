@@ -1,0 +1,256 @@
+{
+  "common": {
+    "welcome": "Tukusanyukidde",
+    "loading": "Kitegekebwa...",
+    "error": "Ensobi",
+    "success": "Ebaddewo",
+    "save": "Kuuma",
+    "cancel": "Sazaamu",
+    "delete": "Gyawo",
+    "edit": "Kyusa",
+    "close": "Ggalawo",
+    "confirm": "Kakasa",
+    "back": "Komawo",
+    "next": "Oluddako",
+    "send": "Wereza",
+    "search": "Noonya",
+    "filter": "Sengejja",
+    "sort": "Tegeka",
+    "connect": "Yungako",
+    "disconnect": "Vako",
+    "online": "Ku yintaneeti",
+    "offline": "Tewali yintaneeti",
+    "retry": "Ddamu gezaako",
+    "refresh": "Zabula"
+  },
+
+  "auth": {
+    "connectWallet": "Yungako Wallet",
+    "disconnectWallet": "Vako ku Wallet",
+    "walletConnected": "Wallet Eyunziddwa",
+    "walletDisconnected": "Wallet Evaamu",
+    "noWalletDetected": "Tewali wallet ezuuliddwa. Teeka MetaMask.",
+    "switchNetwork": "Kyusa Network",
+    "wrongNetwork": "Network si ntuufu. Kyusa okudda ku {{network}}."
+  },
+
+  "navigation": {
+    "home": "Awaka",
+    "dashboard": "Dashboard",
+    "wallet": "Wallet",
+    "identity": "Obwamanyize",
+    "governance": "Okufuga",
+    "marketplace": "Akatale",
+    "community": "Ekitundu",
+    "messaging": "Obubaka",
+    "profile": "Profile",
+    "settings": "Enteekateeka",
+    "ai": "Omuyambi wa AI",
+    "automation": "Automation",
+    "node": "Node",
+    "storage": "Okutereka",
+    "queue": "Queue"
+  },
+
+  "wallet": {
+    "title": "Wallet Yange",
+    "balance": "Ensimbi",
+    "tokens": "Tokens",
+    "transactions": "Transactions",
+    "send": "Wereza",
+    "receive": "Funa",
+    "history": "Ebyafaayo",
+    "address": "Address",
+    "copyAddress": "Copy Address",
+    "addressCopied": "Address ecopywadde!",
+    "amount": "Omuwendo",
+    "recipient": "Afuna",
+    "sendTokens": "Wereza Tokens",
+    "transactionSuccess": "Transaction eweddemu",
+    "transactionFailed": "Transaction teewedde",
+    "insufficientBalance": "Ensimbi tezimala",
+    "invalidAddress": "Address si ntuufu",
+    "gasEstimate": "Gas Estimate"
+  },
+
+  "identity": {
+    "title": "Digital Identity",
+    "createDID": "Tonda DID",
+    "myDID": "DID Yange",
+    "verifications": "Okukakasa",
+    "credentials": "Credentials",
+    "reputation": "Ekitiibwa",
+    "trustScore": "Trust Score",
+    "verified": "Yakakasiddwa",
+    "notVerified": "Teyakakasiddwa",
+    "issueCredential": "Wa Credential",
+    "addGuardian": "Yongera Guardian",
+    "guardians": "Guardians",
+    "recoverIdentity": "Zza Identity"
+  },
+
+  "governance": {
+    "title": "Okufuga",
+    "proposals": "Proposals",
+    "createProposal": "Tonda Proposal",
+    "vote": "Londa",
+    "voteFor": "Londela",
+    "voteAgainst": "Gana",
+    "abstain": "Teelondela",
+    "active": "Enkola",
+    "ended": "Eweddewo",
+    "passed": "Yakkiriziddwa",
+    "rejected": "Yagaaniddwa",
+    "quorum": "Quorum",
+    "threshold": "Threshold",
+    "votingPower": "Voting Power",
+    "timeRemaining": "Obudde Obusigaddewo"
+  },
+
+  "marketplace": {
+    "title": "Akatale",
+    "listings": "Ebiragiddwa",
+    "myListings": "Ebiyange",
+    "createListing": "Tondawo",
+    "buy": "Gula",
+    "sell": "Tunda",
+    "price": "Omuwendo",
+    "seller": "Omutundi",
+    "buyer": "Omuguli",
+    "category": "Category",
+    "condition": "Embeera",
+    "description": "Ennyonnyola",
+    "images": "Ebifaananyi",
+    "purchase": "Gula",
+    "makeOffer": "Waayo Offer",
+    "sold": "Etundiddwa",
+    "available": "Eriwo"
+  },
+
+  "community": {
+    "title": "Ekitundu",
+    "posts": "Posts",
+    "createPost": "Tonda Post",
+    "comments": "Comments",
+    "likes": "Likes",
+    "shares": "Shares",
+    "follow": "Goberera",
+    "unfollow": "Lekayo Okugoberera",
+    "followers": "Abagoberezi",
+    "following": "Ogoberera",
+    "trending": "Ebimanyiddwa",
+    "recent": "Ebipya"
+  },
+
+  "messaging": {
+    "title": "Obubaka",
+    "newMessage": "Obubaka Obupya",
+    "conversations": "Emboozi",
+    "contacts": "Contacts",
+    "typeMessage": "Wandiika obubaka...",
+    "sendMessage": "Wereza Obubaka",
+    "attachFile": "Teekako File",
+    "voiceCall": "Voice Call",
+    "videoCall": "Video Call",
+    "messageRead": "Yasomeddwa",
+    "messageDelivered": "Yatuusiddwa",
+    "messageSent": "Yaweereddwa"
+  },
+
+  "profile": {
+    "title": "Profile",
+    "editProfile": "Kyusa Profile",
+    "name": "Erinnya",
+    "bio": "Bio",
+    "avatar": "Avatar",
+    "uploadAvatar": "Teeka Avatar",
+    "location": "Ekifo",
+    "language": "Olulimi",
+    "timezone": "Timezone",
+    "privacy": "Privacy",
+    "notifications": "Notifications",
+    "saveChanges": "Kuuma Enkyukakyuka",
+    "profileUpdated": "Profile ekyusiddwa bulungi"
+  },
+
+  "storage": {
+    "title": "Decentralized Storage",
+    "uploadFile": "Teeka File",
+    "myFiles": "Files Zange",
+    "shared": "Ezaagabanyiziddwa",
+    "encrypted": "Encrypted",
+    "public": "Public",
+    "fileSize": "File Size",
+    "uploadDate": "Olunaku Lw'okuteeka",
+    "ipfsCID": "IPFS CID",
+    "download": "Download",
+    "share": "Gabana",
+    "delete": "Gyawo",
+    "uploadSuccess": "File eteekeddwa bulungi",
+    "uploadFailed": "Okuteeka kulemye"
+  },
+
+  "queue": {
+    "title": "Transaction Queue",
+    "pendingTransactions": "Transactions Ezilindirira",
+    "processAll": "Kolela Zonna",
+    "queueEmpty": "Queue njereere",
+    "status": "Status",
+    "pending": "Elindirira",
+    "processing": "Ekola",
+    "confirmed": "Yakakasiddwa",
+    "failed": "Teewedde",
+    "retryCount": "Retry Count",
+    "submitNow": "Submit Kati",
+    "cancelTransaction": "Sazaamu"
+  },
+
+  "offline": {
+    "title": "Offline Mode",
+    "youAreOffline": "Tewali yintaneeti",
+    "offlineMessage": "Tewali muliransombi. Ebyo by'okola bijja kuterekebwa era bisync'ebwe nga oweddeyo ku yintaneeti.",
+    "queuedActions": "Ebyo Ebiterekeddwa",
+    "syncWhenOnline": "Bijja kusync'ebwa nga oli ku yintaneeti",
+    "workingOffline": "Okola nga tewali yintaneeti",
+    "backOnline": "Oddeyo ku yintaneeti!",
+    "syncing": "Tusync'inga...",
+    "syncComplete": "Sync eweddeyo",
+    "syncFailed": "Sync teewedde"
+  },
+
+  "settings": {
+    "title": "Enteekateeka",
+    "general": "General",
+    "appearance": "Endabika",
+    "theme": "Theme",
+    "language": "Olulimi",
+    "notifications": "Notifications",
+    "privacy": "Privacy",
+    "security": "Security",
+    "backup": "Backup",
+    "export": "Export Data",
+    "import": "Import Data",
+    "resetSettings": "Reset Settings",
+    "about": "Ebikwata ku",
+    "version": "Version",
+    "help": "Obuyambi",
+    "documentation": "Documentation"
+  },
+
+  "errors": {
+    "networkError": "Network error. Kebera muliransombi gwo.",
+    "serverError": "Server error. Ddamu gezaako oluvannyuma.",
+    "unauthorized": "Tokkiriziddwa. Yungako wallet yo.",
+    "notFound": "Tezuuliddwa.",
+    "validationError": "Validation error. Kebera ky'owandise.",
+    "unknown": "Ensobi etamanyiddwa ebaddewo."
+  },
+
+  "success": {
+    "saved": "Ekuumiddwa bulungi",
+    "deleted": "Eggyiddwamu bulungi",
+    "sent": "Eweereddwa bulungi",
+    "updated": "Ekyusiddwa bulungi",
+    "created": "Etondeddwa bulungi"
+  }
+}

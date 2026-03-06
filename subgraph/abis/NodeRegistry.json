@@ -1,0 +1,21 @@
+[
+  {"type":"event","name":"NodeRegistered","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true},{"name":"operator","type":"address","indexed":true},{"name":"peerId","type":"string","indexed":false},{"name":"stake","type":"uint256","indexed":false}]},
+  {"type":"event","name":"NodeActivated","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true}]},
+  {"type":"event","name":"NodeSuspended","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true},{"name":"reason","type":"string","indexed":false}]},
+  {"type":"event","name":"NodeSlashed","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true},{"name":"amount","type":"uint256","indexed":false},{"name":"reason","type":"string","indexed":false}]},
+  {"type":"event","name":"NodeExited","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true}]},
+  {"type":"event","name":"UptimeReported","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true},{"name":"uptimeScore","type":"uint256","indexed":false},{"name":"epoch","type":"uint256","indexed":false}]},
+  {"type":"event","name":"RewardsClaimed","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true},{"name":"operator","type":"address","indexed":true},{"name":"amount","type":"uint256","indexed":false}]},
+  {"type":"event","name":"EpochAdvanced","anonymous":false,"inputs":[{"name":"epoch","type":"uint256","indexed":false},{"name":"rewardPool","type":"uint256","indexed":false}]},
+  {"type":"event","name":"TierUpgraded","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true},{"name":"tier","type":"uint8","indexed":false}]},
+  {"type":"function","name":"registerNode","inputs":[{"name":"peerId","type":"string"},{"name":"endpoint","type":"string"}],"outputs":[{"name":"","type":"uint256"}],"stateMutability":"payable"},
+  {"type":"function","name":"reportUptime","inputs":[{"name":"nodeId","type":"uint256"},{"name":"score","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"claimRewards","inputs":[{"name":"nodeId","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"slashNode","inputs":[{"name":"nodeId","type":"uint256"},{"name":"amount","type":"uint256"},{"name":"reason","type":"string"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"suspendNode","inputs":[{"name":"nodeId","type":"uint256"},{"name":"reason","type":"string"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"reinstateNode","inputs":[{"name":"nodeId","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"initiateUnstake","inputs":[{"name":"nodeId","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"completeUnstake","inputs":[{"name":"nodeId","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"advanceEpoch","inputs":[],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"getNode","inputs":[{"name":"nodeId","type":"uint256"}],"outputs":[{"name":"operator","type":"address"},{"name":"peerId","type":"string"},{"name":"stake","type":"uint256"},{"name":"tier","type":"uint8"},{"name":"active","type":"bool"}],"stateMutability":"view"}
+]

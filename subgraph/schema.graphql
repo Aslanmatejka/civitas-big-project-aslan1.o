@@ -1,0 +1,222 @@
+"""
+CIVITAS Subgraph — The Graph Protocol
+Indexes DIDRegistry and CIVITASGovernance events for decentralized querying.
+""" # ── DID Identity ──────────────────────────────────────────────────────────────
+type DIDIdentity @entity {
+  id: ID! # bytes32 didIdentifier (hex string)
+  controller: Bytes! # wallet address
+  didDocument: String!
+  profileCID: String!
+  reputation: BigInt! # 0–1000
+  active: Boolean!
+  createdAt: BigInt!
+  updatedAt: BigInt!
+  createdAtBlock: BigInt!
+  credentials: [IssuedCredential!]! @derivedFrom(field: "did")
+  reputationHistory: [ReputationEvent!]! @derivedFrom(field: "did")
+}
+
+# ── Credentials ───────────────────────────────────────────────────────────────
+
+type IssuedCredential @entity {
+  id: ID! # didIdentifier-credentialHash
+  did: DIDIdentity!
+  credentialHash: Bytes!
+  issuer: Bytes!
+  issuedAt: BigInt!
+  expiresAt: BigInt!
+  revoked: Boolean!
+  revokedAt: BigInt
+}
+
+# ── Reputation History ─────────────────────────────────────────────────────────
+
+type ReputationEvent @entity {
+  id: ID! # tx hash + log index
+  did: DIDIdentity!
+  newReputation: BigInt!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+  txHash: Bytes!
+}
+
+# ── Governance ────────────────────────────────────────────────────────────────
+
+type Proposal @entity {
+  id: ID! # proposalId
+  proposer: Bytes!
+  title: String!
+  votingDeadline: BigInt!
+  forVotes: BigInt!
+  againstVotes: BigInt!
+  abstainVotes: BigInt!
+  state: String! # Pending | Active | Canceled | Defeated | Succeeded | Executed
+  createdAt: BigInt!
+  createdAtBlock: BigInt!
+  votes: [VoteRecord!]! @derivedFrom(field: "proposal")
+}
+
+type VoteRecord @entity {
+  id: ID! # proposalId-voter
+  proposal: Proposal!
+  voter: Bytes!
+  support: Int! # 0=Against 1=For 2=Abstain
+  weight: BigInt!
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
+# ── SmartEscrow ───────────────────────────────────────────────────────────────
+
+type EscrowDeal @entity {
+  id: ID! # escrowId (uint256 as string)
+  buyer: Bytes!
+  seller: Bytes!
+  arbitrator: Bytes!
+  amount: BigInt! # CIV amount (wei)
+  feeBps: BigInt!
+  deadline: BigInt!
+  state: String! # FUNDED | RELEASED | REFUNDED | DISPUTED
+  createdAt: BigInt!
+  createdAtBlock: BigInt!
+  txHash: Bytes!
+}
+
+# ── NodeRegistry ──────────────────────────────────────────────────────────────
+
+type RegisteredNode @entity {
+  id: ID! # node operator address (hex)
+  operator: Bytes!
+  tier: Int! # 0=Light 1=Full 2=Archive 3=Validator
+  stakeAmount: BigInt!
+  registeredAt: BigInt!
+  registeredAtBlock: BigInt!
+  active: Boolean!
+}
+
+# ── StakingPool ───────────────────────────────────────────────────────────────
+
+type StakePosition @entity {
+  id: ID! # staker address (hex)
+  staker: Bytes!
+  amount: BigInt!
+  since: BigInt!
+  lastRewardAt: BigInt!
+}
+
+type StakeEvent @entity {
+  id: ID! # tx hash + log index
+  staker: Bytes!
+  kind: String! # Staked | Unstaked | RewardClaimed
+  amount: BigInt!
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
+# ── AutomationEngine ──────────────────────────────────────────────────────────
+
+type AutomationTask @entity {
+  id: ID! # taskId (uint256 as string)
+  owner: Bytes!
+  triggerType: Int!
+  actionType: Int!
+  active: Boolean!
+  executionCount: BigInt!
+  createdAt: BigInt!
+}
+
+type TaskExecution @entity {
+  id: ID!
+  task: AutomationTask!
+  keeper: Bytes!
+  success: Boolean!
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
+# ── CIVToken / CIVITASWallet ──────────────────────────────────────────────────
+
+type TokenBurnEvent @entity {
+  id: ID!
+  burner: Bytes!
+  amount: BigInt!
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
+type WalletFreezeEvent @entity {
+  id: ID!
+  account: Bytes!
+  frozen: Boolean!
+  reason: String!
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
+# ── AirdropDistributor ───────────────────────────────────────────────────────
+
+type AirdropClaim @entity {
+  id: ID! # txHash-logIndex
+  roundId: BigInt!
+  claimant: Bytes!
+  amount: BigInt!
+  regional: Boolean!
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
+# ── SocialRecovery ───────────────────────────────────────────────────────────
+
+type RecoveryEvent @entity {
+  id: ID! # txHash-logIndex
+  account: Bytes!
+  kind: String! # Initiated | Executed | Cancelled
+  proposedOwner: Bytes
+  newOwner: Bytes
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
+# ── MultiSigTreasury ─────────────────────────────────────────────────────────
+
+type TreasuryTx @entity {
+  id: ID! # txId as string
+  proposer: Bytes!
+  to: Bytes!
+  value: BigInt!
+  token: Bytes!
+  tokenAmount: BigInt!
+  confirmations: BigInt!
+  executed: Boolean!
+  proposedAt: BigInt!
+  executedAt: BigInt
+  txHash: Bytes!
+}
+
+# ── ZKVerifier ────────────────────────────────────────────────────────────────
+
+type ZKProofEvent @entity {
+  id: ID! # txHash-logIndex
+  user: Bytes!
+  proofType: Int!
+  valid: Boolean!
+  expiry: BigInt!
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
+# ── Global Stats ──────────────────────────────────────────────────────────────
+
+type CivitasStats @entity {
+  id: ID! # "global"
+  totalDIDs: BigInt!
+  totalCredentials: BigInt!
+  totalProposals: BigInt!
+  totalVotes: BigInt!
+  totalEscrows: BigInt!
+  totalNodes: BigInt!
+  totalStaked: BigInt!
+  totalTasksCreated: BigInt!
+  totalTokensBurned: BigInt!
+  lastUpdatedAt: BigInt!
+}

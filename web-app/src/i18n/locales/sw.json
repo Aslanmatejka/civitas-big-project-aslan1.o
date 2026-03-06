@@ -1,0 +1,256 @@
+{
+  "common": {
+    "welcome": "Karibu",
+    "loading": "Inapakia...",
+    "error": "Kosa",
+    "success": "Mafanikio",
+    "save": "Hifadhi",
+    "cancel": "Ghairi",
+    "delete": "Futa",
+    "edit": "Hariri",
+    "close": "Funga",
+    "confirm": "Thibitisha",
+    "back": "Rudi",
+    "next": "Ifuatayo",
+    "send": "Tuma",
+    "search": "Tafuta",
+    "filter": "Chuja",
+    "sort": "Panga",
+    "connect": "Unganisha",
+    "disconnect": "Tenganisha",
+    "online": "Mtandaoni",
+    "offline": "Nje ya mtandao",
+    "retry": "Jaribu tena",
+    "refresh": "Onyesha upya"
+  },
+
+  "auth": {
+    "connectWallet": "Unganisha Mkoba",
+    "disconnectWallet": "Tenganisha Mkoba",
+    "walletConnected": "Mkoba Umeunganishwa",
+    "walletDisconnected": "Mkoba Umetenganishwa",
+    "noWalletDetected": "Hakuna mkoba uliogunduliwa. Tafadhali sakinisha MetaMask.",
+    "switchNetwork": "Badilisha Mtandao",
+    "wrongNetwork": "Mtandao usio sahihi. Tafadhali badilisha kwenda {{network}}."
+  },
+
+  "navigation": {
+    "home": "Nyumbani",
+    "dashboard": "Dashibodi",
+    "wallet": "Mkoba",
+    "identity": "Utambulisho",
+    "governance": "Utawala",
+    "marketplace": "Soko",
+    "community": "Jamii",
+    "messaging": "Ujumbe",
+    "profile": "Wasifu",
+    "settings": "Mipangilio",
+    "ai": "Msaidizi wa AI",
+    "automation": "Ufanyaji kiotomatiki",
+    "node": "Nodi",
+    "storage": "Hifadhi",
+    "queue": "Foleni"
+  },
+
+  "wallet": {
+    "title": "Mkoba Wangu",
+    "balance": "Salio",
+    "tokens": "Tokeni",
+    "transactions": "Miamala",
+    "send": "Tuma",
+    "receive": "Pokea",
+    "history": "Historia",
+    "address": "Anwani",
+    "copyAddress": "Nakili Anwani",
+    "addressCopied": "Anwani imenakiliwa!",
+    "amount": "Kiasi",
+    "recipient": "Mpokeaji",
+    "sendTokens": "Tuma Tokeni",
+    "transactionSuccess": "Muamala umetumwa kwa mafanikio",
+    "transactionFailed": "Muamala umeshindwa",
+    "insufficientBalance": "Salio haitoshi",
+    "invalidAddress": "Anwani batili",
+    "gasEstimate": "Kadirio la Gesi"
+  },
+
+  "identity": {
+    "title": "Utambulisho wa Kidijitali",
+    "createDID": "Unda DID",
+    "myDID": "DID Yangu",
+    "verifications": "Uthibitishaji",
+    "credentials": "Vyeti",
+    "reputation": "Sifa",
+    "trustScore": "Alama ya Kuaminika",
+    "verified": "Imethibitishwa",
+    "notVerified": "Haijathibitishwa",
+    "issueCredential": "Toa Cheti",
+    "addGuardian": "Ongeza Mlezi",
+    "guardians": "Walezi",
+    "recoverIdentity": "Rejesha Utambulisho"
+  },
+
+  "governance": {
+    "title": "Utawala",
+    "proposals": "Mapendekezo",
+    "createProposal": "Unda Pendekezo",
+    "vote": "Piga Kura",
+    "voteFor": "Piga Kura Kwa",
+    "voteAgainst": "Piga Kura Dhidi",
+    "abstain": "Jitenga",
+    "active": "Hai",
+    "ended": "Imeisha",
+    "passed": "Imepita",
+    "rejected": "Imekataliwa",
+    "quorum": "Kworamu",
+    "threshold": "Kizingiti",
+    "votingPower": "Nguvu ya Kupiga Kura",
+    "timeRemaining": "Muda Uliosalia"
+  },
+
+  "marketplace": {
+    "title": "Soko",
+    "listings": "Orodha",
+    "myListings": "Orodha Zangu",
+    "createListing": "Unda Orodha",
+    "buy": "Nunua",
+    "sell": "Uza",
+    "price": "Bei",
+    "seller": "Muuzaji",
+    "buyer": "Mnunuzi",
+    "category": "Jamii",
+    "condition": "Hali",
+    "description": "Maelezo",
+    "images": "Picha",
+    "purchase": "Nunua",
+    "makeOffer": "Toa Toleo",
+    "sold": "Imeuzwa",
+    "available": "Inapatikana"
+  },
+
+  "community": {
+    "title": "Jamii",
+    "posts": "Machapisho",
+    "createPost": "Unda Chapisho",
+    "comments": "Maoni",
+    "likes": "Vipendwa",
+    "shares": "Kushiriki",
+    "follow": "Fuata",
+    "unfollow": "Acha Kufuata",
+    "followers": "Wafuasi",
+    "following": "Unafuata",
+    "trending": "Maarufu",
+    "recent": "Za Hivi Karibuni"
+  },
+
+  "messaging": {
+    "title": "Ujumbe",
+    "newMessage": "Ujumbe Mpya",
+    "conversations": "Mazungumzo",
+    "contacts": "Anwani",
+    "typeMessage": "Andika ujumbe...",
+    "sendMessage": "Tuma Ujumbe",
+    "attachFile": "Ambatanisha Faili",
+    "voiceCall": "Simu ya Sauti",
+    "videoCall": "Simu ya Video",
+    "messageRead": "Imesomwa",
+    "messageDelivered": "Imefikishwa",
+    "messageSent": "Imetumwa"
+  },
+
+  "profile": {
+    "title": "Wasifu",
+    "editProfile": "Hariri Wasifu",
+    "name": "Jina",
+    "bio": "Wasifu Mfupi",
+    "avatar": "Picha",
+    "uploadAvatar": "Pakia Picha",
+    "location": "Mahali",
+    "language": "Lugha",
+    "timezone": "Eneo la Saa",
+    "privacy": "Faragha",
+    "notifications": "Arifa",
+    "saveChanges": "Hifadhi Mabadiliko",
+    "profileUpdated": "Wasifu umesasishwa kwa mafanikio"
+  },
+
+  "storage": {
+    "title": "Hifadhi Isiyoikita",
+    "uploadFile": "Pakia Faili",
+    "myFiles": "Faili Zangu",
+    "shared": "Zilizoshirikiwa",
+    "encrypted": "Zimefichwa",
+    "public": "Za Umma",
+    "fileSize": "Ukubwa wa Faili",
+    "uploadDate": "Tarehe ya Kupakia",
+    "ipfsCID": "IPFS CID",
+    "download": "Pakua",
+    "share": "Shiriki",
+    "delete": "Futa",
+    "uploadSuccess": "Faili imepakiwa kwa mafanikio",
+    "uploadFailed": "Kupakia kumeshindwa"
+  },
+
+  "queue": {
+    "title": "Foleni ya Miamala",
+    "pendingTransactions": "Miamala Inayosubiri",
+    "processAll": "Chakata Zote",
+    "queueEmpty": "Foleni ni tupu",
+    "status": "Hali",
+    "pending": "Inasubiri",
+    "processing": "Inachakatwa",
+    "confirmed": "Imethibitishwa",
+    "failed": "Imeshindwa",
+    "retryCount": "Hesabu ya Kujaribu Tena",
+    "submitNow": "Wasilisha Sasa",
+    "cancelTransaction": "Ghairi"
+  },
+
+  "offline": {
+    "title": "Hali ya Nje ya Mtandao",
+    "youAreOffline": "Uko nje ya mtandao",
+    "offlineMessage": "Hakuna muunganisho wa mtandao. Vitendo vyako vitawekwa foleleni na kusawazishwa utakapoungana tena.",
+    "queuedActions": "Vitendo vilivyo Foleleni",
+    "syncWhenOnline": "Itasawazishwa mtandaoni",
+    "workingOffline": "Inafanya kazi nje ya mtandao",
+    "backOnline": "Umerudi mtandaoni!",
+    "syncing": "Inasawazisha...",
+    "syncComplete": "Usawazishaji umekamilika",
+    "syncFailed": "Usawazishaji umeshindwa"
+  },
+
+  "settings": {
+    "title": "Mipangilio",
+    "general": "Jumla",
+    "appearance": "Muonekano",
+    "theme": "Mandhari",
+    "language": "Lugha",
+    "notifications": "Arifa",
+    "privacy": "Faragha",
+    "security": "Usalama",
+    "backup": "Nakala Rudufu",
+    "export": "Hamisha Data",
+    "import": "Leta Data",
+    "resetSettings": "Weka Upya Mipangilio",
+    "about": "Kuhusu",
+    "version": "Toleo",
+    "help": "Msaada",
+    "documentation": "Nyaraka"
+  },
+
+  "errors": {
+    "networkError": "Kosa la mtandao. Tafadhali angalia muunganisho wako.",
+    "serverError": "Kosa la seva. Tafadhali jaribu tena baadaye.",
+    "unauthorized": "Hauruhusiwi. Tafadhali unganisha mkoba wako.",
+    "notFound": "Haijapatikana.",
+    "validationError": "Kosa la uthibitishaji. Tafadhali angalia ulichoandika.",
+    "unknown": "Kosa lisilojulikana limetokea."
+  },
+
+  "success": {
+    "saved": "Imehifadhiwa kwa mafanikio",
+    "deleted": "Imefutwa kwa mafanikio",
+    "sent": "Imetumwa kwa mafanikio",
+    "updated": "Imesasishwa kwa mafanikio",
+    "created": "Imeundwa kwa mafanikio"
+  }
+}

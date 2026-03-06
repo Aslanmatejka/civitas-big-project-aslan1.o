@@ -1,0 +1,514 @@
+{
+  "users": {
+    "0x4b196636fdf65165f2c67443bcb94464fdcc0fed": {
+      "balance": "0",
+      "name": "0x4b1966",
+      "lastActive": 1772750873851,
+      "walletAddress": "0x4b196636fdf65165f2c67443bcb94464fdcc0fed",
+      "updatedAt": 1772750873851
+    }
+  },
+  "contacts": {},
+  "groups": {},
+  "statuses": [],
+  "queue": [],
+  "files": {},
+  "appstore": {
+    "apps": {
+      "civitas-messenger": {
+        "id": "civitas-messenger",
+        "name": "CIVITAS Messenger",
+        "tagline": "Encrypted P2P messaging powered by XMTP",
+        "description": "The reference CIVITAS messaging app. All messages are end-to-end encrypted, stored on XMTP — no servers, no metadata leaks. Voice notes, file sharing, group chats.",
+        "icon": "💬",
+        "category": "Messaging",
+        "version": "1.0.0",
+        "platforms": [
+          "web",
+          "pwa"
+        ],
+        "developer": "CIVITAS Core",
+        "developerAddress": "0x0000000000000000000000000000000000000001",
+        "website": "https://civitas.app/messaging",
+        "ipfsCid": null,
+        "downloadUrl": "/messaging",
+        "isInternal": true,
+        "license": "MIT",
+        "tags": [
+          "xmtp",
+          "messaging",
+          "encrypted",
+          "p2p"
+        ],
+        "installs": 4820,
+        "rating": 4.9,
+        "ratingCount": 312,
+        "featured": true,
+        "verified": true,
+        "createdAt": "2025-01-01T00:00:00.000Z",
+        "updatedAt": "2026-03-05T20:18:30.417Z"
+      },
+      "civitas-wallet": {
+        "id": "civitas-wallet",
+        "name": "CIVITAS Wallet",
+        "tagline": "Non-custodial multi-chain wallet with DID support",
+        "description": "Manage your crypto assets, CIV tokens, and decentralized identity in one place. Connect any hardware wallet, swap tokens, and interact with governance — all from a self-custodial wallet you truly own.",
+        "icon": "💰",
+        "category": "Finance",
+        "version": "1.2.1",
+        "platforms": [
+          "web",
+          "pwa",
+          "android",
+          "ios"
+        ],
+        "developer": "CIVITAS Core",
+        "developerAddress": "0x0000000000000000000000000000000000000001",
+        "website": "https://civitas.app/wallet",
+        "ipfsCid": null,
+        "downloadUrl": "/wallet",
+        "isInternal": true,
+        "license": "MIT",
+        "tags": [
+          "wallet",
+          "defi",
+          "did",
+          "multi-chain"
+        ],
+        "installs": 9130,
+        "rating": 4.8,
+        "ratingCount": 541,
+        "featured": true,
+        "verified": true,
+        "createdAt": "2025-01-01T00:00:00.000Z",
+        "updatedAt": "2026-03-05T20:18:30.451Z"
+      },
+      "civitas-governance": {
+        "id": "civitas-governance",
+        "name": "CIVITAS Governance",
+        "tagline": "On-chain voting and proposal management",
+        "description": "Participate in decentralized governance. Submit proposals, vote with quadratic weighting, delegate stake. All votes are recorded on-chain via the GovernanceDAO smart contract.",
+        "icon": "🏛️",
+        "category": "Governance",
+        "version": "1.1.0",
+        "platforms": [
+          "web",
+          "pwa"
+        ],
+        "developer": "CIVITAS Core",
+        "developerAddress": "0x0000000000000000000000000000000000000001",
+        "website": "https://civitas.app/governance",
+        "ipfsCid": null,
+        "downloadUrl": "/governance",
+        "isInternal": true,
+        "license": "MIT",
+        "tags": [
+          "governance",
+          "dao",
+          "voting",
+          "on-chain"
+        ],
+        "installs": 3210,
+        "rating": 4.7,
+        "ratingCount": 198,
+        "featured": true,
+        "verified": true,
+        "createdAt": "2025-01-01T00:00:00.000Z",
+        "updatedAt": "2026-03-05T20:18:30.451Z"
+      },
+      "ipfs-drive": {
+        "id": "ipfs-drive",
+        "name": "IPFS Drive",
+        "tagline": "Decentralized cloud storage on IPFS",
+        "description": "Your personal IPFS-backed drive. Upload, share and pin files to the distributed web. No single server, no downtime. Files addressed by content hash, not location.",
+        "icon": "🗄️",
+        "category": "Storage",
+        "version": "2.0.3",
+        "platforms": [
+          "web",
+          "pwa",
+          "desktop"
+        ],
+        "developer": "Protocol Labs Community",
+        "developerAddress": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "website": "https://ipfs.io",
+        "ipfsCid": "QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco",
+        "downloadUrl": "https://ipfs.io/install",
+        "isInternal": false,
+        "license": "Apache-2.0",
+        "tags": [
+          "ipfs",
+          "storage",
+          "files",
+          "pinning"
+        ],
+        "installs": 18400,
+        "rating": 4.6,
+        "ratingCount": 893,
+        "featured": true,
+        "verified": true,
+        "createdAt": "2025-02-01T00:00:00.000Z",
+        "updatedAt": "2026-03-05T20:18:30.451Z"
+      },
+      "did-manager": {
+        "id": "did-manager",
+        "name": "DID Manager",
+        "tagline": "Self-sovereign identity on any device",
+        "description": "Create and manage W3C-compliant Decentralized Identifiers (DIDs). Issue verifiable credentials, build a reputation profile, and authenticate across dApps — no usernames, no passwords.",
+        "icon": "🪪",
+        "category": "Identity",
+        "version": "1.4.0",
+        "platforms": [
+          "web",
+          "pwa",
+          "android",
+          "ios",
+          "desktop"
+        ],
+        "developer": "CIVITAS Identity Team",
+        "developerAddress": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "website": "https://civitas.app/identity",
+        "ipfsCid": null,
+        "downloadUrl": "/identity",
+        "isInternal": true,
+        "license": "MIT",
+        "tags": [
+          "did",
+          "identity",
+          "ssi",
+          "credentials"
+        ],
+        "installs": 6750,
+        "rating": 4.8,
+        "ratingCount": 441,
+        "featured": true,
+        "verified": true,
+        "createdAt": "2025-02-10T00:00:00.000Z",
+        "updatedAt": "2026-03-05T20:18:30.451Z"
+      },
+      "defi-swap": {
+        "id": "defi-swap",
+        "name": "CivSwap",
+        "tagline": "Decentralized token exchange — your keys, your trade",
+        "description": "A lightweight AMM-based DEX that runs entirely in the browser. Connect your wallet, swap any ERC-20 token, provide liquidity, and earn fees — no sign-up, no KYC, no custodian.",
+        "icon": "🔄",
+        "category": "Finance",
+        "version": "0.9.5",
+        "platforms": [
+          "web"
+        ],
+        "developer": "CivSwap DAO",
+        "developerAddress": "0xcccccccccccccccccccccccccccccccccccccccc",
+        "website": "https://civswap.xyz",
+        "ipfsCid": "QmYwAPJzv5CZsnAzt8auV39szv3J5q5gQh6PNUoSsXnGH",
+        "downloadUrl": "https://civswap.xyz",
+        "isInternal": false,
+        "license": "GPL-3.0",
+        "tags": [
+          "defi",
+          "dex",
+          "swap",
+          "amm",
+          "liquidity"
+        ],
+        "installs": 12300,
+        "rating": 4.5,
+        "ratingCount": 679,
+        "featured": false,
+        "verified": true,
+        "createdAt": "2025-03-01T00:00:00.000Z",
+        "updatedAt": "2026-03-05T20:18:30.451Z"
+      },
+      "node-runner": {
+        "id": "node-runner",
+        "name": "CIVITAS Node Runner",
+        "tagline": "Run a full CIVITAS node on your device",
+        "description": "Become part of the CIVITAS network infrastructure. Validate transactions, store data shards, earn CIV rewards, and help keep the network decentralized. Available for Linux, macOS, and Windows.",
+        "icon": "⚡",
+        "category": "Infrastructure",
+        "version": "1.0.1",
+        "platforms": [
+          "desktop",
+          "linux",
+          "macos",
+          "windows"
+        ],
+        "developer": "CIVITAS Core",
+        "developerAddress": "0x0000000000000000000000000000000000000001",
+        "website": "https://civitas.app/node",
+        "ipfsCid": "QmZ4tDuvesekSs4qM5ZBKpXiZGun7S2CYtEZRB3DYXkjGx",
+        "downloadUrl": "https://civitas.app/node/download",
+        "isInternal": false,
+        "license": "MIT",
+        "tags": [
+          "node",
+          "validator",
+          "infrastructure",
+          "earn"
+        ],
+        "installs": 2180,
+        "rating": 4.6,
+        "ratingCount": 134,
+        "featured": false,
+        "verified": true,
+        "createdAt": "2025-04-01T00:00:00.000Z",
+        "updatedAt": "2026-03-05T20:18:30.451Z"
+      },
+      "nft-gallery": {
+        "id": "nft-gallery",
+        "name": "NFT Gallery",
+        "tagline": "Showcase and trade your digital collectibles",
+        "description": "A fully decentralized NFT gallery. Browse, mint, list, and trade NFTs stored on IPFS with on-chain provenance. Supports ERC-721 and ERC-1155 standards. No platform fees.",
+        "icon": "🖼️",
+        "category": "Social",
+        "version": "1.1.2",
+        "platforms": [
+          "web",
+          "pwa"
+        ],
+        "developer": "OpenArt Collective",
+        "developerAddress": "0xdddddddddddddddddddddddddddddddddddddddd",
+        "website": "https://openart.example",
+        "ipfsCid": "QmfM2r8seH2GiRaC4esTjeraXEachRt8ZsSeGaWTPLyMoG",
+        "downloadUrl": "https://openart.example",
+        "isInternal": false,
+        "license": "MIT",
+        "tags": [
+          "nft",
+          "art",
+          "collectibles",
+          "ipfs"
+        ],
+        "installs": 7640,
+        "rating": 4.4,
+        "ratingCount": 388,
+        "featured": false,
+        "verified": true,
+        "createdAt": "2025-05-01T00:00:00.000Z",
+        "updatedAt": "2026-03-05T20:18:30.451Z"
+      },
+      "decentral-blog": {
+        "id": "decentral-blog",
+        "name": "Mirror Blog",
+        "tagline": "Publish writing permanently on the decentralized web",
+        "description": "Write, publish, and monetize your content on IPFS and Arweave. Your articles can never be censored or taken down. Token-gate content, accept tips, and build a paid subscriber community.",
+        "icon": "📝",
+        "category": "Social",
+        "version": "2.3.1",
+        "platforms": [
+          "web",
+          "pwa"
+        ],
+        "developer": "Mirror Protocol",
+        "developerAddress": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "website": "https://mirror.xyz",
+        "ipfsCid": null,
+        "downloadUrl": "https://mirror.xyz",
+        "isInternal": false,
+        "license": "MIT",
+        "tags": [
+          "publishing",
+          "blog",
+          "arweave",
+          "content"
+        ],
+        "installs": 5920,
+        "rating": 4.7,
+        "ratingCount": 267,
+        "featured": false,
+        "verified": true,
+        "createdAt": "2025-05-15T00:00:00.000Z",
+        "updatedAt": "2026-03-05T20:18:30.451Z"
+      },
+      "privacy-vpn": {
+        "id": "privacy-vpn",
+        "name": "DePIN VPN",
+        "tagline": "Decentralized VPN — privacy with no central server",
+        "description": "Route your traffic through a peer-to-peer encrypted VPN network. No central logging, no single point of failure. Nodes are operated by community members who earn token rewards.",
+        "icon": "🔒",
+        "category": "Tools",
+        "version": "0.8.2",
+        "platforms": [
+          "android",
+          "ios",
+          "desktop",
+          "windows",
+          "macos",
+          "linux"
+        ],
+        "developer": "DePIN Network",
+        "developerAddress": "0xffffffffffffffffffffffffffffffffffffffff",
+        "website": "https://depin.network",
+        "ipfsCid": "QmRCaiMQzmqQmTDnfNDSGdsRHGGbZpMsMF8BiVBnkPaqPM",
+        "downloadUrl": "https://depin.network/download",
+        "isInternal": false,
+        "license": "GPL-3.0",
+        "tags": [
+          "vpn",
+          "privacy",
+          "depin",
+          "p2p"
+        ],
+        "installs": 9870,
+        "rating": 4.5,
+        "ratingCount": 512,
+        "featured": false,
+        "verified": false,
+        "createdAt": "2025-06-01T00:00:00.000Z",
+        "updatedAt": "2026-03-05T20:18:30.451Z"
+      },
+      "automation-tools": {
+        "id": "automation-tools",
+        "name": "CIVITAS Automation",
+        "tagline": "Trigger smart-contract workflows without code",
+        "description": "Build no-code automation flows that interact with smart contracts, IPFS, XMTP, and external APIs. Schedule transactions, set conditions, and chain actions — all running on decentralized keeper nodes.",
+        "icon": "⚙️",
+        "category": "Tools",
+        "version": "1.0.0",
+        "platforms": [
+          "web"
+        ],
+        "developer": "CIVITAS Core",
+        "developerAddress": "0x0000000000000000000000000000000000000001",
+        "website": "https://civitas.app/automation",
+        "ipfsCid": null,
+        "downloadUrl": "/automation",
+        "isInternal": true,
+        "license": "MIT",
+        "tags": [
+          "automation",
+          "workflow",
+          "smart-contracts",
+          "no-code"
+        ],
+        "installs": 1870,
+        "rating": 4.3,
+        "ratingCount": 89,
+        "featured": false,
+        "verified": true,
+        "createdAt": "2025-07-01T00:00:00.000Z",
+        "updatedAt": "2026-03-05T20:18:30.451Z"
+      },
+      "ai-agent": {
+        "id": "ai-agent",
+        "name": "CivAI Assistant",
+        "tagline": "On-device AI with no data sent to central servers",
+        "description": "A privacy-first AI assistant that runs inference locally (WebLLM / WASM) or delegates to community-operated nodes. Summarize documents, write smart contracts, and automate DeFi strategies.",
+        "icon": "🤖",
+        "category": "AI",
+        "version": "0.5.0",
+        "platforms": [
+          "web",
+          "desktop"
+        ],
+        "developer": "CIVITAS AI Guild",
+        "developerAddress": "0x1234567890123456789012345678901234567890",
+        "website": "https://civitas.app/ai",
+        "ipfsCid": null,
+        "downloadUrl": "/ai",
+        "isInternal": true,
+        "license": "MIT",
+        "tags": [
+          "ai",
+          "llm",
+          "on-device",
+          "privacy"
+        ],
+        "installs": 3340,
+        "rating": 4.4,
+        "ratingCount": 176,
+        "featured": true,
+        "verified": true,
+        "createdAt": "2025-08-01T00:00:00.000Z",
+        "updatedAt": "2026-03-05T20:18:30.451Z"
+      }
+    },
+    "reviews": {}
+  },
+  "mobileMoney": {
+    "transactions": {},
+    "walletHistory": {}
+  },
+  "community": {
+    "posts": {},
+    "comments": {},
+    "follows": {},
+    "postLikes": {},
+    "commentLikes": {},
+    "postSeq": 0,
+    "commentSeq": 0
+  },
+  "chatMessages": {
+    "list": []
+  },
+  "marketplace": {
+    "listings": [],
+    "orders": [],
+    "listingSeq": 1,
+    "orderSeq": 1
+  },
+  "aiConversations": {
+    "0x4b196636fdf65165f2c67443bcb94464fdcc0fed": {
+      "walletAddress": "0x4b196636fdf65165f2c67443bcb94464fdcc0fed",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Hello! I'm your CIVITAS AI assistant. I can help you with:\n\n💰 Transaction advice and optimization\n🔒 Security recommendations\n📊 Market insights and analysis\n⚙ Smart contract guidance\n🎯 Investment strategies\n\nHow can I assist you today?",
+          "timestamp": "2026-03-05T22:47:07.742Z"
+        }
+      ],
+      "lastActive": "2026-03-05T22:47:07.742Z"
+    }
+  },
+  "automations": {
+    "items": {},
+    "nextId": 1
+  },
+  "nodes": {
+    "0x4b196636fdf65165f2c67443bcb94464fdcc0fed": {
+      "walletAddress": "0x4b196636fdf65165f2c67443bcb94464fdcc0fed",
+      "status": "stopped",
+      "config": {
+        "rpcPort": 8545,
+        "p2pPort": 30303,
+        "networkId": 31337,
+        "storageLimit": 100
+      },
+      "sync": {
+        "progress": 0,
+        "startingBlock": 0,
+        "currentBlock": 0,
+        "highestBlock": 145234
+      },
+      "stats": {
+        "connectedPeers": 0,
+        "networkSpeed": 0,
+        "storageUsed": 0,
+        "blocksValidated": 0,
+        "transactionsProcessed": 0
+      },
+      "rewards": {
+        "totalEarned": 0,
+        "pendingRewards": 0,
+        "lastClaimed": null,
+        "claimHistory": []
+      },
+      "health": {
+        "uptime": 0,
+        "lastOnline": null,
+        "blocksValidated": 0,
+        "errorsInLast24h": 0
+      },
+      "startedAt": null
+    }
+  },
+  "messages": {},
+  "identities": {
+    "dids": {},
+    "activityLog": []
+  },
+  "governance": {
+    "proposals": {},
+    "votes": {}
+  }
+}

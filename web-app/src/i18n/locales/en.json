@@ -1,0 +1,256 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "send": "Send",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "connect": "Connect",
+    "disconnect": "Disconnect",
+    "online": "Online",
+    "offline": "Offline",
+    "retry": "Retry",
+    "refresh": "Refresh"
+  },
+
+  "auth": {
+    "connectWallet": "Connect Wallet",
+    "disconnectWallet": "Disconnect Wallet",
+    "walletConnected": "Wallet Connected",
+    "walletDisconnected": "Wallet Disconnected",
+    "noWalletDetected": "No wallet detected. Please install MetaMask.",
+    "switchNetwork": "Switch Network",
+    "wrongNetwork": "Wrong network. Please switch to {{network}}."
+  },
+
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "wallet": "Wallet",
+    "identity": "Identity",
+    "governance": "Governance",
+    "marketplace": "Marketplace",
+    "community": "Community",
+    "messaging": "Messaging",
+    "profile": "Profile",
+    "settings": "Settings",
+    "ai": "AI Assistant",
+    "automation": "Automation",
+    "node": "Node",
+    "storage": "Storage",
+    "queue": "Queue"
+  },
+
+  "wallet": {
+    "title": "My Wallet",
+    "balance": "Balance",
+    "tokens": "Tokens",
+    "transactions": "Transactions",
+    "send": "Send",
+    "receive": "Receive",
+    "history": "History",
+    "address": "Address",
+    "copyAddress": "Copy Address",
+    "addressCopied": "Address copied!",
+    "amount": "Amount",
+    "recipient": "Recipient",
+    "sendTokens": "Send Tokens",
+    "transactionSuccess": "Transaction sent successfully",
+    "transactionFailed": "Transaction failed",
+    "insufficientBalance": "Insufficient balance",
+    "invalidAddress": "Invalid address",
+    "gasEstimate": "Gas Estimate"
+  },
+
+  "identity": {
+    "title": "Digital Identity",
+    "createDID": "Create DID",
+    "myDID": "My DID",
+    "verifications": "Verifications",
+    "credentials": "Credentials",
+    "reputation": "Reputation",
+    "trustScore": "Trust Score",
+    "verified": "Verified",
+    "notVerified": "Not Verified",
+    "issueCredential": "Issue Credential",
+    "addGuardian": "Add Guardian",
+    "guardians": "Guardians",
+    "recoverIdentity": "Recover Identity"
+  },
+
+  "governance": {
+    "title": "Governance",
+    "proposals": "Proposals",
+    "createProposal": "Create Proposal",
+    "vote": "Vote",
+    "voteFor": "Vote For",
+    "voteAgainst": "Vote Against",
+    "abstain": "Abstain",
+    "active": "Active",
+    "ended": "Ended",
+    "passed": "Passed",
+    "rejected": "Rejected",
+    "quorum": "Quorum",
+    "threshold": "Threshold",
+    "votingPower": "Voting Power",
+    "timeRemaining": "Time Remaining"
+  },
+
+  "marketplace": {
+    "title": "Marketplace",
+    "listings": "Listings",
+    "myListings": "My Listings",
+    "createListing": "Create Listing",
+    "buy": "Buy",
+    "sell": "Sell",
+    "price": "Price",
+    "seller": "Seller",
+    "buyer": "Buyer",
+    "category": "Category",
+    "condition": "Condition",
+    "description": "Description",
+    "images": "Images",
+    "purchase": "Purchase",
+    "makeOffer": "Make Offer",
+    "sold": "Sold",
+    "available": "Available"
+  },
+
+  "community": {
+    "title": "Community",
+    "posts": "Posts",
+    "createPost": "Create Post",
+    "comments": "Comments",
+    "likes": "Likes",
+    "shares": "Shares",
+    "follow": "Follow",
+    "unfollow": "Unfollow",
+    "followers": "Followers",
+    "following": "Following",
+    "trending": "Trending",
+    "recent": "Recent"
+  },
+
+  "messaging": {
+    "title": "Messages",
+    "newMessage": "New Message",
+    "conversations": "Conversations",
+    "contacts": "Contacts",
+    "typeMessage": "Type a message...",
+    "sendMessage": "Send Message",
+    "attachFile": "Attach File",
+    "voiceCall": "Voice Call",
+    "videoCall": "Video Call",
+    "messageRead": "Read",
+    "messageDelivered": "Delivered",
+    "messageSent": "Sent"
+  },
+
+  "profile": {
+    "title": "Profile",
+    "editProfile": "Edit Profile",
+    "name": "Name",
+    "bio": "Bio",
+    "avatar": "Avatar",
+    "uploadAvatar": "Upload Avatar",
+    "location": "Location",
+    "language": "Language",
+    "timezone": "Timezone",
+    "privacy": "Privacy",
+    "notifications": "Notifications",
+    "saveChanges": "Save Changes",
+    "profileUpdated": "Profile updated successfully"
+  },
+
+  "storage": {
+    "title": "Decentralized Storage",
+    "uploadFile": "Upload File",
+    "myFiles": "My Files",
+    "shared": "Shared",
+    "encrypted": "Encrypted",
+    "public": "Public",
+    "fileSize": "File Size",
+    "uploadDate": "Upload Date",
+    "ipfsCID": "IPFS CID",
+    "download": "Download",
+    "share": "Share",
+    "delete": "Delete",
+    "uploadSuccess": "File uploaded successfully",
+    "uploadFailed": "Upload failed"
+  },
+
+  "queue": {
+    "title": "Transaction Queue",
+    "pendingTransactions": "Pending Transactions",
+    "processAll": "Process All",
+    "queueEmpty": "Queue is empty",
+    "status": "Status",
+    "pending": "Pending",
+    "processing": "Processing",
+    "confirmed": "Confirmed",
+    "failed": "Failed",
+    "retryCount": "Retry Count",
+    "submitNow": "Submit Now",
+    "cancelTransaction": "Cancel"
+  },
+
+  "offline": {
+    "title": "Offline Mode",
+    "youAreOffline": "You're offline",
+    "offlineMessage": "No internet connection. Your actions will be queued and synced when you reconnect.",
+    "queuedActions": "Queued Actions",
+    "syncWhenOnline": "Will sync when online",
+    "workingOffline": "Working in offline mode",
+    "backOnline": "You're back online!",
+    "syncing": "Syncing...",
+    "syncComplete": "Sync complete",
+    "syncFailed": "Sync failed"
+  },
+
+  "settings": {
+    "title": "Settings",
+    "general": "General",
+    "appearance": "Appearance",
+    "theme": "Theme",
+    "language": "Language",
+    "notifications": "Notifications",
+    "privacy": "Privacy",
+    "security": "Security",
+    "backup": "Backup",
+    "export": "Export Data",
+    "import": "Import Data",
+    "resetSettings": "Reset Settings",
+    "about": "About",
+    "version": "Version",
+    "help": "Help",
+    "documentation": "Documentation"
+  },
+
+  "errors": {
+    "networkError": "Network error. Please check your connection.",
+    "serverError": "Server error. Please try again later.",
+    "unauthorized": "Unauthorized. Please connect your wallet.",
+    "notFound": "Not found.",
+    "validationError": "Validation error. Please check your input.",
+    "unknown": "An unknown error occurred."
+  },
+
+  "success": {
+    "saved": "Saved successfully",
+    "deleted": "Deleted successfully",
+    "sent": "Sent successfully",
+    "updated": "Updated successfully",
+    "created": "Created successfully"
+  }
+}

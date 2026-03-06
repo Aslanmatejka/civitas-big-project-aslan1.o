@@ -1,0 +1,19 @@
+[
+  {"type":"event","name":"TaskRegistered","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true},{"name":"owner","type":"address","indexed":true},{"name":"name","type":"string","indexed":false},{"name":"trigger","type":"uint8","indexed":false},{"name":"action","type":"uint8","indexed":false}]},
+  {"type":"event","name":"TaskExecuted","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true},{"name":"keeper","type":"address","indexed":true},{"name":"timestamp","type":"uint256","indexed":false}]},
+  {"type":"event","name":"TaskCancelled","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true},{"name":"owner","type":"address","indexed":true}]},
+  {"type":"event","name":"TaskPaused","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true}]},
+  {"type":"event","name":"TaskResumed","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true}]},
+  {"type":"event","name":"TaskExpired","anonymous":false,"inputs":[{"name":"id","type":"uint256","indexed":true}]},
+  {"type":"event","name":"OraclePriceUpdated","anonymous":false,"inputs":[{"name":"token","type":"address","indexed":true},{"name":"price","type":"uint256","indexed":false}]},
+  {"type":"function","name":"registerTask","inputs":[{"name":"name","type":"string"},{"name":"trigger","type":"uint8"},{"name":"action","type":"uint8"},{"name":"triggerParam","type":"uint256"},{"name":"actionParam","type":"bytes"},{"name":"maxExecutions","type":"uint256"},{"name":"expiry","type":"uint256"}],"outputs":[{"name":"","type":"uint256"}],"stateMutability":"payable"},
+  {"type":"function","name":"executeTask","inputs":[{"name":"taskId","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"manualExecute","inputs":[{"name":"taskId","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"pauseTask","inputs":[{"name":"taskId","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"resumeTask","inputs":[{"name":"taskId","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"cancelTask","inputs":[{"name":"taskId","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"updateOraclePrice","inputs":[{"name":"token","type":"address"},{"name":"price","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"getTask","inputs":[{"name":"taskId","type":"uint256"}],"outputs":[{"name":"owner","type":"address"},{"name":"name","type":"string"},{"name":"trigger","type":"uint8"},{"name":"action","type":"uint8"},{"name":"active","type":"bool"}],"stateMutability":"view"},
+  {"type":"function","name":"getUserTasks","inputs":[{"name":"user","type":"address"}],"outputs":[{"name":"","type":"uint256[]"}],"stateMutability":"view"},
+  {"type":"function","name":"isTaskDue","inputs":[{"name":"taskId","type":"uint256"}],"outputs":[{"name":"","type":"bool"}],"stateMutability":"view"}
+]

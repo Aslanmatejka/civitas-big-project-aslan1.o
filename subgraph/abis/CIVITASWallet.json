@@ -1,0 +1,20 @@
+[
+  {"type":"event","name":"Deposit","anonymous":false,"inputs":[{"name":"sender","type":"address","indexed":true},{"name":"amount","type":"uint256","indexed":false}]},
+  {"type":"event","name":"SubmitTransaction","anonymous":false,"inputs":[{"name":"owner","type":"address","indexed":true},{"name":"txIndex","type":"uint256","indexed":true},{"name":"to","type":"address","indexed":false},{"name":"value","type":"uint256","indexed":false},{"name":"data","type":"bytes","indexed":false}]},
+  {"type":"event","name":"ConfirmTransaction","anonymous":false,"inputs":[{"name":"owner","type":"address","indexed":true},{"name":"txIndex","type":"uint256","indexed":true}]},
+  {"type":"event","name":"ExecuteTransaction","anonymous":false,"inputs":[{"name":"owner","type":"address","indexed":true},{"name":"txIndex","type":"uint256","indexed":true}]},
+  {"type":"event","name":"RevokeConfirmation","anonymous":false,"inputs":[{"name":"owner","type":"address","indexed":true},{"name":"txIndex","type":"uint256","indexed":true}]},
+  {"type":"event","name":"GuardianAdded","anonymous":false,"inputs":[{"name":"guardian","type":"address","indexed":true}]},
+  {"type":"event","name":"GuardianRemoved","anonymous":false,"inputs":[{"name":"guardian","type":"address","indexed":true}]},
+  {"type":"event","name":"RecoveryInitiated","anonymous":false,"inputs":[{"name":"newOwner","type":"address","indexed":true}]},
+  {"type":"event","name":"WalletFrozen","anonymous":false,"inputs":[]},
+  {"type":"event","name":"WalletUnfrozen","anonymous":false,"inputs":[]},
+  {"type":"function","name":"submitTransaction","inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"},{"name":"_data","type":"bytes"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"confirmTransaction","inputs":[{"name":"_txIndex","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"executeTransaction","inputs":[{"name":"_txIndex","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"addGuardian","inputs":[{"name":"_guardian","type":"address"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"initiateRecovery","inputs":[{"name":"_newOwner","type":"address"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"freezeWallet","inputs":[],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"unfreezeWallet","inputs":[],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"getBalance","inputs":[],"outputs":[{"name":"","type":"uint256"}],"stateMutability":"view"}
+]

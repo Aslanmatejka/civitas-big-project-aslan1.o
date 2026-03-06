@@ -1,0 +1,52 @@
+{
+  "name": "civitas",
+  "version": "0.1.0",
+  "description": "CIVITAS - Decentralized Personal Ecosystem Platform",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run web:start",
+    "dev": "npm run mobile:start",
+    "dev:full": "concurrently \"npm run contracts:node\" \"npm run mobile:start\"",
+    "test": "jest",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.{js,ts,json,md}\"",
+    "blockchain:start": "cd blockchain && go run cmd/civitasd/main.go start",
+    "contracts:node": "cd smart-contracts && npx hardhat node",
+    "contracts:compile": "cd smart-contracts && npx hardhat compile",
+    "contracts:test": "cd smart-contracts && npx hardhat test",
+    "contracts:deploy": "cd smart-contracts && npx hardhat run scripts/deploy.js",
+    "web:start": "cd web-app && npm start",
+    "web:build": "cd web-app && npm run build",
+    "mobile:ios": "cd mobile-app && npm run ios",
+    "mobile:android": "cd mobile-app && npm run android",
+    "mobile:start": "cd mobile-app && npm start",
+    "docs:serve": "docsify serve docs"
+  },
+  "keywords": [
+    "blockchain",
+    "decentralized",
+    "identity",
+    "SSI",
+    "DeFi",
+    "Web3",
+    "DAO",
+    "IPFS"
+  ],
+  "author": "CIVITAS Team",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.2.5"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "dependencies": {
+    "@expo/metro-runtime": "^55.0.6",
+    "expo": "~50.0.0",
+    "react-dom": "^18.2.0",
+    "react-native-web": "^0.19.13"
+  }
+}

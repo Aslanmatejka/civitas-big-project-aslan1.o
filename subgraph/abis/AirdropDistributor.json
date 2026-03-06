@@ -1,0 +1,16 @@
+[
+  {"type":"event","name":"RoundCreated","anonymous":false,"inputs":[{"name":"roundId","type":"uint256","indexed":true},{"name":"merkleRoot","type":"bytes32","indexed":false},{"name":"totalAmount","type":"uint256","indexed":false},{"name":"mode","type":"uint8","indexed":false}]},
+  {"type":"event","name":"Claimed","anonymous":false,"inputs":[{"name":"roundId","type":"uint256","indexed":true},{"name":"claimant","type":"address","indexed":true},{"name":"amount","type":"uint256","indexed":false},{"name":"regional","type":"bool","indexed":false}]},
+  {"type":"event","name":"VestingClaimed","anonymous":false,"inputs":[{"name":"claimant","type":"address","indexed":true},{"name":"amount","type":"uint256","indexed":false},{"name":"remaining","type":"uint256","indexed":false}]},
+  {"type":"event","name":"UnclamedSwept","anonymous":false,"inputs":[{"name":"roundId","type":"uint256","indexed":true},{"name":"amount","type":"uint256","indexed":false}]},
+  {"type":"event","name":"DIDRegistryUpdated","anonymous":false,"inputs":[{"name":"newRegistry","type":"address","indexed":true}]},
+  {"type":"function","name":"createRound","inputs":[{"name":"merkleRoot","type":"bytes32"},{"name":"totalAmount","type":"uint256"},{"name":"mode","type":"uint8"},{"name":"requireDID","type":"bool"}],"outputs":[{"name":"","type":"uint256"}],"stateMutability":"nonpayable"},
+  {"type":"function","name":"closeRound","inputs":[{"name":"roundId","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"setDIDRegistry","inputs":[{"name":"registry","type":"address"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"claim","inputs":[{"name":"roundId","type":"uint256"},{"name":"amount","type":"uint256"},{"name":"proof","type":"bytes32[]"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"claimRegional","inputs":[{"name":"roundId","type":"uint256"},{"name":"amount","type":"uint256"},{"name":"proof","type":"bytes32[]"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"claimVested","inputs":[],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"sweepUnclaimed","inputs":[{"name":"roundId","type":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"claimableVested","inputs":[{"name":"user","type":"address"}],"outputs":[{"name":"","type":"uint256"}],"stateMutability":"view"},
+  {"type":"function","name":"roundCount","inputs":[],"outputs":[{"name":"","type":"uint256"}],"stateMutability":"view"}
+]

@@ -1,0 +1,159 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "createDID",
+    "inputs": [
+      { "name": "didIdentifier", "type": "bytes32" },
+      { "name": "didDocument", "type": "string" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateDID",
+    "inputs": [
+      { "name": "didIdentifier", "type": "bytes32" },
+      { "name": "didDocument", "type": "string" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "deactivateDID",
+    "inputs": [{ "name": "didIdentifier", "type": "bytes32" }],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "getDID",
+    "inputs": [{ "name": "didIdentifier", "type": "bytes32" }],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "components": [
+          { "name": "controller", "type": "address" },
+          { "name": "didDocument", "type": "string" },
+          { "name": "profileCID", "type": "string" },
+          { "name": "createdAt", "type": "uint256" },
+          { "name": "updatedAt", "type": "uint256" },
+          { "name": "active", "type": "bool" },
+          { "name": "reputation", "type": "uint256" }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "issueCredential",
+    "inputs": [
+      { "name": "didIdentifier", "type": "bytes32" },
+      { "name": "credentialHash", "type": "bytes32" },
+      { "name": "expiresAt", "type": "uint256" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "revokeCredential",
+    "inputs": [
+      { "name": "didIdentifier", "type": "bytes32" },
+      { "name": "credentialIndex", "type": "uint256" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateReputation",
+    "inputs": [
+      { "name": "didIdentifier", "type": "bytes32" },
+      { "name": "newReputation", "type": "uint256" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "verifyDID",
+    "inputs": [
+      { "name": "didIdentifier", "type": "bytes32" },
+      { "name": "minReputation", "type": "uint256" }
+    ],
+    "outputs": [{ "name": "", "type": "bool" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "event",
+    "name": "DIDCreated",
+    "inputs": [
+      { "name": "didIdentifier", "type": "bytes32", "indexed": true },
+      { "name": "controller", "type": "address", "indexed": true }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "DIDUpdated",
+    "inputs": [
+      { "name": "didIdentifier", "type": "bytes32", "indexed": true },
+      { "name": "didDocument", "type": "string", "indexed": false }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "DIDDeactivated",
+    "inputs": [
+      { "name": "didIdentifier", "type": "bytes32", "indexed": true }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ProfileUpdated",
+    "inputs": [
+      { "name": "didIdentifier", "type": "bytes32", "indexed": true },
+      { "name": "profileCID", "type": "string", "indexed": false }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "CredentialIssued",
+    "inputs": [
+      { "name": "didIdentifier", "type": "bytes32", "indexed": true },
+      { "name": "credentialHash", "type": "bytes32", "indexed": true },
+      { "name": "issuer", "type": "address", "indexed": true }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "CredentialRevoked",
+    "inputs": [
+      { "name": "didIdentifier", "type": "bytes32", "indexed": true },
+      { "name": "credentialHash", "type": "bytes32", "indexed": true }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ReputationUpdated",
+    "inputs": [
+      { "name": "didIdentifier", "type": "bytes32", "indexed": true },
+      { "name": "newReputation", "type": "uint256", "indexed": false }
+    ],
+    "anonymous": false
+  }
+]

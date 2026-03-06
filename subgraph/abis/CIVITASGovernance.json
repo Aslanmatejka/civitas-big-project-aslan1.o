@@ -1,0 +1,61 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "proposalCount",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "votingPeriod",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "event",
+    "name": "ProposalCreated",
+    "inputs": [
+      { "name": "proposalId", "type": "uint256", "indexed": true },
+      { "name": "proposer", "type": "address", "indexed": true },
+      { "name": "title", "type": "string", "indexed": false },
+      { "name": "votingDeadline", "type": "uint256", "indexed": false }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "VoteCast",
+    "inputs": [
+      { "name": "voter", "type": "address", "indexed": true },
+      { "name": "proposalId", "type": "uint256", "indexed": true },
+      { "name": "support", "type": "uint8", "indexed": false },
+      { "name": "baseWeight", "type": "uint256", "indexed": false },
+      { "name": "decayedWeight", "type": "uint256", "indexed": false },
+      { "name": "decayFactorBps", "type": "uint256", "indexed": false }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ProposalExecuted",
+    "inputs": [
+      { "name": "proposalId", "type": "uint256", "indexed": true }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ProposalCanceled",
+    "inputs": [
+      { "name": "proposalId", "type": "uint256", "indexed": true }
+    ],
+    "anonymous": false
+  }
+]

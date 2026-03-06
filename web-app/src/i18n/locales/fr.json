@@ -1,0 +1,256 @@
+{
+  "common": {
+    "welcome": "Bienvenue",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "close": "Fermer",
+    "confirm": "Confirmer",
+    "back": "Retour",
+    "next": "Suivant",
+    "send": "Envoyer",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "connect": "Connecter",
+    "disconnect": "Déconnecter",
+    "online": "En ligne",
+    "offline": "Hors ligne",
+    "retry": "Réessayer",
+    "refresh": "Actualiser"
+  },
+
+  "auth": {
+    "connectWallet": "Connecter le Portefeuille",
+    "disconnectWallet": "Déconnecter le Portefeuille",
+    "walletConnected": "Portefeuille Connecté",
+    "walletDisconnected": "Portefeuille Déconnecté",
+    "noWalletDetected": "Aucun portefeuille détecté. Veuillez installer MetaMask.",
+    "switchNetwork": "Changer de Réseau",
+    "wrongNetwork": "Mauvais réseau. Veuillez passer à {{network}}."
+  },
+
+  "navigation": {
+    "home": "Accueil",
+    "dashboard": "Tableau de bord",
+    "wallet": "Portefeuille",
+    "identity": "Identité",
+    "governance": "Gouvernance",
+    "marketplace": "Marché",
+    "community": "Communauté",
+    "messaging": "Messagerie",
+    "profile": "Profil",
+    "settings": "Paramètres",
+    "ai": "Assistant IA",
+    "automation": "Automatisation",
+    "node": "Nœud",
+    "storage": "Stockage",
+    "queue": "File d'attente"
+  },
+
+  "wallet": {
+    "title": "Mon Portefeuille",
+    "balance": "Solde",
+    "tokens": "Jetons",
+    "transactions": "Transactions",
+    "send": "Envoyer",
+    "receive": "Recevoir",
+    "history": "Historique",
+    "address": "Adresse",
+    "copyAddress": "Copier l'Adresse",
+    "addressCopied": "Adresse copiée!",
+    "amount": "Montant",
+    "recipient": "Destinataire",
+    "sendTokens": "Envoyer des Jetons",
+    "transactionSuccess": "Transaction envoyée avec succès",
+    "transactionFailed": "Échec de la transaction",
+    "insufficientBalance": "Solde insuffisant",
+    "invalidAddress": "Adresse invalide",
+    "gasEstimate": "Estimation du Gaz"
+  },
+
+  "identity": {
+    "title": "Identité Numérique",
+    "createDID": "Créer DID",
+    "myDID": "Mon DID",
+    "verifications": "Vérifications",
+    "credentials": "Attestations",
+    "reputation": "Réputation",
+    "trustScore": "Score de Confiance",
+    "verified": "Vérifié",
+    "notVerified": "Non Vérifié",
+    "issueCredential": "Émettre une Attestation",
+    "addGuardian": "Ajouter un Gardien",
+    "guardians": "Gardiens",
+    "recoverIdentity": "Récupérer l'Identité"
+  },
+
+  "governance": {
+    "title": "Gouvernance",
+    "proposals": "Propositions",
+    "createProposal": "Créer une Proposition",
+    "vote": "Voter",
+    "voteFor": "Voter Pour",
+    "voteAgainst": "Voter Contre",
+    "abstain": "S'abstenir",
+    "active": "Actif",
+    "ended": "Terminé",
+    "passed": "Adopté",
+    "rejected": "Rejeté",
+    "quorum": "Quorum",
+    "threshold": "Seuil",
+    "votingPower": "Pouvoir de Vote",
+    "timeRemaining": "Temps Restant"
+  },
+
+  "marketplace": {
+    "title": "Marché",
+    "listings": "Annonces",
+    "myListings": "Mes Annonces",
+    "createListing": "Créer une Annonce",
+    "buy": "Acheter",
+    "sell": "Vendre",
+    "price": "Prix",
+    "seller": "Vendeur",
+    "buyer": "Acheteur",
+    "category": "Catégorie",
+    "condition": "État",
+    "description": "Description",
+    "images": "Images",
+    "purchase": "Acheter",
+    "makeOffer": "Faire une Offre",
+    "sold": "Vendu",
+    "available": "Disponible"
+  },
+
+  "community": {
+    "title": "Communauté",
+    "posts": "Publications",
+    "createPost": "Créer une Publication",
+    "comments": "Commentaires",
+    "likes": "J'aime",
+    "shares": "Partages",
+    "follow": "Suivre",
+    "unfollow": "Ne plus suivre",
+    "followers": "Abonnés",
+    "following": "Abonnements",
+    "trending": "Tendances",
+    "recent": "Récent"
+  },
+
+  "messaging": {
+    "title": "Messages",
+    "newMessage": "Nouveau Message",
+    "conversations": "Conversations",
+    "contacts": "Contacts",
+    "typeMessage": "Écrire un message...",
+    "sendMessage": "Envoyer le Message",
+    "attachFile": "Joindre un Fichier",
+    "voiceCall": "Appel Vocal",
+    "videoCall": "Appel Vidéo",
+    "messageRead": "Lu",
+    "messageDelivered": "Délivré",
+    "messageSent": "Envoyé"
+  },
+
+  "profile": {
+    "title": "Profil",
+    "editProfile": "Modifier le Profil",
+    "name": "Nom",
+    "bio": "Bio",
+    "avatar": "Avatar",
+    "uploadAvatar": "Télécharger l'Avatar",
+    "location": "Localisation",
+    "language": "Langue",
+    "timezone": "Fuseau Horaire",
+    "privacy": "Confidentialité",
+    "notifications": "Notifications",
+    "saveChanges": "Enregistrer les Modifications",
+    "profileUpdated": "Profil mis à jour avec succès"
+  },
+
+  "storage": {
+    "title": "Stockage Décentralisé",
+    "uploadFile": "Télécharger un Fichier",
+    "myFiles": "Mes Fichiers",
+    "shared": "Partagés",
+    "encrypted": "Chiffrés",
+    "public": "Publics",
+    "fileSize": "Taille du Fichier",
+    "uploadDate": "Date de Téléchargement",
+    "ipfsCID": "IPFS CID",
+    "download": "Télécharger",
+    "share": "Partager",
+    "delete": "Supprimer",
+    "uploadSuccess": "Fichier téléchargé avec succès",
+    "uploadFailed": "Échec du téléchargement"
+  },
+
+  "queue": {
+    "title": "File de Transactions",
+    "pendingTransactions": "Transactions en Attente",
+    "processAll": "Traiter Tout",
+    "queueEmpty": "La file est vide",
+    "status": "Statut",
+    "pending": "En attente",
+    "processing": "En traitement",
+    "confirmed": "Confirmé",
+    "failed": "Échoué",
+    "retryCount": "Nombre de Tentatives",
+    "submitNow": "Soumettre Maintenant",
+    "cancelTransaction": "Annuler"
+  },
+
+  "offline": {
+    "title": "Mode Hors Ligne",
+    "youAreOffline": "Vous êtes hors ligne",
+    "offlineMessage": "Pas de connexion Internet. Vos actions seront mises en file d'attente et synchronisées lorsque vous vous reconnecterez.",
+    "queuedActions": "Actions en File d'Attente",
+    "syncWhenOnline": "Synchronisera en ligne",
+    "workingOffline": "Travail en mode hors ligne",
+    "backOnline": "Vous êtes de retour en ligne!",
+    "syncing": "Synchronisation...",
+    "syncComplete": "Synchronisation terminée",
+    "syncFailed": "Échec de la synchronisation"
+  },
+
+  "settings": {
+    "title": "Paramètres",
+    "general": "Général",
+    "appearance": "Apparence",
+    "theme": "Thème",
+    "language": "Langue",
+    "notifications": "Notifications",
+    "privacy": "Confidentialité",
+    "security": "Sécurité",
+    "backup": "Sauvegarde",
+    "export": "Exporter les Données",
+    "import": "Importer les Données",
+    "resetSettings": "Réinitialiser les Paramètres",
+    "about": "À propos",
+    "version": "Version",
+    "help": "Aide",
+    "documentation": "Documentation"
+  },
+
+  "errors": {
+    "networkError": "Erreur réseau. Veuillez vérifier votre connexion.",
+    "serverError": "Erreur serveur. Veuillez réessayer plus tard.",
+    "unauthorized": "Non autorisé. Veuillez connecter votre portefeuille.",
+    "notFound": "Non trouvé.",
+    "validationError": "Erreur de validation. Veuillez vérifier votre saisie.",
+    "unknown": "Une erreur inconnue s'est produite."
+  },
+
+  "success": {
+    "saved": "Enregistré avec succès",
+    "deleted": "Supprimé avec succès",
+    "sent": "Envoyé avec succès",
+    "updated": "Mis à jour avec succès",
+    "created": "Créé avec succès"
+  }
+}
