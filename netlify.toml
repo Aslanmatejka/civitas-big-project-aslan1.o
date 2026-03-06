@@ -1,0 +1,33 @@
+# CIVITAS Web App — Netlify Configuration
+
+[build]
+  base = "web-app"
+  command = "npm install && npx vite build"
+  publish = "build"
+
+# Environment variables required at build time
+[build.environment]
+  NODE_VERSION = "18"
+  VITE_API_URL = "https://civitas-backend.onrender.com"
+
+# SPA — redirect all routes to index.html so React Router works
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(self), geolocation=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://*.xmtp.org wss://*.xmtp.org https://*.infura.io https://*.ipfs.io https://civitas-backend.onrender.com http://localhost:*; img-src 'self' data: blob: https://*.ipfs.io; font-src 'self' data:; worker-src 'self' blob:;"
+
+# Cache static assets aggressively
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
