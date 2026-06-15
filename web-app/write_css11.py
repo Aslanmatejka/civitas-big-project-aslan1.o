@@ -1,4 +1,7 @@
-/* MessagingPage */
+import os
+d = r'C:\Users\aslan\OneDrive\Desktop\civitas-big-project-aslan1.o\web-app\src\pages'
+
+open(os.path.join(d, 'MessagingPage.css'), 'w', encoding='utf-8').write("""/* MessagingPage */
 .messaging-page { height: calc(100vh - 60px); display: flex; overflow: hidden; animation: fadeIn 0.35s ease both; }
 .messaging-container { display: flex; width: 100%; height: 100%; }
 .not-connected { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; padding: var(--sp-8); color: var(--text-2); text-align: center; }
@@ -280,3 +283,6 @@
   .contacts-panel.hidden { transform: translateX(-100%); }
   .chat-panel { width: 100%; }
 }
+""")
+
+print('MessagingPage.css done')

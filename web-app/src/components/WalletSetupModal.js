@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { X, KeyRound, Eye, EyeOff, Zap, Sparkles, Download, Lock, Wallet as WalletIcon } from 'lucide-react';
 import './WalletSetupModal.css';
 
 /**
@@ -100,9 +101,9 @@ export default function WalletSetupModal({
     return (
       <div className="wsm-overlay" onClick={onClose}>
         <div className="wsm-modal" onClick={e => e.stopPropagation()}>
-          <button className="wsm-close" onClick={onClose}>✕</button>
+          <button className="wsm-close" onClick={onClose}><X size={16} /></button>
           <div className="wsm-header">
-            <div className="wsm-icon">🔑</div>
+            <div className="wsm-icon"><KeyRound size={28} /></div>
             <h2>Your Recovery Phrase</h2>
             <p className="wsm-sub">Write these 12 words down in order and store them somewhere safe. <strong>Never share them with anyone.</strong></p>
           </div>
@@ -118,8 +119,8 @@ export default function WalletSetupModal({
 
           {!showWords && (
             <button className="wsm-btn wsm-btn-ghost" onClick={() => setShowWords(true)}>
-              👁 Reveal Recovery Phrase
-            </button>
+                <Eye size={14} /> Reveal Recovery Phrase
+              </button>
           )}
 
           {showWords && (
@@ -138,7 +139,7 @@ export default function WalletSetupModal({
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                   />
-                  <button className="wsm-eye" onClick={() => setShowPassword(p => !p)}>{showPassword ? '🙈' : '👁'}</button>
+                  <button className="wsm-eye" onClick={() => setShowPassword(p => !p)}>{showPassword ? <EyeOff size={14} /> : <Eye size={14} />}</button>
                 </div>
               </div>
 
@@ -155,7 +156,7 @@ export default function WalletSetupModal({
               {error && <p className="wsm-error">{error}</p>}
 
               <button className="wsm-btn wsm-btn-primary" onClick={handleCreate} disabled={!backedUp}>
-                🚀 Create Wallet
+                <Zap size={14} /> Create Wallet
               </button>
             </>
           )}
@@ -170,11 +171,11 @@ export default function WalletSetupModal({
     return (
       <div className="wsm-overlay" onClick={onClose}>
         <div className="wsm-modal" onClick={e => e.stopPropagation()}>
-          <button className="wsm-close" onClick={onClose}>✕</button>
+          <button className="wsm-close" onClick={onClose}><X size={16} /></button>
           <button className="wsm-back" onClick={() => { setScreen('choice'); clearError(); }}>← Back</button>
 
           <div className="wsm-header">
-            <div className="wsm-icon">📥</div>
+            <div className="wsm-icon"><Download size={28} /></div>
             <h2>Import Existing Wallet</h2>
           </div>
 
@@ -217,7 +218,7 @@ export default function WalletSetupModal({
                 value={password}
                 onChange={e => setPassword(e.target.value)}
               />
-              <button className="wsm-eye" onClick={() => setShowPassword(p => !p)}>{showPassword ? '🙈' : '👁'}</button>
+              <button className="wsm-eye" onClick={() => setShowPassword(p => !p)}>{showPassword ? <EyeOff size={14} /> : <Eye size={14} />}</button>
             </div>
           </div>
 
@@ -234,10 +235,10 @@ export default function WalletSetupModal({
           {error && <p className="wsm-error">{error}</p>}
 
           <button className="wsm-btn wsm-btn-primary" onClick={handleImport}>
-            📥 Import Wallet
+            <Download size={14} /> Import Wallet
           </button>
 
-          <p className="wsm-notice">🔒 Your keys never leave your device. Everything is encrypted locally.</p>
+          <p className="wsm-notice"><Lock size={13} /> Your keys never leave your device. Everything is encrypted locally.</p>
         </div>
       </div>
     );
@@ -248,10 +249,10 @@ export default function WalletSetupModal({
   return (
     <div className="wsm-overlay" onClick={onClose}>
       <div className="wsm-modal" onClick={e => e.stopPropagation()}>
-        <button className="wsm-close" onClick={onClose}>✕</button>
+          <button className="wsm-close" onClick={onClose}><X size={16} /></button>
 
         <div className="wsm-header">
-          <div className="wsm-logo">⚡</div>
+          <div className="wsm-logo"><Zap size={32} /></div>
           <h2>Get Started with CIVITAS</h2>
           <p className="wsm-sub">Choose how you want to access your wallet.</p>
         </div>
@@ -261,7 +262,7 @@ export default function WalletSetupModal({
             className="wsm-option-card wsm-option-create"
             onClick={() => { setScreen('reveal'); onCreateWallet(null); /* triggers generation */ }}
           >
-            <div className="wsm-option-icon">✨</div>
+            <div className="wsm-option-icon"><Sparkles size={28} /></div>
             <div className="wsm-option-text">
               <h3>Create New Wallet</h3>
               <p>Generate a fresh wallet with a recovery phrase. No MetaMask needed.</p>
@@ -272,7 +273,7 @@ export default function WalletSetupModal({
             className="wsm-option-card wsm-option-import"
             onClick={() => { setScreen('import'); clearError(); }}
           >
-            <div className="wsm-option-icon">📥</div>
+            <div className="wsm-option-icon"><Download size={28} /></div>
             <div className="wsm-option-text">
               <h3>Import Existing Wallet</h3>
               <p>Restore from a 12-word seed phrase or private key.</p>
@@ -281,7 +282,7 @@ export default function WalletSetupModal({
 
           {hasMetaMask && (
             <button className="wsm-option-card wsm-option-metamask" onClick={onMetaMask}>
-              <div className="wsm-option-icon">🦊</div>
+              <div className="wsm-option-icon"><WalletIcon size={28} /></div>
               <div className="wsm-option-text">
                 <h3>Connect MetaMask</h3>
                 <p>Use an existing MetaMask or browser wallet extension.</p>
@@ -290,7 +291,7 @@ export default function WalletSetupModal({
           )}
         </div>
 
-        <p className="wsm-notice">🔒 Self-custodial — CIVITAS never stores or sees your private keys.</p>
+        <p className="wsm-notice"><Lock size={13} /> Self-custodial — CIVITAS never stores or sees your private keys.</p>
       </div>
     </div>
   );

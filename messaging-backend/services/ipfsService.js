@@ -62,8 +62,14 @@ class IPFSService {
 
     // Dynamically import ESM-only ipfs-http-client only when IPFS is enabled
     if (!create) {
-      const mod = await import('ipfs-http-client');
-      create = mod.create;
+      try {
+        const mod = await import('ipfs-http-client');
+        create = mod.create;
+      } catch (_importErr) {
+        console.warn('⚠️  ipfs-http-client not installed — using local file fallback.');
+        this.initialized = false;
+        return false;
+      }
     }
 
     try {

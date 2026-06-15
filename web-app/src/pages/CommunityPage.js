@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
+import { Users, Heart, MessageCircle, Share2 } from 'lucide-react';
 import './CommunityPage.css';
 
 export default function CommunityPage() {
@@ -149,7 +150,7 @@ export default function CommunityPage() {
   return (
     <div className="community-page">
       <div className="community-container">
-        <h1>👥 Community</h1>
+        <h1><Users size={24} /> Community</h1>
         <p className="subtitle">Connect with other CIVITAS members</p>
 
         {/* Create Post */}
@@ -216,16 +217,16 @@ export default function CommunityPage() {
                     className={`action-btn ${post.isLikedByUser ? 'liked' : ''}`}
                     onClick={() => handleLikePost(post)}
                   >
-                    {post.isLikedByUser ? '❤️' : '🤍'} {post.likesCount}
+                    <Heart size={14} className={post.isLikedByUser ? 'heart-filled' : ''} /> {post.likesCount}
                   </button>
                   <button 
                     className="action-btn"
                     onClick={() => handleShowComments(post)}
                   >
-                    💬 {post.commentsCount}
+                    <MessageCircle size={14} /> {post.commentsCount}
                   </button>
                   <button className="action-btn">
-                    🔗 Share
+                    <Share2 size={14} /> Share
                   </button>
                 </div>
 

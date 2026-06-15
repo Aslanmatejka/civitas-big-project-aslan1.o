@@ -1,6 +1,7 @@
-import React from 'react';
+﻿import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
+
 
 // Context
 import { AppProvider } from './context/AppContext';
@@ -29,6 +30,7 @@ import AppStorePage from './pages/AppStorePage';
 import DataVaultPage from './pages/DataVaultPage';
 import MobileMoneyPage from './pages/MobileMoneyPage';
 import AirdropPage from './pages/AirdropPage';
+import AntiTraffickingPage from './pages/AntiTraffickingPage';
 
 function AppLayout() {
   const location = useLocation();
@@ -37,7 +39,7 @@ function AppLayout() {
   return (
     <div className="App">
       <Header />
-      <main className="main-content">
+      <main className="main-content" id="main-content">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/wallet" element={<WalletPage />} />
@@ -58,9 +60,10 @@ function AppLayout() {
           <Route path="/datavault" element={<DataVaultPage />} />
           <Route path="/mobile-money" element={<MobileMoneyPage />} />
           <Route path="/airdrop" element={<AirdropPage />} />
+          <Route path="/anti-trafficking" element={<AntiTraffickingPage />} />
         </Routes>
+        {!hideFooter && <Footer />}
       </main>
-      {!hideFooter && <Footer />}
     </div>
   );
 }

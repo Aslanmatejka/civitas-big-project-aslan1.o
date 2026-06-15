@@ -1,4 +1,7 @@
-/* MarketplacePage */
+import os
+d = r'C:\Users\aslan\OneDrive\Desktop\civitas-big-project-aslan1.o\web-app\src\pages'
+
+open(os.path.join(d, 'MarketplacePage.css'), 'w', encoding='utf-8').write("""/* MarketplacePage */
 .marketplace-page { padding: var(--sp-8); animation: fadeIn 0.35s ease both; }
 .marketplace-container { max-width: 1000px; margin: 0 auto; }
 .not-connected { text-align: center; padding: var(--sp-16); color: var(--text-2); }
@@ -88,3 +91,18 @@
 @media (max-width: 480px) {
   .listings-grid { grid-template-columns: 1fr; }
 }
+""")
+
+# ── MessagingPage.css check ───────────────────────────────────────────────────
+# MessagingPage is complex - let's verify it has key classes
+import re
+with open(os.path.join(d, 'MessagingPage.js'), 'r', encoding='utf-8') as f:
+    js = f.read()
+with open(os.path.join(d, 'MessagingPage.css'), 'r', encoding='utf-8') as f:
+    css = f.read()
+
+classes = set(re.findall(r'"([a-z][a-z0-9\-]+)"', js))
+missing = [c for c in sorted(classes) if '.' + c not in css and c not in ('true', 'false')]
+print(f"MessagingPage missing ({len(missing)}): {', '.join(missing[:20])}...")
+
+print('MarketplacePage.css done')

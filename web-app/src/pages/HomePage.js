@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
+import {
+  Coins, Star, Vote, Package, ShoppingCart, Truck,
+  Fingerprint, Wallet, HardDrive, MessageCircle, RefreshCw, Scale,
+  Send, ArrowUpRight,
+} from 'lucide-react';
 import './HomePage.css';
 
 export default function HomePage() {
@@ -74,28 +79,28 @@ export default function HomePage() {
           {/* Quick Stats */}
           <div className="quick-stats">
             <div className="stat-card">
-              <div className="stat-icon">💰</div>
+              <div className="stat-icon"><Coins size={20} /></div>
               <div className="stat-content">
                 <div className="stat-value">{parseFloat(profile.balance || 0).toFixed(2)} CIV</div>
                 <div className="stat-label">Balance</div>
               </div>
             </div>
             <div className="stat-card">
-              <div className="stat-icon">⭐</div>
+              <div className="stat-icon"><Star size={20} /></div>
               <div className="stat-content">
                 <div className="stat-value">{profile.reputation || 0}</div>
                 <div className="stat-label">Reputation</div>
               </div>
             </div>
             <div className="stat-card">
-              <div className="stat-icon">🗳️</div>
+              <div className="stat-icon"><Vote size={20} /></div>
               <div className="stat-content">
                 <div className="stat-value">{activity.totalVotes || 0}</div>
                 <div className="stat-label">Votes Cast</div>
               </div>
             </div>
             <div className="stat-card">
-              <div className="stat-icon">📦</div>
+              <div className="stat-icon"><Package size={20} /></div>
               <div className="stat-content">
                 <div className="stat-value">{activity.totalListings || 0}</div>
                 <div className="stat-label">Listings</div>
@@ -112,7 +117,7 @@ export default function HomePage() {
               <div className="action-cards">
                 {pending.proposalsToVote > 0 && (
                   <div className="action-card" onClick={() => navigate('/governance')}>
-                    <span className="action-icon">🗳️</span>
+                    <span className="action-icon"><Vote size={20} /></span>
                     <div className="action-content">
                       <h3>{pending.proposalsToVote} Proposals</h3>
                       <p>Waiting for your vote</p>
@@ -122,7 +127,7 @@ export default function HomePage() {
                 )}
                 {pending.ordersToComplete > 0 && (
                   <div className="action-card" onClick={() => navigate('/marketplace')}>
-                    <span className="action-icon">📦</span>
+                    <span className="action-icon"><Package size={20} /></span>
                     <div className="action-content">
                       <h3>{pending.ordersToComplete} Orders</h3>
                       <p>Review and complete delivery</p>
@@ -132,7 +137,7 @@ export default function HomePage() {
                 )}
                 {pending.ordersToDeliver > 0 && (
                   <div className="action-card" onClick={() => navigate('/marketplace')}>
-                    <span className="action-icon">🚚</span>
+                    <span className="action-icon"><Truck size={20} /></span>
                     <div className="action-content">
                       <h3>{pending.ordersToDeliver} Sales</h3>
                       <p>Deliver to buyers</p>
@@ -155,7 +160,7 @@ export default function HomePage() {
                 <div className="activity-list">
                   {recentVotes.map((vote, idx) => (
                     <div key={`vote-${idx}`} className="activity-item">
-                      <span className="activity-icon">🗳️</span>
+                      <span className="activity-icon"><Vote size={16} /></span>
                       <span>Voted {vote.voteType} on Proposal #{vote.proposalId}</span>
                       <span className="activity-time">
                         {new Date(vote.timestamp).toLocaleDateString()}
@@ -165,7 +170,7 @@ export default function HomePage() {
                   {recentOrders.map((order, idx) => (
                     <div key={`order-${idx}`} className="activity-item">
                       <span className="activity-icon">
-                        {order.type === 'purchase' ? '🛒' : '💰'}
+                        {order.type === 'purchase' ? <ShoppingCart size={16} /> : <Coins size={16} />}
                       </span>
                       <span>
                         {order.type === 'purchase' ? 'Purchased' : 'Sold'}: {order.title}
@@ -206,19 +211,19 @@ export default function HomePage() {
 
           {/* Quick Actions */}
           <div className="quick-actions">
-            <h2>Quick Actions</h2>
+            <h2 className="section-title">Quick Actions</h2>
             <div className="action-buttons">
-              <button className="action-btn" onClick={() => navigate('/wallet')}>
-                💸 Send CIV
+              <button className="btn btn-secondary" onClick={() => navigate('/wallet')}>
+                <Send size={14} /> Send CIV
               </button>
-              <button className="action-btn" onClick={() => navigate('/governance')}>
-                🗳️ Vote on Proposals
+              <button className="btn btn-secondary" onClick={() => navigate('/governance')}>
+                <Vote size={14} /> Vote on Proposals
               </button>
-              <button className="action-btn" onClick={() => navigate('/marketplace')}>
-                📦 Browse Marketplace
+              <button className="btn btn-secondary" onClick={() => navigate('/marketplace')}>
+                <ShoppingCart size={14} /> Browse Marketplace
               </button>
-              <button className="action-btn" onClick={() => navigate('/identity')}>
-                🆔 Manage Identity
+              <button className="btn btn-secondary" onClick={() => navigate('/identity')}>
+                <Fingerprint size={14} /> Manage Identity
               </button>
             </div>
           </div>
@@ -230,126 +235,115 @@ export default function HomePage() {
   // Show landing page if not connected
   return (
     <div className="home-page">
+
+      {/* ─── Hero ─── */}
       <section className="hero">
-        <div className="container">
+        {/* Large background identity icon */}
+        <div className="hero-bg-icon" aria-hidden="true">
+          <Fingerprint size={640} strokeWidth={0.35} />
+        </div>
+        <div className="hero-content">
+          <div className="hero-eyebrow">
+            <span className="hero-eyebrow-dot" />
+            Decentralized · Sovereign · Open
+          </div>
           <h1 className="hero-title">
-            Own Your Digital Life
+            Own Your<br />
+            <span className="gradient-text">Digital Life</span>
           </h1>
           <p className="hero-subtitle">
-            CIVITAS is a decentralized ecosystem empowering global digital sovereignty 
+            CIVITAS is a decentralized ecosystem empowering global digital sovereignty
             through self-sovereign identity, non-custodial finance, and community governance.
           </p>
           <div className="hero-cta">
-            <button className="btn btn-primary btn-large" onClick={handleGetStarted}>
-              {isConnected ? 'Go to Wallet' : 'Get Started'}
+            <button className="btn btn-primary btn-lg" onClick={handleGetStarted}>
+              {isConnected ? 'Go to Wallet' : 'Get Started Free'}
             </button>
-            <button className="btn btn-secondary btn-large" onClick={() => navigate('/docs')}>
-              Learn More
+            <button className="btn btn-secondary btn-lg" onClick={() => navigate('/docs')}>
+              Read the Docs
             </button>
           </div>
-        </div>
-      </section>
 
-      <section className="features">
-        <div className="container">
-          <h2 className="section-title">All-In-One Digital Ecosystem</h2>
-          
-          <div className="features-grid">
-            <div className="feature-card">
-              <div className="feature-icon">🆔</div>
-              <h3>Self-Sovereign Identity</h3>
-              <p>
-                Control your digital identity with decentralized identifiers (DIDs) 
-                and verifiable credentials. No central authority.
-              </p>
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <div className="hero-stat-value">10M+</div>
+              <div className="hero-stat-label">Target Users</div>
             </div>
-
-            <div className="feature-card">
-              <div className="feature-icon">💰</div>
-              <h3>Non-Custodial Finance</h3>
-              <p>
-                Your keys, your crypto. P2P payments, smart escrows, and automated 
-                savings without intermediaries.
-              </p>
+            <div className="hero-stat">
+              <div className="hero-stat-value">100%</div>
+              <div className="hero-stat-label">Data Ownership</div>
             </div>
-
-            <div className="feature-card">
-              <div className="feature-icon">📦</div>
-              <h3>Decentralized Storage</h3>
-              <p>
-                Encrypted file storage on IPFS. Your data stays private and 
-                accessible only to you.
-              </p>
+            <div className="hero-stat">
+              <div className="hero-stat-value">0</div>
+              <div className="hero-stat-label">Middlemen</div>
             </div>
-
-            <div className="feature-card">
-              <div className="feature-icon">💬</div>
-              <h3>Secure Communication</h3>
-              <p>
-                End-to-end encrypted messaging and social tools. No surveillance, 
-                no data mining.
-              </p>
-            </div>
-
-            <div className="feature-card">
-              <div className="feature-icon">⚙️</div>
-              <h3>Smart Automation</h3>
-              <p>
-                Programmable smart contracts for everyday tasks. Automate payments, 
-                alerts, and more.
-              </p>
-            </div>
-
-            <div className="feature-card">
-              <div className="feature-icon">🗳️</div>
-              <h3>DAO Governance</h3>
-              <p>
-                Community-driven decisions with quadratic voting. Shape the future 
-                of CIVITAS together.
-              </p>
+            <div className="hero-stat">
+              <div className="hero-stat-value">E2E</div>
+              <div className="hero-stat-label">Encrypted</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="stats">
-        <div className="container">
-          <h2 className="section-title">Revolutionizing Digital Life Globally</h2>
-          
-          <div className="stats-grid">
-            <div className="stat-card">
-              <div className="stat-value">10M+</div>
-              <div className="stat-label">Target Users by 2030</div>
+      {/* ─── Features ─── */}
+      <section className="features-section">
+        <div className="features-section section-eyebrow">Everything you need</div>
+        <h2 className="features-section section-heading">All-In-One Digital Ecosystem</h2>
+
+        <div className="features-grid">
+          {[
+            { Icon: Fingerprint, title: 'Self-Sovereign Identity', desc: 'Control your digital identity with decentralized identifiers (DIDs) and verifiable credentials. No central authority.' },
+            { Icon: Wallet,      title: 'Non-Custodial Finance',   desc: 'Your keys, your crypto. P2P payments, smart escrows, and automated savings without intermediaries.' },
+            { Icon: HardDrive,   title: 'Decentralized Storage',   desc: 'Encrypted file storage on IPFS. Your data stays private and accessible only to you.' },
+            { Icon: MessageCircle, title: 'Secure Messaging',      desc: 'End-to-end encrypted messaging via XMTP. No surveillance, no data mining, no servers.' },
+            { Icon: RefreshCw,   title: 'Smart Automation',        desc: 'Programmable smart contracts for everyday tasks. Automate payments, alerts, and more.' },
+            { Icon: Scale,       title: 'DAO Governance',          desc: 'Community-driven decisions with quadratic voting. Shape the future of CIVITAS together.' },
+          ].map(({ Icon, title, desc }) => (
+            <div className="feature-card" key={title}>
+              <div className="feature-icon-wrap"><Icon size={28} /></div>
+              <h3>{title}</h3>
+              <p>{desc}</p>
             </div>
-            
-            <div className="stat-card">
-              <div className="stat-value">50%</div>
-              <div className="stat-label">From Developing Countries</div>
-            </div>
-            
-            <div className="stat-card">
-              <div className="stat-value">60%</div>
-              <div className="stat-label">Reduction in Financial Losses</div>
-            </div>
-            
-            <div className="stat-card">
-              <div className="stat-value">100%</div>
-              <div className="stat-label">User Data Ownership</div>
-            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── Stats ─── */}
+      <section className="stats-section">
+        <div className="stats-grid">
+          <div className="stat-item">
+            <div className="stat-value">10M+</div>
+            <div className="stat-label">Target Users by 2030</div>
+          </div>
+          <div className="stat-item">
+            <div className="stat-value">50%</div>
+            <div className="stat-label">From Developing Countries</div>
+          </div>
+          <div className="stat-item">
+            <div className="stat-value">60%</div>
+            <div className="stat-label">Reduction in Financial Loss</div>
+          </div>
+          <div className="stat-item">
+            <div className="stat-value">100%</div>
+            <div className="stat-label">User Data Ownership</div>
           </div>
         </div>
       </section>
 
+      {/* ─── CTA ─── */}
       <section className="cta-section">
-        <div className="container">
-          <div className="cta-card">
-            <h2>Ready to Take Control?</h2>
-            <p>
-              Join the digital sovereignty revolution. Build a future where you 
-              own your identity, data, and financial freedom.
-            </p>
-            <button className="btn btn-primary btn-large" onClick={handleGetStarted}>
+        <div className="cta-card">
+          <h2>Ready to Take Control?</h2>
+          <p>
+            Join the digital sovereignty revolution. Build a future where you
+            own your identity, data, and financial freedom.
+          </p>
+          <div className="cta-btn-group">
+            <button className="btn btn-primary btn-lg" onClick={handleGetStarted}>
               {isConnected ? 'Go to Dashboard' : 'Launch App'}
+            </button>
+            <button className="btn btn-ghost btn-lg" onClick={() => navigate('/community')}>
+              Join Community
             </button>
           </div>
         </div>

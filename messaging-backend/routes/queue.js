@@ -7,117 +7,120 @@ const express = require('express');
 const router  = express.Router();
 const store   = require('../services/store');
 
-// ── Helper: find a queue item by ID across all addresses ──────────────────────
-function findQueueItem(id) {
-  const allItems = store.collection('queue') || [];
-  // persisted.queue is an array
-  if (Array.isArray(allItems)) return null;
-  // Use the raw queue array from the store internals
-  return null;
+// Normalize stored queue item → UI-expected shape
+function normalizeItem(m) {
+  return {
+    _id:        m.id,
+    id:         m.id,
+    type:       m.type || 'other',
+    description: m.description || m.payload?.description || '',
+    data:       m.data || m.payload || {},
+    priority:   m.priority || 0,
+    status:     m.status || 'pending',
+    createdAt:  m.createdAt || m.enqueuedAt || Date.now(),
+    retryCount: m.retryCount || 0,
+    maxRetries: m.maxRetries || 3,
+    result:     m.result || {}
+  };
 }
 
-// Get queued items for a user
+// GET / — list queued (pending) items for a user
 router.get('/', (req, res) => {
   const { walletAddress, status } = req.query;
   if (!walletAddress) return res.status(400).json({ error: 'walletAddress required' });
 
-  let items = store.getQueue(walletAddress);
-  if (status === 'pending') items = items.filter(m => !m.delivered);
+  let items = store.getQueue(walletAddress).map(normalizeItem);
+  if (status) items = items.filter(i => i.status === status);
   res.json({ success: true, items });
 });
 
-// Get by ID — search through persisted queue array
+// GET /stats/:walletAddress — queue statistics
 router.get('/stats/:walletAddress', (req, res) => {
-  const items = store.getQueue(req.params.walletAddress);
-  const pending = items.filter(m => !m.delivered);
+  const items = store.getQueue(req.params.walletAddress).map(normalizeItem);
+  const byStatus = (s) => items.filter(i => i.status === s).length;
+  const total = items.length;
   res.json({
     success: true,
     stats: {
-      total: items.length,
-      pending: pending.length,
-      delivered: items.length - pending.length
+      total,
+      pending:    byStatus('pending'),
+      processing: byStatus('processing'),
+      confirmed:  byStatus('confirmed'),
+      failed:     byStatus('failed'),
+      successRate: 0
     }
   });
 });
 
+// GET /:id — single item (not easily accessible without address; return 404)
 router.get('/:id', (req, res) => {
-  // Search through the entire queue collection for this ID
-  const queue = store.collection('queue');
-  // persisted.queue is referenced by store.getQueue; here we need a different approach
-  // The queue items are in the persisted store as an array, accessed via getQueue
-  // We need to iterate. Use a linear scan:
-  const allItems = Array.isArray(queue) ? queue : [];
-  // Actually, queue is stored as persisted.queue which is an array
-  // store.collection('queue') returns it, but it's an array not an object
-  // Let's search via the raw data
-  let item = null;
-  // Try to find by iterating all queue items
-  const allQueue = store.getQueue ? (() => {
-    // getQueue requires an address, so we can't search all
-    // Instead just return not found if we can't locate it
-    return [];
-  })() : [];
-  
-  if (!item) return res.status(404).json({ error: 'Not found' });
-  res.json({ success: true, item });
+  res.status(404).json({ error: 'Not found' });
 });
 
-// Enqueue item
+// POST / — enqueue a transaction
 router.post('/', (req, res) => {
-  const { recipient, type, payload, priority } = req.body;
+  const { recipient, type, payload, data, priority, description } = req.body;
   if (!recipient || !type) return res.status(400).json({ error: 'recipient and type required' });
-  store.enqueue({ recipient: recipient.toLowerCase(), type, payload, priority });
-  store.save();
+  store.enqueue({
+    recipient:   recipient.toLowerCase(),
+    type,
+    payload:     data || payload || {},
+    data:        data || payload || {},
+    description: description || '',
+    priority:    priority || 0,
+    status:      'pending',
+    retryCount:  0,
+    maxRetries:  3,
+    result:      {},
+    createdAt:   Date.now()
+  });
   res.status(201).json({ success: true, message: 'Queued' });
 });
 
-// Submit (process) a specific queued transaction
+// POST /process-all — submit all pending items for a user
+router.post('/process-all', (req, res) => {
+  const { walletAddress } = req.body;
+  if (!walletAddress) return res.status(400).json({ error: 'walletAddress required' });
+  const items = store.getQueue(walletAddress);
+  items.forEach(m => { m.status = 'confirmed'; m.delivered = true; });
+  store.save();
+  res.json({ success: true, processed: items.length, failed: 0 });
+});
+
+// POST /:id/submit
 router.post('/:id/submit', (req, res) => {
   store.markDelivered(req.params.id);
   store.save();
   res.json({ success: true, message: 'Transaction submitted' });
 });
 
-// Process all pending items for a user
-router.post('/process-all', (req, res) => {
-  const { walletAddress } = req.body;
-  if (!walletAddress) return res.status(400).json({ error: 'walletAddress required' });
-  const items = store.getQueue(walletAddress);
-  items.forEach(m => { m.delivered = true; });
-  store.save();
-  res.json({ success: true, processed: items.length });
-});
-
-// Cancel a queued transaction
+// POST /:id/cancel
 router.post('/:id/cancel', (req, res) => {
-  store.markDelivered(req.params.id); // Mark as delivered to remove from queue
+  store.markDelivered(req.params.id);
   store.save();
   res.json({ success: true, message: 'Transaction cancelled' });
 });
 
-// Retry a queued transaction
+// POST /:id/retry
 router.post('/:id/retry', (req, res) => {
-  // Re-enqueue: just reset delivered flag
-  // Since markDelivered sets delivered=true, retry would need to set it back
-  // For now, just acknowledge
   res.json({ success: true, message: 'Transaction queued for retry' });
 });
 
-// Mark delivered
+// PUT /:id/delivered
 router.put('/:id/delivered', (req, res) => {
   store.markDelivered(req.params.id);
   store.save();
   res.json({ success: true, message: 'Marked delivered' });
 });
 
-// Flush delivered items
+// DELETE /flush
 router.delete('/flush', (req, res) => {
   store.clearDelivered();
   store.save();
   res.json({ success: true, message: 'Flushed delivered items' });
 });
 
-// Delete item
+// DELETE /:id
 router.delete('/:id', (req, res) => {
   store.markDelivered(req.params.id);
   store.save();
@@ -125,3 +128,4 @@ router.delete('/:id', (req, res) => {
 });
 
 module.exports = router;
+

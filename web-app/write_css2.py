@@ -1,4 +1,8 @@
-/* AppStorePage */
+import os
+d = r'C:\Users\aslan\OneDrive\Desktop\civitas-big-project-aslan1.o\web-app\src\pages'
+
+# ── AppStorePage.css ───────────────────────────────────────────────────────────
+open(os.path.join(d, 'AppStorePage.css'), 'w', encoding='utf-8').write("""/* AppStorePage */
 .appstore-page { padding: var(--sp-8); animation: fadeIn 0.35s ease both; }
 
 /* Header */
@@ -238,28 +242,6 @@
 @media (max-width: 480px) {
   .apps-grid { grid-template-columns: 1fr; }
 }
+""")
 
-/* Additional AppStore classes */
-.browse-layout { display: flex; gap: 20px; align-items: flex-start; }
-.category-sidebar { width: 200px; flex-shrink: 0; background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-2xl); padding: 12px; }
-.sidebar-section { margin-bottom: 8px; }
-.browse-main { flex: 1; min-width: 0; }
-.apps-section { margin-bottom: var(--sp-8); }
-.apps-section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-.apps-section-header h2 { font-size: 1rem; font-weight: 700; color: var(--text-1); }
-.app-count, .cat-count { font-size: .75rem; color: var(--text-3); background: var(--surface-2); padding: 2px 8px; border-radius: var(--r-full); }
-.featured-section { margin-bottom: var(--sp-6); }
-.featured-scroll { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; }
-.featured-scroll::-webkit-scrollbar { height: 4px; }
-.loading-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 16px; }
-.skeleton-card { background: var(--surface-1); border-radius: var(--r-2xl); height: 220px; animation: pulse-glow 1.5s ease infinite; }
-.empty-state { text-align: center; padding: var(--sp-12); color: var(--text-3); }
-.empty-icon { font-size: 3rem; margin-bottom: 12px; }
-.installed-page { padding: var(--sp-6) 0; }
-.submit-page { max-width: 560px; }
-.submit-card { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-2xl); padding: 28px; }
-.submit-intro { font-size: .875rem; color: var(--text-2); margin-bottom: var(--sp-6); }
-.icon-preview { width: 64px; height: 64px; border-radius: var(--r-xl); background: var(--surface-2); display: flex; align-items: center; justify-content: center; font-size: 2rem; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.submit-btn { padding: 12px 28px; background: var(--grad-primary); color: #fff; border: none; border-radius: var(--r-full); font-size: .9rem; font-weight: 700; cursor: pointer; }
-.connect-warning { background: var(--violet-dim); border: 1px solid var(--border-accent); border-radius: var(--r-xl); padding: 12px 16px; font-size: .85rem; color: var(--violet-light); margin-bottom: 16px; }
+print('AppStorePage.css done')

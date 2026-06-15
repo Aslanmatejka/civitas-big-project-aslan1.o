@@ -576,6 +576,54 @@ export const queueApi = {
     api.get(`/queue/stats/${walletAddress}`)
 };
 
+// Anti-Trafficking API
+// Airdrop API
+export const airdropApi = {
+  getProof: (address) =>
+    api.get(`/airdrop/proof/${address}`),
+
+  getRounds: () =>
+    api.get('/airdrop/rounds'),
+
+  getStats: () =>
+    api.get('/airdrop/stats'),
+
+  recordClaim: (address, roundId, txHash) =>
+    api.post('/airdrop/claim-record', { address, roundId, txHash }),
+
+  adminAddProof: (roundId, address, amount, proof, regional = false) =>
+    api.post('/airdrop/admin/proof/single', { roundId, address, amount, proof, regional }),
+
+  adminBulkProof: (roundId, entries) =>
+    api.post('/airdrop/admin/proof', { roundId, entries }),
+
+  adminCreateRound: (data) =>
+    api.post('/airdrop/admin/round', data)
+};
+
+export const antiTraffickingApi = {
+  getResources: () =>
+    api.get('/anti-trafficking/resources'),
+
+  getWarningSigns: () =>
+    api.get('/anti-trafficking/warning-signs'),
+
+  submitReport: (data) =>
+    api.post('/anti-trafficking/report', data),
+
+  getMyReports: (walletAddress) =>
+    api.get('/anti-trafficking/my-reports', { params: { walletAddress } }),
+
+  getStats: () =>
+    api.get('/anti-trafficking/stats'),
+
+  getAlerts: (region) =>
+    api.get('/anti-trafficking/alerts', { params: region ? { region } : {} }),
+
+  postAlert: (data) =>
+    api.post('/anti-trafficking/alerts', data)
+};
+
 export default {
   authApi,
   messagesApi,
@@ -594,5 +642,7 @@ export default {
   automationApi,
   nodeApi,
   storageApi,
-  queueApi
+  queueApi,
+  antiTraffickingApi,
+  airdropApi
 };

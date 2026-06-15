@@ -1,4 +1,8 @@
-/* AnalyticsPage */
+import os
+d = r'C:\Users\aslan\OneDrive\Desktop\civitas-big-project-aslan1.o\web-app\src\pages'
+
+# ── AnalyticsPage.css ─────────────────────────────────────────────────────────
+open(os.path.join(d, 'AnalyticsPage.css'), 'w', encoding='utf-8').write("""/* AnalyticsPage */
 .analytics-page { padding: var(--sp-8); animation: fadeIn 0.35s ease both; }
 .analytics-container { max-width: 1000px; margin: 0 auto; }
 .not-connected { text-align: center; padding: var(--sp-16); color: var(--text-2); }
@@ -130,3 +134,6 @@
   .analytics-page { padding: var(--sp-4); }
   .metrics-grid { grid-template-columns: repeat(2,1fr); }
 }
+""")
+
+print('AnalyticsPage.css done')

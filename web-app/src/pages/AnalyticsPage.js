@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
+import { BarChart2 } from 'lucide-react';
 import './AnalyticsPage.css';
 
 export default function AnalyticsPage() {
@@ -79,7 +80,7 @@ export default function AnalyticsPage() {
     <div className="analytics-page">
       <div className="analytics-container">
         <div className="analytics-header">
-          <h1>📊 Network Analytics</h1>
+          <h1><BarChart2 size={24} /> Network Analytics</h1>
           <p className="subtitle">Real-time metrics and insights</p>
           
           <div className="timeframe-selector">

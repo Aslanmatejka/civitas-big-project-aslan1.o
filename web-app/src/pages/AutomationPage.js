@@ -157,22 +157,22 @@ export default function AutomationPage() {
           <p className="subtitle">Automate your transactions with smart contracts</p>
         </div>
 
-        <div className="stats-bar" style={{ display: 'flex', gap: '20px', marginBottom: '30px' }}>
-          <div className="stat-item" style={{ flex: 1, textAlign: 'center', padding: '15px', background: '#f8f9fa', borderRadius: '8px' }}>
-            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#667eea' }}>{stats.total}</div>
-            <div style={{ fontSize: '12px', color: '#666' }}>Total</div>
+        <div className="auto-stats">
+          <div className="auto-stat">
+            <div className="auto-stat-val">{stats.total}</div>
+            <div className="auto-stat-lbl">Total</div>
           </div>
-          <div className="stat-item" style={{ flex: 1, textAlign: 'center', padding: '15px', background: '#f8f9fa', borderRadius: '8px' }}>
-            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#00a884' }}>{stats.active}</div>
-            <div style={{ fontSize: '12px', color: '#666' }}>Active</div>
+          <div className="auto-stat auto-stat--green">
+            <div className="auto-stat-val">{stats.active}</div>
+            <div className="auto-stat-lbl">Active</div>
           </div>
-          <div className="stat-item" style={{ flex: 1, textAlign: 'center', padding: '15px', background: '#f8f9fa', borderRadius: '8px' }}>
-            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#f5576c' }}>{stats.paused}</div>
-            <div style={{ fontSize: '12px', color: '#666' }}>Paused</div>
+          <div className="auto-stat auto-stat--red">
+            <div className="auto-stat-val">{stats.paused}</div>
+            <div className="auto-stat-lbl">Paused</div>
           </div>
-          <div className="stat-item" style={{ flex: 1, textAlign: 'center', padding: '15px', background: '#f8f9fa', borderRadius: '8px' }}>
-            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#764ba2' }}>{stats.totalExecutions}</div>
-            <div style={{ fontSize: '12px', color: '#666' }}>Executions</div>
+          <div className="auto-stat auto-stat--violet">
+            <div className="auto-stat-val">{stats.totalExecutions}</div>
+            <div className="auto-stat-lbl">Executions</div>
           </div>
         </div>
 
@@ -211,7 +211,7 @@ export default function AutomationPage() {
                   <p className="next-run">
                     Next run: {formatNextRun(automation.nextRun)}
                   </p>
-                  <p style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>
+                  <p className="auto-exec-count">
                     Executed {automation.executionCount} times
                   </p>
                 </div>
@@ -238,8 +238,8 @@ export default function AutomationPage() {
               </div>
             ))
           ) : (
-            <div style={{ textAlign: 'center', padding: '40px', color: '#666' }}>
-              <p>No automations created yet. Choose a template above to get started!</p>
+            <div className="auto-empty">
+              <p>No automations yet. Choose a template above to get started.</p>
             </div>
           )}
         </div>

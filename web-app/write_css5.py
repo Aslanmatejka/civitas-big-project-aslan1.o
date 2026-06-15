@@ -1,4 +1,7 @@
-/* DocsPage */
+import os
+d = r'C:\Users\aslan\OneDrive\Desktop\civitas-big-project-aslan1.o\web-app\src\pages'
+
+open(os.path.join(d, 'DocsPage.css'), 'w', encoding='utf-8').write("""/* DocsPage */
 .docs-layout {
   display: flex; min-height: 100vh;
   animation: fadeIn 0.35s ease both;
@@ -141,34 +144,6 @@
   .docs-content { padding: 24px 16px; }
   .docs-card-grid { grid-template-columns: 1fr 1fr; }
 }
+""")
 
-/* Additional Docs classes */
-.docs-page-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
-.docs-page-icon { font-size: 2.5rem; }
-.docs-page-title { font-size: 1.4rem; font-weight: 800; color: var(--text-1); margin-bottom: 4px; }
-.docs-page-route { font-size: .75rem; font-family: var(--font-mono); color: var(--violet-light); }
-.docs-page-desc { font-size: .875rem; color: var(--text-2); line-height: 1.5; margin-bottom: 16px; }
-.docs-page-entry { margin-bottom: 12px; }
-.what-is-civitas, .getting-started, .tech-stack, .data-vault, .mobile-money { scroll-margin-top: 20px; }
-.docs-callout-icon { font-size: 1.5rem; flex-shrink: 0; }
-.docs-callout-body { flex: 1; }
-.docs-faq-item { border: 1px solid var(--border); border-radius: var(--r-xl); overflow: hidden; margin-bottom: 8px; }
-.docs-faq-q { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; cursor: pointer; background: var(--surface-1); font-size: .875rem; font-weight: 600; color: var(--text-1); }
-.docs-faq-a { padding: 14px 18px; font-size: .85rem; color: var(--text-2); line-height: 1.5; border-top: 1px solid var(--border); }
-.docs-flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
-.docs-flow-step { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 8px 14px; font-size: .82rem; color: var(--text-1); }
-.docs-flow-arrow { color: var(--text-3); font-size: 1.1rem; }
-.docs-interact-box { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-2xl); padding: 24px; margin: 16px 0; }
-.docs-interact-label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--text-3); margin-bottom: 10px; }
-.docs-interact-steps { display: flex; flex-direction: column; gap: 8px; }
-.docs-layers { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
-.docs-layer { display: flex; align-items: flex-start; gap: 14px; background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-xl); padding: 16px; }
-.docs-layer-number { width: 30px; height: 30px; border-radius: var(--r-full); background: var(--grad-primary); display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 800; color: #fff; flex-shrink: 0; }
-.docs-layer-body { flex: 1; }
-.docs-layer-name { font-size: .9rem; font-weight: 700; color: var(--text-1); margin-bottom: 4px; }
-.docs-layer-desc { font-size: .82rem; color: var(--text-2); margin-bottom: 8px; }
-.docs-layer-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.docs-tag { font-size: .7rem; padding: 2px 8px; background: var(--violet-dim); border: 1px solid var(--border-accent); border-radius: var(--r-full); color: var(--violet-light); }
-.docs-stack-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
-.docs-stack-chip { display: flex; align-items: center; gap: 6px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 8px 12px; }
-.docs-stack-chip-label { font-size: .82rem; font-weight: 600; color: var(--text-1); }
+print('DocsPage.css done')

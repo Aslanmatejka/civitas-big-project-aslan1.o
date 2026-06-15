@@ -37,7 +37,12 @@ let writableContract = null; // signed
 function _init() {
   if (contract) return; // already initialised
   try {
-    provider = new ethers.JsonRpcProvider(RPC_URL);
+    // Use a static network to prevent JsonRpcProvider from polling/retrying
+    // when the local node isn't running (avoids infinite "retry in 1s" loop)
+    const staticNetwork = ethers.Network.from(
+      process.env.BLOCKCHAIN_CHAIN_ID ? parseInt(process.env.BLOCKCHAIN_CHAIN_ID) : 31337
+    );
+    provider = new ethers.JsonRpcProvider(RPC_URL, staticNetwork, { staticNetwork: true });
     contract = new ethers.Contract(DID_REGISTRY_ADDRESS, DID_REGISTRY_ABI, provider);
 
     if (ADMIN_KEY) {

@@ -1,4 +1,8 @@
-/* DataVaultPage */
+import os
+d = r'C:\Users\aslan\OneDrive\Desktop\civitas-big-project-aslan1.o\web-app\src\pages'
+
+# ── DataVaultPage.css ─────────────────────────────────────────────────────────
+open(os.path.join(d, 'DataVaultPage.css'), 'w', encoding='utf-8').write("""/* DataVaultPage */
 .data-vault-page { padding: var(--sp-8); animation: fadeIn 0.35s ease both; }
 
 /* Header */
@@ -194,17 +198,6 @@
   .vault-header { flex-direction: column; }
   .file-row-date { display: none; }
 }
+""")
 
-/* Additional DataVault classes */
-.vault-page { padding: var(--sp-8); animation: fadeIn 0.35s ease both; }
-.vault-title-group { display: flex; flex-direction: column; gap: 4px; }
-.vault-header-actions { display: flex; gap: 8px; align-items: center; }
-.btn-upload, .btn-sync { padding: 9px 18px; border: none; border-radius: var(--r-full); font-size: .82rem; font-weight: 600; cursor: pointer; transition: all var(--t-fast); }
-.btn-upload { background: var(--grad-primary); color: #fff; }
-.btn-sync { background: var(--surface-2); color: var(--text-1); border: 1px solid var(--border); }
-.btn-upload:hover { filter: brightness(1.1); }
-.btn-sync:hover { border-color: var(--violet); }
-.vault-connect-wall { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; text-align: center; gap: 16px; }
-.wall-icon { font-size: 3.5rem; }
-.connected-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(16,185,129,.15); border: 1px solid rgba(16,185,129,.3); border-radius: var(--r-full); padding: 4px 12px; font-size: .75rem; color: var(--green); font-weight: 600; }
-.vaults-tab, .files-tab { padding: var(--sp-4) 0; }
+print('DataVaultPage.css done')

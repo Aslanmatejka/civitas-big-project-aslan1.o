@@ -27,6 +27,8 @@ const dashboardRoutes    = require('./routes/dashboard');
 const aiRoutes           = require('./routes/ai');
 const automationRoutes   = require('./routes/automation');
 const nodeRoutes         = require('./routes/node');
+const antiTraffickingRoutes = require('./routes/antiTrafficking');
+const airdropRoutes         = require('./routes/airdrop');
 
 // IPFS service (disabled-friendly)
 const ipfsService = require('./services/ipfsService');
@@ -91,6 +93,8 @@ app.use('/api/dashboard',   dashboardRoutes);
 app.use('/api/ai',          aiRoutes);
 app.use('/api/automation',  automationRoutes);
 app.use('/api/node',        nodeRoutes);
+app.use('/api/anti-trafficking', antiTraffickingRoutes);
+app.use('/api/airdrop',          airdropRoutes);
 
 // Community – in-memory with ledger-verified content
 app.use('/api/community', communityRoutes);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { proposeTreasuryETH, proposeTreasuryToken, confirmTreasuryTx, executeTreasuryTx } from '../services/contractService';
+import { Info, Clock, Check, X as XIcon, Landmark, Coins, Zap, CheckCircle } from 'lucide-react';
 import './GovernancePage.css';
 
 export default function GovernancePage() {
@@ -155,7 +156,7 @@ export default function GovernancePage() {
 
         {/* Info Banner */}
         <div className="info-banner">
-          <div className="info-icon">ℹ️</div>
+          <div className="info-icon"><Info size={18} /></div>
           <div className="info-content">
             <h4>Quadratic Voting Explained</h4>
             <p>
@@ -203,7 +204,7 @@ export default function GovernancePage() {
                       <span className="proposal-id">CIP-{String(proposal.proposalId).padStart(3, '0')}</span>
                       <span className={`proposal-status ${proposal.status.toLowerCase()}`}>{proposal.status}</span>
                     </div>
-                    <div className="proposal-time">⏱️ Ends in {timeRemainingStr}</div>
+                    <div className="proposal-time"><Clock size={13} /> Ends in {timeRemainingStr}</div>
                   </div>
 
                   <h3 className="proposal-title">{proposal.title}</h3>
@@ -241,19 +242,19 @@ export default function GovernancePage() {
                       className={`vote-btn for ${selectedVote[proposal.proposalId] === 'for' ? 'selected' : ''}`}
                       onClick={() => handleVote(proposal.proposalId, 'for')}
                     >
-                      ✓ Vote For
+                      <Check size={13} /> Vote For
                     </button>
                     <button
                       className={`vote-btn against ${selectedVote[proposal.proposalId] === 'against' ? 'selected' : ''}`}
                       onClick={() => handleVote(proposal.proposalId, 'against')}
                     >
-                      ✗ Vote Against
+                      <XIcon size={13} /> Vote Against
                     </button>
                     <button
                       className={`vote-btn abstain ${selectedVote[proposal.proposalId] === 'abstain' ? 'selected' : ''}`}
                       onClick={() => handleVote(proposal.proposalId, 'abstain')}
                     >
-                      ◯ Abstain
+                      Abstain
                     </button>
                   </div>
                 </div>
@@ -273,7 +274,7 @@ export default function GovernancePage() {
             </div>
             <h4>Increase Validator Set to 300 Nodes</h4>
             <div className="completed-stats">
-              <span className="completed-result for">✓ 78% For</span>
+              <span className="completed-result for"><Check size={13} /> 78% For</span>
               <span className="completed-date">Executed: Feb 20, 2026</span>
             </div>
           </div>
@@ -285,7 +286,7 @@ export default function GovernancePage() {
             </div>
             <h4>Enable Smart Contract Gas Subsidies</h4>
             <div className="completed-stats">
-              <span className="completed-result against">✗ 62% Against</span>
+              <span className="completed-result against"><XIcon size={13} /> 62% Against</span>
               <span className="completed-date">Closed: Feb 18, 2026</span>
             </div>
           </div>
@@ -300,7 +301,7 @@ export default function GovernancePage() {
 
         {/* Multi-Sig Treasury */}
         <div className="create-proposal-cta" style={{ marginTop: 24 }}>
-          <h3>🏦 Multi-Sig Treasury</h3>
+          <h3><Landmark size={18} /> Multi-Sig Treasury</h3>
           <p>Propose, confirm, and execute on-chain fund transfers requiring multiple signatures</p>
           <button className="create-btn" onClick={() => setShowTreasury(!showTreasury)}>
             {showTreasury ? '▲ Hide Treasury' : '▼ Open Treasury'}
@@ -311,7 +312,7 @@ export default function GovernancePage() {
           <div style={{ background: '#161b22', border: '1px solid #30363d', borderRadius: 12, padding: 24, marginTop: 16 }}>
             {/* Tabs */}
             <div style={{ display: 'flex', gap: 8, marginBottom: 20, flexWrap: 'wrap' }}>
-              {[['eth','⟠ Propose ETH'],['token','🪙 Propose Token'],['confirm','✅ Confirm Tx'],['execute','⚡ Execute Tx']].map(([t,l]) => (
+              {[['eth','Propose ETH'],['token','Propose Token'],['confirm','Confirm Tx'],['execute','Execute Tx']].map(([t,l]) => (
                 <button key={t}
                   style={{ padding: '7px 16px', borderRadius: 20, border: 'none', cursor: 'pointer',
                            background: treaTab === t ? '#1f6feb' : '#21262d',
@@ -336,7 +337,7 @@ export default function GovernancePage() {
                 <input value={treaDesc} onChange={e => setTreaDesc(e.target.value)} placeholder="Payment for community bounty #42"
                   style={{ background: '#0d1117', border: '1px solid #30363d', borderRadius: 8, padding: '9px 12px', color: '#e6edf3' }}/>
                 <button className="create-btn" style={{ alignSelf: 'flex-start' }} onClick={handleProposeETH} disabled={treaLoading}>
-                  {treaLoading ? 'Submitting…' : '⟠ Submit ETH Proposal'}
+                  {treaLoading ? 'Submitting…' : 'Submit ETH Proposal'}
                 </button>
               </div>
             )}
@@ -358,7 +359,7 @@ export default function GovernancePage() {
                 <input value={treaDesc} onChange={e => setTreaDesc(e.target.value)} placeholder="Grant payment in CIV"
                   style={{ background: '#0d1117', border: '1px solid #30363d', borderRadius: 8, padding: '9px 12px', color: '#e6edf3' }}/>
                 <button className="create-btn" style={{ alignSelf: 'flex-start' }} onClick={handleProposeToken} disabled={treaLoading}>
-                  {treaLoading ? 'Submitting…' : '🪙 Submit Token Proposal'}
+                  {treaLoading ? 'Submitting…' : 'Submit Token Proposal'}
                 </button>
               </div>
             )}

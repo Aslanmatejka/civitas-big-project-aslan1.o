@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
+import { airdropApi } from '../services/api';
+import { Gift, Link as LinkIcon, CheckCircle, AlertTriangle, Wallet } from 'lucide-react';
 import './AirdropPage.css';
 
 const AIRDROP_ABI = [
@@ -10,25 +12,37 @@ const AIRDROP_ABI = [
   'function roundCount() view returns (uint256)',
 ];
 
-/**
- * Merkle proof lookup is normally served by a backend or stored on IPFS.
- * This demo uses localStorage for the user-uploaded proof JSON.
- * Production flow: GET /api/airdrop/proof/:address → { roundId, amount, proof, regional }
- */
-
 export default function AirdropPage() {
   const [account, setAccount]         = useState('');
-  const [proofJson, setProofJson]     = useState('');
-  const [parsedProof, setParsedProof] = useState(null);
+  const [contract, setContract]       = useState(null);
   const [vestable, setVestable]       = useState('0');
   const [roundCount, setRoundCount]   = useState(0);
   const [claimStatus, setStatus]      = useState({ loading: false, error: '', success: '' });
-  const [contract, setContract]       = useState(null);
+
+  // Backend-fetched proofs
+  const [eligibleProofs, setEligibleProofs] = useState([]);
+  const [loadingProofs, setLoadingProofs]   = useState(false);
+  const [backendStats, setBackendStats]     = useState(null);
+
+  // Manual paste fallback
+  const [showManual, setShowManual]   = useState(false);
+  const [proofJson, setProofJson]     = useState('');
+  const [parsedProof, setParsedProof] = useState(null);
 
   const contractAddr = import.meta.env.VITE_AIRDROPDISTRIBUTOR_ADDRESS || '';
 
   useEffect(() => {
-    if (account && contract) refreshInfo();
+    // Load global airdrop stats regardless of wallet connection
+    airdropApi.getStats()
+      .then(r => setBackendStats(r.data))
+      .catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    if (account) {
+      if (contract) refreshInfo();
+      fetchProofsForAddress(account);
+    }
   }, [account, contract]);
 
   const connectWallet = async () => {
@@ -55,27 +69,43 @@ export default function AirdropPage() {
     }
   };
 
-  const parseProof = () => {
+  const fetchProofsForAddress = async (addr) => {
+    setLoadingProofs(true);
+    try {
+      const r = await airdropApi.getProof(addr);
+      setEligibleProofs(r.data.proofs || []);
+    } catch {
+      setEligibleProofs([]);
+    } finally {
+      setLoadingProofs(false);
+    }
+  };
+
+  const parseManualProof = () => {
     try {
       const p = JSON.parse(proofJson);
       setParsedProof(p);
-      setStatus({ loading: false, error: '', success: 'Proof parsed successfully ✓' });
+      setStatus({ loading: false, error: '', success: 'Proof parsed ✓' });
     } catch {
       setStatus({ loading: false, error: 'Invalid JSON. Expected: { roundId, amount, proof: [...], regional? }', success: '' });
     }
   };
 
-  const claim = async (regional = false) => {
+  const claim = async (entry, regional = false) => {
     if (!contract) return setStatus({ loading: false, error: 'Connect wallet first', success: '' });
-    if (!parsedProof) return setStatus({ loading: false, error: 'Paste and parse a proof first', success: '' });
     setStatus({ loading: true, error: '', success: '' });
     try {
-      const { roundId, amount, proof } = parsedProof;
-      const amt = typeof amount === 'string' && amount.includes('e') ? BigInt(amount) : ethers.parseEther(String(amount));
-      const fn  = regional ? contract.claimRegional : contract.claim;
-      const tx  = await fn(roundId, amt, proof);
+      const { roundId, amount, proof } = entry;
+      const amt = typeof amount === 'string' && amount.includes('e')
+        ? BigInt(amount)
+        : ethers.parseEther(String(amount));
+      const fn = regional ? contract.claimRegional : contract.claim;
+      const tx = await fn(roundId, amt, proof);
       await tx.wait();
+      // Record the claim on the backend
+      await airdropApi.recordClaim(account, roundId, tx.hash).catch(() => {});
       setStatus({ loading: false, error: '', success: `✅ Claimed! Tx: ${tx.hash}` });
+      fetchProofsForAddress(account);
       refreshInfo();
     } catch (e) {
       setStatus({ loading: false, error: e.reason || e.message, success: '' });
@@ -98,32 +128,46 @@ export default function AirdropPage() {
   return (
     <div className="airdrop-page">
       <div className="ad-hero">
-        <h1>🪂 CIVITAS Airdrop</h1>
+        <h1><Gift size={24} /> CIVITAS Airdrop</h1>
         <p>Claim your CIV tokens. Regional participants receive a <strong>+5% bonus</strong>. Unvested allocations release linearly over 12 months.</p>
       </div>
+
+      {/* Global stats */}
+      {backendStats && (
+        <div className="ad-stats">
+          <div className="ad-stat">
+            <div className="ad-stat-label">Active Rounds</div>
+            <div className="ad-stat-val">{backendStats.activeRounds}</div>
+          </div>
+          <div className="ad-stat">
+            <div className="ad-stat-label">Total Eligible</div>
+            <div className="ad-stat-val">{backendStats.totalEligible?.toLocaleString()}</div>
+          </div>
+          <div className="ad-stat">
+            <div className="ad-stat-label">Claimed</div>
+            <div className="ad-stat-val">{backendStats.totalClaimed?.toLocaleString()}</div>
+          </div>
+          <div className="ad-stat">
+            <div className="ad-stat-label">Claim Rate</div>
+            <div className="ad-stat-val">{backendStats.claimRate}%</div>
+          </div>
+          {account && contract && (
+            <div className="ad-stat">
+              <div className="ad-stat-label">Claimable Vested</div>
+              <div className="ad-stat-val">{parseFloat(vestable).toFixed(4)} CIV</div>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Wallet connect */}
       {!account ? (
         <button className="ad-btn ad-btn-primary ad-connect" onClick={connectWallet}>
-          🔗 Connect Wallet
+          <Wallet size={16} /> Connect Wallet to Check Eligibility
         </button>
       ) : (
         <div className="ad-wallet-badge">
-          ✅ <code>{account.slice(0,6)}…{account.slice(-4)}</code>
-        </div>
-      )}
-
-      {/* Stats row */}
-      {account && (
-        <div className="ad-stats">
-          <div className="ad-stat">
-            <div className="ad-stat-label">Active Rounds</div>
-            <div className="ad-stat-val">{roundCount}</div>
-          </div>
-          <div className="ad-stat">
-            <div className="ad-stat-label">Claimable Vested</div>
-            <div className="ad-stat-val">{parseFloat(vestable).toFixed(4)} CIV</div>
-          </div>
+          <CheckCircle size={14} /> <code>{account.slice(0,6)}…{account.slice(-4)}</code>
         </div>
       )}
 
@@ -138,41 +182,122 @@ export default function AirdropPage() {
         </div>
       )}
 
-      {/* Proof-based claim */}
-      <div className="ad-card">
-        <h3>🎟️ Claim from Round</h3>
-        <p className="ad-hint">Paste the Merkle proof JSON for your address. You can get it from the CIVITAS airdrop portal or IPFS.</p>
+      {/* Auto-fetched eligibility */}
+      {account && (
+        <div className="ad-card">
+          <h3>🎟️ Your Eligibility</h3>
+          {loadingProofs ? (
+            <div className="ad-checking">
+              <div className="ad-spinner" />
+              <span>Checking eligibility…</span>
+            </div>
+          ) : eligibleProofs.length === 0 ? (
+            <div className="ad-not-eligible">
+              <p>No eligible allocations found for <code>{account.slice(0,8)}…</code></p>
+              <p className="ad-hint">If you believe you should be eligible, use the manual entry below or contact the CIVITAS team.</p>
+            </div>
+          ) : (
+            <div className="ad-proof-list">
+              {eligibleProofs.map((entry) => (
+                <div key={entry.roundId} className={`ad-proof-item ${entry.claimed ? 'ad-proof-claimed' : ''}`}>
+                  <div className="ad-proof-info">
+                    <div className="ad-proof-round">
+                      Round {entry.roundId}
+                      {entry.claimed && <span className="ad-badge-claimed">Claimed</span>}
+                      {entry.regional && !entry.claimed && <span className="ad-badge-regional">+5% Regional</span>}
+                    </div>
+                    {entry.round?.description && (
+                      <div className="ad-proof-desc">{entry.round.description}</div>
+                    )}
+                    <div className="ad-proof-amount">{entry.amount} CIV</div>
+                  </div>
+                  {!entry.claimed && (
+                    <div className="ad-proof-actions">
+                      <button
+                        className="ad-btn ad-btn-primary"
+                        onClick={() => claim(entry, false)}
+                        disabled={claimStatus.loading || !contract}
+                      >
+                        {claimStatus.loading ? 'Claiming…' : 'Claim'}
+                      </button>
+                      {entry.regional && (
+                        <button
+                          className="ad-btn ad-btn-regional"
+                          onClick={() => claim(entry, true)}
+                          disabled={claimStatus.loading || !contract}
+                        >
+                          🌍 Claim +5%
+                        </button>
+                      )}
+                    </div>
+                  )}
+                  {entry.claimed && entry.txHash && (
+                    <div className="ad-proof-tx">
+                      Tx: <code>{entry.txHash.slice(0, 10)}…</code>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
-        <label className="ad-label">Proof JSON</label>
-        <textarea
-          className="ad-textarea"
-          rows={6}
-          value={proofJson}
-          onChange={e => setProofJson(e.target.value)}
-          placeholder={`{
+      {/* Manual proof fallback */}
+      <div className="ad-card">
+        <button
+          className="ad-manual-toggle"
+          onClick={() => setShowManual(v => !v)}
+        >
+          {showManual ? '▲' : '▼'} Manual proof entry (advanced)
+        </button>
+        {showManual && (
+          <>
+            <p className="ad-hint" style={{ marginTop: '12px' }}>
+              Paste your Merkle proof JSON if auto-lookup didn't find your allocation.
+            </p>
+            <label className="ad-label">Proof JSON</label>
+            <textarea
+              className="ad-textarea"
+              rows={6}
+              value={proofJson}
+              onChange={e => setProofJson(e.target.value)}
+              placeholder={`{
   "roundId": 1,
   "amount": "100",
   "proof": ["0xabc...", "0xdef..."],
   "regional": false
 }`}
-        />
-
-        <div className="ad-actions">
-          <button className="ad-btn ad-btn-secondary" onClick={parseProof}>🔍 Parse Proof</button>
-          <button className="ad-btn ad-btn-primary"   onClick={() => claim(false)} disabled={!parsedProof || claimStatus.loading}>⬇️ Claim</button>
-          <button className="ad-btn ad-btn-regional"  onClick={() => claim(true)}  disabled={!parsedProof || claimStatus.loading}>🌍 Claim Regional (+5%)</button>
-        </div>
-
-        {parsedProof && (
-          <div className="ad-proof-preview">
-            <div>Round: <strong>{parsedProof.roundId}</strong></div>
-            <div>Amount: <strong>{parsedProof.amount} CIV</strong></div>
-            <div>Proof entries: <strong>{parsedProof.proof?.length || 0}</strong></div>
-          </div>
+            />
+            <div className="ad-actions">
+              <button className="ad-btn ad-btn-secondary" onClick={parseManualProof}>🔍 Parse</button>
+              <button
+                className="ad-btn ad-btn-primary"
+                onClick={() => claim(parsedProof, false)}
+                disabled={!parsedProof || claimStatus.loading}
+              >
+                ⬇️ Claim
+              </button>
+              <button
+                className="ad-btn ad-btn-regional"
+                onClick={() => claim(parsedProof, true)}
+                disabled={!parsedProof || claimStatus.loading}
+              >
+                🌍 Claim Regional (+5%)
+              </button>
+            </div>
+            {parsedProof && (
+              <div className="ad-proof-preview">
+                <div>Round: <strong>{parsedProof.roundId}</strong></div>
+                <div>Amount: <strong>{parsedProof.amount} CIV</strong></div>
+                <div>Proof entries: <strong>{parsedProof.proof?.length || 0}</strong></div>
+              </div>
+            )}
+          </>
         )}
       </div>
 
-      {/* Status */}
+      {/* Status messages */}
       {claimStatus.error   && <div className="ad-error">⚠️ {claimStatus.error}</div>}
       {claimStatus.success && <div className="ad-success">{claimStatus.success}</div>}
 

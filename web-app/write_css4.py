@@ -1,7 +1,120 @@
-/* OfflineQueuePage */
-.status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; vertical-align: middle; }
-.status-dot--green { background: var(--green); box-shadow: 0 0 6px var(--green); }
-.status-dot--red   { background: var(--red);   box-shadow: 0 0 6px var(--red); }
+import os
+d = r'C:\Users\aslan\OneDrive\Desktop\civitas-big-project-aslan1.o\web-app\src\pages'
+
+# ── MobileMoneyPage.css ────────────────────────────────────────────────────────
+open(os.path.join(d, 'MobileMoneyPage.css'), 'w', encoding='utf-8').write("""/* MobileMoneyPage */
+.mobile-money-page { padding: var(--sp-8); max-width: 700px; margin: 0 auto; animation: fadeIn 0.35s ease both; }
+
+/* Header */
+.mm-header { margin-bottom: var(--sp-6); }
+.mm-header h1 { font-size: 1.9rem; font-weight: 800; color: var(--text-1); letter-spacing: -0.03em; margin-bottom: 8px; }
+.mm-header p { color: var(--text-2); font-size: .875rem; line-height: 1.6; }
+
+/* Tabs */
+.mm-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); margin-bottom: var(--sp-6); }
+.mm-tab {
+  padding: 10px 22px; background: none; border: none;
+  border-bottom: 2px solid transparent; color: var(--text-2);
+  font-size: .875rem; font-weight: 500; cursor: pointer;
+  transition: all var(--t-base); margin-bottom: -1px;
+}
+.mm-tab:hover { color: var(--text-1); }
+.mm-tab.active { color: var(--violet-light); border-bottom-color: var(--violet); font-weight: 600; }
+
+/* Form panel */
+.mm-form-panel {
+  background: var(--surface-1); border: 1px solid var(--border);
+  border-radius: var(--r-2xl); padding: 28px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+
+/* Field */
+.mm-field { display: flex; flex-direction: column; gap: 8px; }
+.mm-field label { font-size: .8rem; font-weight: 600; color: var(--text-2); text-transform: uppercase; letter-spacing: .05em; }
+.mm-input {
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 12px 16px;
+  color: var(--text-1); font-size: .9rem; font-family: var(--font-sans);
+  transition: border-color var(--t-base); width: 100%; box-sizing: border-box;
+}
+.mm-input:focus { outline: none; border-color: var(--violet); box-shadow: 0 0 0 3px var(--violet-dim); }
+
+/* Direction group */
+.mm-direction-group { display: flex; gap: 8px; }
+.mm-direction-btn {
+  flex: 1; padding: 10px 14px; border: 1px solid var(--border);
+  border-radius: var(--r-lg); background: var(--surface-2);
+  color: var(--text-2); font-size: .85rem; cursor: pointer;
+  transition: all var(--t-fast); text-align: center;
+}
+.mm-direction-btn:hover { border-color: var(--violet); color: var(--violet-light); }
+.mm-direction-btn.active { background: var(--violet-dim); border-color: var(--violet); color: var(--violet-light); font-weight: 600; }
+
+/* Buttons */
+.mm-btn {
+  padding: 11px 22px; border-radius: var(--r-full);
+  font-size: .875rem; font-weight: 600; cursor: pointer;
+  transition: all var(--t-fast); border: none;
+}
+.mm-btn:disabled { opacity: .5; cursor: not-allowed; }
+.mm-btn.primary { background: var(--grad-primary); color: #fff; }
+.mm-btn.primary:hover:not(:disabled) { filter: brightness(1.1); transform: translateY(-1px); }
+.mm-btn.secondary { background: var(--surface-2); border: 1px solid var(--border); color: var(--text-1); }
+.mm-btn.secondary:hover:not(:disabled) { border-color: var(--violet); color: var(--violet-light); }
+.mm-btn-sm { padding: 6px 14px; font-size: .78rem; }
+
+/* Actions row */
+.mm-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* Error */
+.mm-error {
+  background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.3);
+  border-radius: var(--r-md); padding: 10px 14px;
+  color: var(--red); font-size: .875rem;
+}
+
+/* Quote box */
+.mm-quote-box {
+  background: rgba(139,92,246,.08); border: 1px solid rgba(139,92,246,.25);
+  border-radius: var(--r-xl); padding: 16px 20px;
+  display: flex; flex-direction: column; gap: 6px; font-size: .875rem; color: var(--text-2);
+}
+.mm-quote-title { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--violet-light); font-weight: 700; margin-bottom: 4px; }
+.mm-quote-box strong { color: var(--text-1); }
+
+/* Success box */
+.mm-success-box {
+  background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.3);
+  border-radius: var(--r-xl); padding: 16px 20px;
+  display: flex; flex-direction: column; gap: 8px; font-size: .875rem; color: var(--green);
+}
+.mm-success-box code { font-family: var(--font-mono); font-size: .8rem; color: var(--text-2); }
+
+/* History panel */
+.mm-history-panel { display: flex; flex-direction: column; gap: 12px; }
+.mm-empty { text-align: center; color: var(--text-3); padding: var(--sp-8); font-size: .9rem; }
+
+/* Transaction card */
+.mm-tx-card {
+  background: var(--surface-1); border: 1px solid var(--border);
+  border-radius: var(--r-xl); padding: 16px 20px; transition: border-color var(--t-base);
+}
+.mm-tx-card:hover { border-color: var(--border-accent); }
+.mm-tx-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.mm-tx-id { font-family: var(--font-mono); font-size: .75rem; color: var(--text-3); }
+.mm-tx-body { font-size: .875rem; color: var(--text-1); margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px; }
+.mm-tx-prov { font-size: .78rem; color: var(--text-3); }
+.mm-tx-footer { display: flex; justify-content: space-between; align-items: center; font-size: .75rem; color: var(--text-3); }
+
+@media (max-width: 768px) {
+  .mobile-money-page { padding: var(--sp-4); }
+  .mm-direction-group { flex-direction: column; }
+  .mm-actions { flex-direction: column; }
+}
+""")
+
+# ── OfflineQueuePage.css ──────────────────────────────────────────────────────
+open(os.path.join(d, 'OfflineQueuePage.css'), 'w', encoding='utf-8').write("""/* OfflineQueuePage */
 .offline-queue-page { padding: var(--sp-8); animation: fadeIn 0.35s ease both; }
 .offline-queue-container { max-width: 860px; margin: 0 auto; }
 .not-connected { text-align: center; padding: var(--sp-16); color: var(--text-2); }
@@ -115,3 +228,6 @@
   .tx-status { justify-content: flex-start; }
   .stats-bar { grid-template-columns: repeat(3,1fr); }
 }
+""")
+
+print('MobileMoneyPage, OfflineQueuePage done')

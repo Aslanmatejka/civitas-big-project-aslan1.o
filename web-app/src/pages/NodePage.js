@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { nodeApi } from '../services/api';
+import { Link2, Users, BarChart2, Gem, CheckCircle, AlertCircle, Clock } from 'lucide-react';
 import './NodePage.css';
 
 export default function NodePage() {
@@ -134,9 +135,9 @@ export default function NodePage() {
           <div className="status-info">
             <h3>Node Status</h3>
             <div className={`status-badge ${nodeStatus}`}>
-              {nodeStatus === 'running' && '🟢 Running'}
-              {nodeStatus === 'syncing' && '🟡 Syncing'}
-              {nodeStatus === 'stopped' && '🔴 Stopped'}
+              {nodeStatus === 'running' && <><span className="status-dot status-dot--green" /> Running</>}
+              {nodeStatus === 'syncing' && <><span className="status-dot status-dot--amber" /> Syncing</>}
+              {nodeStatus === 'stopped' && <><span className="status-dot status-dot--red" /> Stopped</>}
             </div>
           </div>
           
@@ -177,29 +178,29 @@ export default function NodePage() {
               <h2>Node Statistics</h2>
               <div className="stats-grid">
                 <div className="stat-card">
-                  <div className="stat-icon">⛓️</div>
+                  <div className="stat-icon"><Link2 size={20} /></div>
                   <div className="stat-value">{nodeData.sync.currentBlock?.toLocaleString()}</div>
                   <div className="stat-label">Blocks Synced</div>
                 </div>
                 <div className="stat-card">
-                  <div className="stat-icon">👥</div>
+                  <div className="stat-icon"><Users size={20} /></div>
                   <div className="stat-value">{nodeData.stats.connectedPeers}</div>
                   <div className="stat-label">Connected Peers</div>
                 </div>
                 <div className="stat-card">
-                  <div className="stat-icon">📊</div>
+                  <div className="stat-icon"><BarChart2 size={20} /></div>
                   <div className="stat-value">{formatSpeed(nodeData.stats.networkSpeed)}</div>
                   <div className="stat-label">Network Speed</div>
                 </div>
                 <div className="stat-card">
-                  <div className="stat-icon">💎</div>
+                  <div className="stat-icon"><Gem size={20} /></div>
                   <div className="stat-value">{nodeData.rewards.pendingRewards} CIV</div>
                   <div className="stat-label">Pending Rewards</div>
                 </div>
               </div>
               
               {nodeData.rewards.pendingRewards > 0 && (
-                <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                <div className="node-claim-row">
                   <button 
                     className="btn btn-primary"
                     onClick={handleClaimRewards}
@@ -210,7 +211,7 @@ export default function NodePage() {
               )}
               
               {nodeData.rewards.totalEarned > 0 && (
-                <div style={{ textAlign: 'center', marginTop: '10px', color: '#666' }}>
+                <div className="node-total-earned">
                   Total earned: {nodeData.rewards.totalEarned} CIV
                 </div>
               )}

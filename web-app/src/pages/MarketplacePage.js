@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
+import { ShoppingCart, Package, Eye, Coins } from 'lucide-react';
 import './MarketplacePage.css';
 
 export default function MarketplacePage() {
@@ -131,7 +132,7 @@ export default function MarketplacePage() {
   return (
     <div className="marketplace-page">
       <div className="marketplace-container">
-        <h1>🛒 Decentralized Marketplace</h1>
+        <h1><ShoppingCart size={24} /> Decentralized Marketplace</h1>
         <p className="subtitle">Buy and sell services peer-to-peer with zero fees</p>
 
         <div className="marketplace-tabs">
@@ -197,7 +198,7 @@ export default function MarketplacePage() {
               <div className="loading-state">Loading your listings...</div>
             ) : myListings.length === 0 ? (
               <div className="empty-state">
-                <div className="empty-icon">📦</div>
+                <div className="empty-icon"><Package size={40} strokeWidth={1} /></div>
                 <h2>No Listings Yet</h2>
                 <p>You haven't created any listings. Click "Create Listing" to get started.</p>
               </div>
@@ -209,8 +210,8 @@ export default function MarketplacePage() {
                     <div className="listing-category">{listing.category}</div>
                     <h3>{listing.title}</h3>
                     <div className="listing-stats">
-                      <span>👁️ {listing.views} views</span>
-                      <span>💰 {listing.purchases} sold</span>
+                      <span><Eye size={13} /> {listing.views} views</span>
+                      <span><Coins size={13} /> {listing.purchases} sold</span>
                     </div>
                     <div className="listing-footer">
                       <div className="listing-price">{listing.price} CIV</div>

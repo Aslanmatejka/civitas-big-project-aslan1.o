@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 import { storageApi } from '../services/api';
+import { HardDrive, Upload, Image, Video, Music, FileText, Archive, Pin, Clock } from 'lucide-react';
 import './StoragePage.css';
 
 export default function StoragePage() {
@@ -20,7 +21,9 @@ export default function StoragePage() {
   const loadFiles = async () => {
     try {
       const response = await storageApi.getFiles(wallet.address);
-      setFiles(response.data);
+      const data = response.data;
+      // Backend returns a bare array; guard against wrapped responses
+      setFiles(Array.isArray(data) ? data : (data?.files || data?.items || []));
     } catch (error) {
       console.error('Error loading files:', error);
     }
@@ -29,7 +32,8 @@ export default function StoragePage() {
   const loadStats = async () => {
     try {
       const response = await storageApi.getStats(wallet.address);
-      setStats(response.data);
+      const data = response.data;
+      setStats(data?.stats || data || {});
     } catch (error) {
       console.error('Error loading stats:', error);
     }
@@ -77,7 +81,7 @@ export default function StoragePage() {
     if (!address) return;
 
     try {
-      await storageApi.shareFile(file._id, [address]);
+      await storageApi.shareFile(file.id || file._id, [address]);
       await loadFiles();
       alert('File shared successfully!');
     } catch (error) {
@@ -152,7 +156,7 @@ export default function StoragePage() {
     <div className="storage-page">
       <div className="storage-container">
         <div className="storage-header">
-          <h1>📦 Decentralized Storage</h1>
+          <h1><HardDrive size={24} /> Decentralized Storage</h1>
           <p className="subtitle">Encrypted file storage on IPFS</p>
         </div>
 
@@ -184,7 +188,7 @@ export default function StoragePage() {
             onClick={handleFileUpload}
             disabled={isUploading}
           >
-            {isUploading ? '⏳ Uploading...' : '⬆️ Upload Files'}
+            {isUploading ? <><Clock size={14} /> Uploading...</> : <><Upload size={14} /> Upload Files</>}
           </button>
         </div>
 
@@ -193,19 +197,19 @@ export default function StoragePage() {
           {files.length > 0 ? (
             <div className="files-list">
               {files.map((file) => (
-                <div key={file._id} className="file-item">
+                <div key={file.id || file._id} className="file-item">
                   <div className="file-icon">
-                    {file.mimeType?.startsWith('image/') ? '🖼️' :
-                     file.mimeType?.startsWith('video/') ? '🎥' :
-                     file.mimeType?.startsWith('audio/') ? '🎵' :
-                     file.mimeType?.includes('pdf') ? '📄' :
-                     file.mimeType?.includes('zip') ? '📦' : '📄'}
+                    {file.mimeType?.startsWith('image/') ? <Image size={20} /> :
+                     file.mimeType?.startsWith('video/') ? <Video size={20} /> :
+                     file.mimeType?.startsWith('audio/') ? <Music size={20} /> :
+                     file.mimeType?.includes('pdf') ? <FileText size={20} /> :
+                     file.mimeType?.includes('zip') ? <Archive size={20} /> : <FileText size={20} />}
                   </div>
                   <div className="file-info">
                     <h3>{file.originalName || file.name}</h3>
                     <p className="file-meta">
                       {formatSize(file.size)} • Uploaded {formatDate(file.createdAt)}
-                      {file.pinned && ' • 📌 Pinned'}
+                      {file.pinned && <> • <Pin size={11} /> Pinned</>}
                     </p>
                     <p className="file-cid">CID: {file.cid}</p>
                   </div>
@@ -224,7 +228,7 @@ export default function StoragePage() {
                     </button>
                     <button 
                       className="btn btn-danger"
-                      onClick={() => handleDelete(file._id)}
+                      onClick={() => handleDelete(file.id || file._id)}
                     >
                       Delete
                     </button>

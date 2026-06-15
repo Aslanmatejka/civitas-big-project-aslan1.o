@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Smartphone, ArrowRightLeft, Search, CheckCircle, RefreshCw, AlertTriangle } from 'lucide-react';
 import './MobileMoneyPage.css';
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 const DIRECTION_OPTIONS = [
-  { value: 'FIAT_TO_CIV', label: 'Local Money → CIV', icon: '📲' },
-  { value: 'CIV_TO_FIAT', label: 'CIV → Local Money',  icon: '💸' },
+  { value: 'FIAT_TO_CIV', label: 'Local Money → CIV', icon: <Smartphone size={14} /> },
+  { value: 'CIV_TO_FIAT', label: 'CIV → Local Money', icon: <ArrowRightLeft size={14} /> },
 ];
 
 export default function MobileMoneyPage() {
@@ -123,14 +124,14 @@ export default function MobileMoneyPage() {
   return (
     <div className="mobile-money-page">
       <div className="mm-header">
-        <h1>📱 Mobile Money Bridge</h1>
+        <h1><Smartphone size={24} /> Mobile Money Bridge</h1>
         <p>Convert between local currencies and CIV tokens instantly. Supporting mobile wallets across Africa, Asia, and Latin America — including MTN MoMo, M-PESA, Airtel, GCash, GoPay, GrabPay, PromptPay, bKash, Easypaisa, PicPay/Pix, MercadoPago, and more.</p>
       </div>
 
       <div className="mm-tabs">
         {['send', 'history'].map(tab => (
           <button key={tab} className={`mm-tab ${activeTab === tab ? 'active' : ''}`} onClick={() => setActiveTab(tab)}>
-            {tab === 'send' ? '💱 Exchange' : '📜 History'}
+            {tab === 'send' ? <><ArrowRightLeft size={14} /> Exchange</> : <><Smartphone size={14} /> History</>}
           </button>
         ))}
       </div>
@@ -220,7 +221,7 @@ export default function MobileMoneyPage() {
             />
           </div>
 
-          {error && <div className="mm-error">⚠️ {error}</div>}
+          {error && <div className="mm-error"><AlertTriangle size={14} /> {error}</div>}
 
           {/* Quote */}
           {quote && (
@@ -248,24 +249,24 @@ export default function MobileMoneyPage() {
               onClick={fetchQuote}
               disabled={!selectedProvider || !currency || !amount || quoteLoading}
             >
-              {quoteLoading ? 'Fetching...' : '🔍 Get Quote'}
+              {quoteLoading ? 'Fetching...' : <><Search size={14} /> Get Quote</>}
             </button>
             <button
               className="mm-btn primary"
               onClick={initiate}
               disabled={!quote || !walletAddr || !phone || txLoading}
             >
-              {txLoading ? 'Processing...' : '✅ Confirm & Send'}
+              {txLoading ? 'Processing...' : <><CheckCircle size={14} /> Confirm &amp; Send</>}
             </button>
           </div>
 
           {successTx && (
             <div className="mm-success-box">
-              <div>✅ Transaction submitted!</div>
+              <div><CheckCircle size={14} /> Transaction submitted!</div>
               <div>ID: <code>{successTx.id}</code></div>
               <div>Status: {statusBadge(successTx.status)}</div>
               <button className="mm-btn secondary mm-btn-sm" onClick={() => pollStatus(successTx.id)}>
-                🔄 Refresh Status
+                <RefreshCw size={13} /> Refresh Status
               </button>
             </div>
           )}

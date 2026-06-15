@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 import { aiApi } from '../services/api';
+import { Bot, Zap, DollarSign, Lock, BarChart2, Settings, User } from 'lucide-react';
 import './AIPage.css';
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
 
 export default function AIPage() {
   const { isConnected, isLoading, connectWallet, wallet } = useApp();
@@ -9,6 +12,9 @@ export default function AIPage() {
   const [input, setInput] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [isSending, setIsSending] = useState(false);
+  const [llmEnabled, setLlmEnabled] = useState(false);
+  const [llmModel, setLlmModel] = useState(null);
+  const messagesEndRef = useRef(null);
 
   // Load conversation history on mount
   useEffect(() => {
@@ -16,6 +22,11 @@ export default function AIPage() {
       loadConversation();
       loadSuggestions();
     }
+    // Check LLM status regardless of wallet
+    fetch(`${API_BASE}/ai/status`)
+      .then(r => r.json())
+      .then(d => { setLlmEnabled(d.llm); setLlmModel(d.model); })
+      .catch(() => {});
   }, [wallet?.address]);
 
   const loadConversation = async () => {
@@ -59,7 +70,7 @@ export default function AIPage() {
     
     try {
       const response = await aiApi.sendMessage(wallet.address, textToSend);
-      
+      if (response.data.llm !== undefined) setLlmEnabled(response.data.llm);
       const aiResponse = {
         id: Date.now(),
         role: 'assistant',
@@ -125,34 +136,35 @@ export default function AIPage() {
     <div className="ai-page">
       <div className="ai-container">
         <div className="ai-header">
-          <h1>🤖 AI Assistant</h1>
-          <p className="subtitle">Get personalized advice and insights</p>
-          <button 
-            className="btn btn-secondary" 
-            onClick={handleClearConversation}
-            style={{ marginLeft: 'auto' }}
-          >
-            Clear Chat
-          </button>
+          <div className="ai-header-left">
+            <h1><Bot size={24} /> AI Assistant</h1>
+            <p className="subtitle">Get personalized advice and insights</p>
+          </div>
+          <div className="ai-header-right">
+            {llmEnabled
+              ? <span className="ai-llm-badge ai-llm-badge--on"><Zap size={12} /> {llmModel || 'LLM'} active</span>
+              : <span className="ai-llm-badge ai-llm-badge--off">Rule engine — set OPENAI_API_KEY to enable LLM</span>
+            }
+            <button className="btn btn-secondary" onClick={handleClearConversation}>Clear Chat</button>
+          </div>
         </div>
 
         <div className="ai-features">
-          <div className="feature-chip">💰 Transaction Advice</div>
-          <div className="feature-chip">🔒 Security Tips</div>
-          <div className="feature-chip">📊 Market Insights</div>
-          <div className="feature-chip">⚙️ Smart Contracts</div>
+          <div className="feature-chip"><DollarSign size={13} /> Transaction Advice</div>
+          <div className="feature-chip"><Lock size={13} /> Security Tips</div>
+          <div className="feature-chip"><BarChart2 size={13} /> Market Insights</div>
+          <div className="feature-chip"><Settings size={13} /> Smart Contracts</div>
         </div>
 
         {suggestions.length > 0 && messages.length <= 1 && (
           <div className="suggestions-section">
-            <p style={{ marginBottom: '10px', color: '#666' }}>Try asking:</p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-              {suggestions.slice(0, 3).map((suggestion, idx) => (
+            <p className="suggestions-label">Try asking:</p>
+            <div className="suggestions-list">
+              {suggestions.slice(0, 4).map((suggestion, idx) => (
                 <button
                   key={idx}
-                  className="btn btn-secondary"
+                  className="btn btn-secondary suggestion-btn"
                   onClick={() => handleSend(suggestion)}
-                  style={{ fontSize: '0.85rem', padding: '8px 12px' }}
                 >
                   {suggestion}
                 </button>
@@ -166,17 +178,21 @@ export default function AIPage() {
             {messages.map((msg) => (
               <div key={msg.id} className={`message ${msg.role}`}>
                 <div className="message-avatar">
-                  {msg.role === 'user' ? '👤' : '🤖'}
+                  {msg.role === 'user' ? <User size={16} /> : <Bot size={16} />}
                 </div>
-                <div className="message-content" style={{ whiteSpace: 'pre-wrap' }}>
+                <div className="message-content">
                   {msg.content}
                 </div>
               </div>
             ))}
             {isSending && (
               <div className="message assistant">
-                <div className="message-avatar">🤖</div>
-                <div className="message-content">Thinking...</div>
+                <div className="message-avatar"><Bot size={16} /></div>
+                <div className="message-content">
+                  <span className="ai-thinking">
+                    <span /><span /><span />
+                  </span>
+                </div>
               </div>
             )}
           </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { walletApi } from '../services/api';
+import { Zap, KeyRound, Globe, Smartphone, Sparkles, Wallet as WalletIcon, Coins, Gem, Clock, X as XIcon } from 'lucide-react';
 import './WalletPage.css';
 
 export default function WalletPage() {
@@ -142,28 +143,28 @@ export default function WalletPage() {
         <div className="wallet-container">
           <div className="not-connected">
             <div className="nc-hero">
-              <div className="nc-icon">⚡</div>
+              <div className="nc-icon"><Zap size={40} /></div>
               <h2>Your Self-Sovereign Wallet</h2>
               <p>No bank. No middleman. Full control over your digital assets.<br />Works without MetaMask — generate a wallet right here.</p>
             </div>
 
             <div className="nc-features">
               <div className="nc-feature">
-                <span>🔑</span>
+                <span><KeyRound size={20} /></span>
                 <div>
                   <strong>Your Keys, Your Crypto</strong>
                   <p>Encrypted locally in your browser. CIVITAS never sees your private key.</p>
                 </div>
               </div>
               <div className="nc-feature">
-                <span>🌍</span>
+                <span><Globe size={20} /></span>
                 <div>
                   <strong>Works Globally</strong>
                   <p>Send CIV to anyone on the CIVITAS network — no borders, no delays.</p>
                 </div>
               </div>
               <div className="nc-feature">
-                <span>📲</span>
+                <span><Smartphone size={20} /></span>
                 <div>
                   <strong>No Extensions Needed</strong>
                   <p>Create or import a wallet directly in-platform. MetaMask optional.</p>
@@ -172,12 +173,12 @@ export default function WalletPage() {
             </div>
 
             <button className="btn btn-primary nc-cta" onClick={() => setShowWalletSetup(true)}>
-              ✨ Get Started — Create or Import Wallet
+              <Sparkles size={16} /> Get Started — Create or Import Wallet
             </button>
 
             {!!window.ethereum && (
               <button className="btn btn-secondary nc-metamask" onClick={connectWallet}>
-                🦊 Connect MetaMask instead
+                <WalletIcon size={16} /> Connect MetaMask instead
               </button>
             )}
           </div>
@@ -277,7 +278,7 @@ export default function WalletPage() {
           <div className="assets-section">
             {tokens.length === 0 ? (
               <div className="asset-item">
-                <div className="asset-icon">🟣</div>
+                <div className="asset-icon"><Coins size={20} style={{ color: 'var(--violet)' }} /></div>
                 <div className="asset-info">
                   <h4>CIVITAS Token</h4>
                   <p className="asset-symbol">CIV</p>
@@ -291,7 +292,7 @@ export default function WalletPage() {
               tokens.map((token, index) => (
                 <div key={`${token.symbol}-${index}`} className="asset-item">
                   <div className="asset-icon">
-                    {token.isNative ? '🟣' : '💎'}
+                    {token.isNative ? <Coins size={20} style={{ color: 'var(--violet)' }} /> : <Gem size={20} style={{ color: 'var(--cyan)' }} />}
                   </div>
                   <div className="asset-info">
                     <h4>{token.name}</h4>
@@ -336,10 +337,10 @@ export default function WalletPage() {
                       {tx.direction === 'received' ? formatAddress(tx.from) : formatAddress(tx.to)}
                     </p>
                     {tx.status === 'pending' && (
-                      <p className="tx-status pending">⏳ Pending</p>
+                      <p className="tx-status pending"><Clock size={12} /> Pending</p>
                     )}
                     {tx.status === 'failed' && (
-                      <p className="tx-status failed">❌ Failed</p>
+                      <p className="tx-status failed"><XIcon size={12} /> Failed</p>
                     )}
                   </div>
                   <div className={`tx-amount ${tx.direction === 'received' ? 'positive' : 'negative'}`}>

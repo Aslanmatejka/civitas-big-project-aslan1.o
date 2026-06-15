@@ -15,6 +15,8 @@
     "contracts:compile": "cd smart-contracts && npx hardhat compile",
     "contracts:test": "cd smart-contracts && npx hardhat test",
     "contracts:deploy": "cd smart-contracts && npx hardhat run scripts/deploy.js",
+    "contracts:deploy:local": "cd smart-contracts && npx hardhat run scripts/deploy.js --network localhost",
+    "update-addresses": "node scripts/update-addresses.js",
     "web:start": "cd web-app && npm start",
     "web:build": "cd web-app && npm run build",
     "mobile:ios": "cd mobile-app && npm run ios",

@@ -1,17 +1,23 @@
 import React from 'react';
+import { Fingerprint } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <div className="footer-section">
-          <h3>CIVITAS</h3>
-          <p style={{ color: '#8b8b8b', fontSize: '14px', lineHeight: '1.6' }}>
-            Building a self-governing digital layer where every individual 
-            owns their digital existence.
+
+        {/* Brand */}
+        <div className="footer-brand">
+          <div className="footer-logo">
+            <span className="footer-logo-icon"><Fingerprint size={20} /></span>
+            CIVITAS
+          </div>
+          <p className="footer-tagline">
+            Building a self-governing digital layer where every individual
+            owns their digital existence — identity, data, and financial freedom.
           </p>
         </div>
-        
+
         <div className="footer-section">
           <h3>Platform</h3>
           <ul>
@@ -19,9 +25,10 @@ export default function Footer() {
             <li><a href="/identity">Identity</a></li>
             <li><a href="/governance">Governance</a></li>
             <li><a href="/storage">Storage</a></li>
+            <li><a href="/messaging">Messaging</a></li>
           </ul>
         </div>
-        
+
         <div className="footer-section">
           <h3>Resources</h3>
           <ul>
@@ -31,17 +38,17 @@ export default function Footer() {
             <li><a href="/roadmap">Roadmap</a></li>
           </ul>
         </div>
-        
+
         <div className="footer-section">
           <h3>Community</h3>
           <ul>
             <li><a href="https://discord.gg/civitas">Discord</a></li>
-            <li><a href="https://twitter.com/civitas">Twitter</a></li>
+            <li><a href="https://twitter.com/civitas">Twitter / X</a></li>
             <li><a href="https://forum.civitas.network">Forum</a></li>
             <li><a href="/blog">Blog</a></li>
           </ul>
         </div>
-        
+
         <div className="footer-section">
           <h3>Legal</h3>
           <ul>
@@ -51,9 +58,14 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      
+
       <div className="footer-bottom">
-        <p>© 2026 CIVITAS. All rights reserved. Built with ❤️ for Digital Sovereignty.</p>
+        <span>© 2026 CIVITAS. Built for Digital Sovereignty.</span>
+        <div className="footer-bottom-links">
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/docs">Docs</a>
+        </div>
       </div>
     </footer>
   );

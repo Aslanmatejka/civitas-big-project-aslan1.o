@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { queueApi } from '../services/api';
+import {
+  Send, Vote, FileText, ShoppingCart, Scale, Clipboard,
+  Settings, Upload, CheckCircle, X as XIcon, Ban,
+  Wifi, WifiOff, Clock
+} from 'lucide-react';
 import './OfflineQueuePage.css';
 
 export default function OfflineQueuePage() {
@@ -50,7 +55,7 @@ export default function OfflineQueuePage() {
     try {
       const statusFilter = filter === 'all' ? '' : filter;
       const data = await queueApi.getQueue(currentAccount, statusFilter);
-      setTransactions(data);
+      setTransactions(data.data?.items || []);
     } catch (error) {
       console.error('Error loading queue:', error);
     }
@@ -59,7 +64,7 @@ export default function OfflineQueuePage() {
   const loadStats = async () => {
     try {
       const data = await queueApi.getStats(currentAccount);
-      setStats(data);
+      setStats(data.data?.stats || null);
     } catch (error) {
       console.error('Error loading stats:', error);
     }
@@ -85,7 +90,8 @@ export default function OfflineQueuePage() {
     try {
       setIsProcessing(true);
       const result = await queueApi.processAll(currentAccount);
-      alert(`Processed ${result.processed} transactions, ${result.failed} failed`);
+      const r = result.data || result;
+      alert(`Processed ${r.processed ?? r.data?.processed ?? 0} transactions, ${r.failed ?? 0} failed`);
       await loadQueue();
       await loadStats();
     } catch (error) {
@@ -202,14 +208,14 @@ export default function OfflineQueuePage() {
     <div className="offline-queue-page">
       <div className="offline-queue-container">
         <div className="offline-queue-header">
-          <h1>📤 Offline Transaction Queue</h1>
+          <h1><Upload size={22} /> Offline Transaction Queue</h1>
           <p className="subtitle">Transactions will be submitted automatically when online</p>
         </div>
 
         {/* Network Status */}
         <div className={`connection-status ${isOnline ? 'online' : 'offline'}`}>
           <div className={`status-indicator ${isOnline ? 'online' : 'offline'}`}>
-            {isOnline ? '🟢' : '🔴'}
+            {isOnline ? <><span className="status-dot status-dot--green" /></> : <><span className="status-dot status-dot--red" /></>}
           </div>
           <h3>Network Status: {isOnline ? 'Online' : 'Offline'}</h3>
           <p>
@@ -229,19 +235,19 @@ export default function OfflineQueuePage() {
             </div>
             <div className="stat-card">
               <h4>{stats.pending}</h4>
-              <p>⏳ Pending</p>
+              <p>Pending</p>
             </div>
             <div className="stat-card">
               <h4>{stats.processing}</h4>
-              <p>⚙️ Processing</p>
+              <p>Processing</p>
             </div>
             <div className="stat-card">
               <h4>{stats.confirmed}</h4>
-              <p>✅ Confirmed</p>
+              <p>Confirmed</p>
             </div>
             <div className="stat-card">
               <h4>{stats.failed}</h4>
-              <p>❌ Failed</p>
+              <p>Failed</p>
             </div>
             <div className="stat-card">
               <h4>{stats.successRate}%</h4>
@@ -312,7 +318,7 @@ export default function OfflineQueuePage() {
                       <p className="tx-hash">TxHash: {tx.result.txHash.slice(0, 10)}...{tx.result.txHash.slice(-8)}</p>
                     )}
                     {tx.result?.error && (
-                      <p className="tx-error">❌ {tx.result.error}</p>
+                      <p className="tx-error"><XIcon size={12} /> {tx.result.error}</p>
                     )}
                     {tx.retryCount > 0 && (
                       <p className="tx-retries">Retries: {tx.retryCount}/{tx.maxRetries}</p>
