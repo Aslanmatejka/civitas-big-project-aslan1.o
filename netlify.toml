@@ -2,7 +2,7 @@
 
 [build]
   base = "web-app"
-  command = "npm install && npx vite build"
+  command = "npm install --legacy-peer-deps && npx vite build"
   publish = "build"
 
 # Environment variables required at build time
